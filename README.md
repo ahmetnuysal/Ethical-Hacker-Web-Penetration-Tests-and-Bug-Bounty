@@ -14,6 +14,7 @@
   - [Yorum Paneli](#Yorum-Paneli)
   - [Resim Yerleştirme](#Resim-yerleştirme)
   - [Buton Yerleştirme](#Buton-Yerleştirme)
+  - [Footer & Header](#Footer-&-Header)
 
 # IP Çeşitleri
 > ## Public IP 
@@ -91,3 +92,35 @@ gedit html101.html
 - ```<label>Yorum</label>``` içine ufak textler bulundurur
 - ```<input>``` kullanıcıdan girdi alınırken kullanılır
 > ## Login Ekranı
+```
+<form> 
+<div>
+    <label>Kullanıcı Adı</label>
+    <input> type="text" name="username" placeholder="username">
+</div>
+<div>
+    <label>Şifre</label>
+    <input> type="password" name="password" placeholder="password">
+</form>
+```
+- ```type``` tipinin en olacağı ```password``` yazarsak yazdığımız şey gizlenmiş olarak gösterilir ```text``` yazarsak normal gösterilir
+- ```placeholder``` o kısım boşken içinde yazacağı şey
+![]()
+> ## Form
+```
+<form>
+<div>
+    <label>Yorum</label>
+    <textarea name="text area"></textarea>
+</div>
+</form>
+```
+![]()
+> ## Resim Yerleştirme
+- ```<img width="600px" height=""400px" src="<resim URL'si>">```
+> ## Buton Yerleştirme
+- ```<button>click me </button>``` click me yazılı bir buton eklenir
+> ## Footer & Header
+- ```<footer>Copyright ahmetnuysal 2022</footer>``` Sayfanın alt kısımına bilgi eklememizi sağlar
+![]()
+- ```<header>...</header>``` Sayfanın en üstüne bilgi eklememizi sağlar
