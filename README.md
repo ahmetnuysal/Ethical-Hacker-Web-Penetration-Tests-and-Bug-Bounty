@@ -14,7 +14,7 @@
   - [Yorum Paneli](#Yorum-Paneli)
   - [Resim Yerleştirme](#Resim-yerleştirme)
   - [Buton Yerleştirme](#Buton-Yerleştirme)
-  - [Footer & Header](#Footer-&-Header)
+  - [Footer & Header](#Footer&Header)
 
 # IP Çeşitleri
 > ## Public IP 
