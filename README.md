@@ -75,7 +75,7 @@ gedit html101.html
 - ```<p><stong>test</strong></p>``` metini kalın yazar
 
 - ```<p><em>test</em></p>``` metini italik yazar
-> ## Ancgor Tags
+> ## Anchor Tags
 - Link eklemek için kullanılır
 ![]()
 
