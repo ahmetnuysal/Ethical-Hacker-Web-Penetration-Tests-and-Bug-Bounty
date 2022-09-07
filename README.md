@@ -10,6 +10,10 @@
   - [Paragraf](#Paragraf)
   - [Anchor Tags](#Anchor-Tags)
   - [Form'lar](#Form'lar)
+  - [Login Ekranı](#Login-Ekranı)
+  - [Yorum Paneli](#Yorum-Paneli)
+  - [Resim Yerleştirme](#Resim-yerleştirme)
+  - [Buton Yerleştirme](#Buton-Yerleştirme)
 
 # IP Çeşitleri
 > ## Public IP 
@@ -73,10 +77,17 @@ gedit html101.html
 - ```<p><em>test</em></p>``` metini italik yazar
 > ## Ancgor Tags
 - Link eklemek için kullanılır
+![]()
 
 - Google'a ```html acher tag attributes``` yazarak yapılabilecek değişiklikleri görebiliriz
   
-```<a href="https://google.com">my link</a>``` sayfa yönledirmek için kullanılır (google'a yönlendirir)
+- ```<a href="https://google.com">my link</a>``` sayfa yönledirmek için kullanılır (google'a yönlendirir)
 
-```<a target=' blank' href="https://google.com">my link</a>``` linkteki sayfayı yeni sekmede açar (google'ı açar)
-
+- ```<a target=' blank' href="https://google.com">my link</a>``` linkteki sayfayı yeni sekmede açar (google'ı açar)
+> ## Form'lar
+- Kullanıcıdan girdi alınırken kullanılır
+- ```<form></form>``` içine yazılır
+- ```<div></div>``` form içini gruplamak için kullanılır
+- ```<label>Yorum</label>``` içine ufak textler bulundurur
+- ```<input>``` kullanıcıdan girdi alınırken kullanılır
+> ## Login Ekranı
