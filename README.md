@@ -38,7 +38,7 @@ gedit html101.html
 ```
 ---
 # HTML
-![]()
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/b2017b3d14b9e08687e237570ea5efd5c6bf0948/Pictures/WhatsApp%20Image%202022-09-07%20at%2011.19.59.jpeg)
 > ## Tag'ler
 - ```<DOCTYPE html>``` belgenin tipini belirtir. Biz HTML kullanıyoruz demektir
 > ## Head
@@ -48,7 +48,7 @@ gedit html101.html
   <title>Kali Linux Website</title>
 </head>
 ```
-![]()
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/b2017b3d14b9e08687e237570ea5efd5c6bf0948/Pictures/WhatsApp%20Image%202022-09-07%20at%2011.33.24.jpeg)
 > ## Body
 - ```<BODY>``` içine kullanıcının gördüğü elemanları yazarız
 
@@ -66,7 +66,7 @@ gedit html101.html
 
 - ```<h6>Hello World</h6>``` Olabilecek en küçük boyut ve kalınlıkta yazar
 
-![]()
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/b2017b3d14b9e08687e237570ea5efd5c6bf0948/Pictures/WhatsApp%20Image%202022-09-07%20at%2011.49.48.jpeg)
 
 > ## Boşluk
 - ```<br>``` Bir satır boşluk bırakır
@@ -78,7 +78,7 @@ gedit html101.html
 - ```<p><em>test</em></p>``` metini italik yazar
 > ## Anchor Tags
 - Link eklemek için kullanılır
-![]()
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/b2017b3d14b9e08687e237570ea5efd5c6bf0948/Pictures/WhatsApp%20Image%202022-09-07%20at%2013.08.32.jpeg)
 
 - Google'a ```html acher tag attributes``` yazarak yapılabilecek değişiklikleri görebiliriz
   
@@ -105,7 +105,7 @@ gedit html101.html
 ```
 - ```type``` tipinin en olacağı ```password``` yazarsak yazdığımız şey gizlenmiş olarak gösterilir ```text``` yazarsak normal gösterilir
 - ```placeholder``` o kısım boşken içinde yazacağı şey
-![]()
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/b2017b3d14b9e08687e237570ea5efd5c6bf0948/Pictures/WhatsApp%20Image%202022-09-07%20at%2013.34.25.jpeg)
 > ## Form
 ```
 <form>
@@ -122,5 +122,5 @@ gedit html101.html
 - ```<button>click me </button>``` click me yazılı bir buton eklenir
 > ## Footer ve Header
 - ```<footer>Copyright ahmetnuysal 2022</footer>``` Sayfanın alt kısımına bilgi eklememizi sağlar
-![]()
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/b2017b3d14b9e08687e237570ea5efd5c6bf0948/Pictures/WhatsApp%20Image%202022-09-07%20at%2013.57.35.jpeg)
 - ```<header>...</header>``` Sayfanın en üstüne bilgi eklememizi sağlar
