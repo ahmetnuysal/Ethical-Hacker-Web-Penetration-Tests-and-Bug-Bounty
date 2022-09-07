@@ -6,6 +6,10 @@
   - [Head](#Head)
   - [Body](#Body)
   - [Başlık](#Başlık)
+  - [Boşluk](#Boşluk)
+  - [Paragraf](#Paragraf)
+  - [Anchor Tags](#Anchor-Tags)
+  - [Form'lar](#Form'lar)
 
 # IP Çeşitleri
 > ## Public IP 
