@@ -9,7 +9,7 @@
   - [Boşluk](#Boşluk)
   - [Paragraf](#Paragraf)
   - [Anchor Tags](#Anchor-Tags)
-  - [Form'lar](#Form-lar)
+  - [Form](#Form)
   - [Login Ekranı](#Login-Ekranı)
   - [Yorum Paneli](#Yorum-Paneli)
   - [Resim Yerleştirme](#Resim-yerleştirme)
@@ -84,7 +84,7 @@ gedit html101.html
 - ```<a href="https://google.com">my link</a>``` sayfa yönledirmek için kullanılır (google'a yönlendirir)
 
 - ```<a target=' blank' href="https://google.com">my link</a>``` linkteki sayfayı yeni sekmede açar (google'ı açar)
-> ## Form'lar
+> ## Form
 - Kullanıcıdan girdi alınırken kullanılır
 - ```<form></form>``` içine yazılır
 - ```<div></div>``` form içini gruplamak için kullanılır
