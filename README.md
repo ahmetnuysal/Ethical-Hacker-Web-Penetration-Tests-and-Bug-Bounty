@@ -4,6 +4,8 @@
 - [HTML](#HTML)
   - [Tag'ler](#Tag'ler)
   - [Head](#Head)
+  - [Body](#Body)
+  - [Başlık](#Başlık)
 
 # IP Çeşitleri
 > ## Public IP 
