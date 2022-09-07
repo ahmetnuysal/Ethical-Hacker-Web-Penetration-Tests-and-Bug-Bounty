@@ -14,7 +14,7 @@
   - [Yorum Paneli](#Yorum-Paneli)
   - [Resim Yerleştirme](#Resim-yerleştirme)
   - [Buton Yerleştirme](#Buton-Yerleştirme)
-  - [Footer & Header](#Footer&Header)
+  - [Footer ve Header](#Footer-ve-Header)
 
 # IP Çeşitleri
 > ## Public IP 
@@ -120,7 +120,7 @@ gedit html101.html
 - ```<img width="600px" height=""400px" src="<resim URL'si>">```
 > ## Buton Yerleştirme
 - ```<button>click me </button>``` click me yazılı bir buton eklenir
-> ## Footer & Header
+> ## Footer ve Header
 - ```<footer>Copyright ahmetnuysal 2022</footer>``` Sayfanın alt kısımına bilgi eklememizi sağlar
 ![]()
 - ```<header>...</header>``` Sayfanın en üstüne bilgi eklememizi sağlar
