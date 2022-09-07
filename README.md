@@ -56,3 +56,7 @@ gedit html101.html
 ...
 
 ```<h6>Hello World</h6>``` Olabilecek en küçük boyut ve kalınlıkta yazar
+
+![]()
+
+> ## Boşluk
