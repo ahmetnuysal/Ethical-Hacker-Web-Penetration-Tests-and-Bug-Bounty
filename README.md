@@ -9,7 +9,7 @@
   - [Boşluk](#Boşluk)
   - [Paragraf](#Paragraf)
   - [Anchor Tags](#Anchor-Tags)
-  - [Form'lar](#Form'lar)
+  - [Form'lar](#Form-lar)
   - [Login Ekranı](#Login-Ekranı)
   - [Yorum Paneli](#Yorum-Paneli)
   - [Resim Yerleştirme](#Resim-yerleştirme)
