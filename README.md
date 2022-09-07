@@ -13,15 +13,15 @@
 
 # IP Çeşitleri
 > ## Public IP 
-Kamuya açık IP
+- Kamuya açık IP
 > ## Local IP
-Modem tarafından bize verilen IP. Modemimizi her resetlediğimizde değişir
+- Modem tarafından bize verilen IP. Modemimizi her resetlediğimizde değişir
 ---
 # HTML Yazabileceğimiz Yerler
 > ## 1.Nano
-```nano html101.html``` yazarak yeni bir html dosyası açabilir içine yazabiliriz
+- ```nano html101.html``` yazarak yeni bir html dosyası açabilir içine yazabiliriz
 > ## 2. Geany 
-Geany'i sadece ```HTML``` değil başka dilleri yazarkende kullanabiliriz
+- Geany'i sadece ```HTML``` değil başka dilleri yazarkende kullanabiliriz
 ```
 apt-get install geany
 geany
@@ -35,9 +35,9 @@ gedit html101.html
 # HTML
 ![]()
 > ## Tag'ler
-```<DOCTYPE html>``` belgenin tipini belirtir. Biz HTML kullanıyoruz demektir
+- ```<DOCTYPE html>``` belgenin tipini belirtir. Biz HTML kullanıyoruz demektir
 > ## Head
-```<HEAD>``` içine "meta data" dediğimiz genel özellikler yazılır
+- ```<HEAD>``` içine "meta data" dediğimiz genel özellikler yazılır
 ```
 <head>
   <title>Kali Linux Website</title>
@@ -45,18 +45,38 @@ gedit html101.html
 ```
 ![]()
 > ## Body
-```<BODY>``` içine kullanıcının gördüğü elemanları yazarız
+- ```<BODY>``` içine kullanıcının gördüğü elemanları yazarız
 
-```<!--NOT-->``` kullanarak kod içine notlar bırakabiliriz
+- ```<!--NOT-->``` kullanarak kod içine notlar bırakabiliriz
 > ## Başlık 
-```<h1>Hello World</h1>``` Başlık olarak büyük ve kalın fontta yazar
+- ```<h1>Hello World</h1>``` Başlık olarak büyük ve kalın fontta yazar
 
-```<h2>Hello World</h2>``` Biraz daha küçük boyutta ve kalınlıkta yazar
+- ```<h2>Hello World</h2>``` Biraz daha küçük boyutta ve kalınlıkta yazar
 
-...
+- 
 
-```<h6>Hello World</h6>``` Olabilecek en küçük boyut ve kalınlıkta yazar
+- 
+
+- 
+
+- ```<h6>Hello World</h6>``` Olabilecek en küçük boyut ve kalınlıkta yazar
 
 ![]()
 
 > ## Boşluk
+- ```<br>``` Bir satır boşluk bırakır
+> ## Paragraf
+- ```<p></p>``` içine yazılan şeyler metin görünümünde olur
+
+- ```<p><stong>test</strong></p>``` metini kalın yazar
+
+- ```<p><em>test</em></p>``` metini italik yazar
+> ## Ancgor Tags
+- Link eklemek için kullanılır
+
+- Google'a ```html acher tag attributes``` yazarak yapılabilecek değişiklikleri görebiliriz
+  
+```<a href="https://google.com">my link</a>``` sayfa yönledirmek için kullanılır (google'a yönlendirir)
+
+```<a target=' blank' href="https://google.com">my link</a>``` linkteki sayfayı yeni sekmede açar (google'ı açar)
+
