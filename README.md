@@ -20,10 +20,10 @@
   - [Burpsuite İçine Sertifika Yükleme](#Burpsuite-İçine-Sertifika-Yükleme)
 - [bWAPP](#bWAPP)
   - [bWAPP Kurulumu](#bWAPP-Kurulumu)
-  - [HTML Injection Reflected (low level)](#HTML-Injection-Reflected-(low-level))
-  - [HTML Injection Stored (low level)](#HTML-Injection-Stored-(low-level))
+  - [HTML Injection Reflected ( low level )](#HTML-Injection-Reflected-(-low-level-))
+  - [HTML Injection Stored ( low level )](#HTML-Injection-Stored-(-low-level-) )
   - [Formlardan Kullanıcı Adı ve Şifre Hackleme](#Formlardan-Kullanıcı-Adı-ve-Şifre-Hackleme)
-  - [Dırbuster](#Dırbuster)
+  - [Dirbuster](#Dirbuster)
   - [iFrame Injection](#iFrame-Injection)
 
 # IP Çeşitleri
@@ -175,7 +175,7 @@ firefox -> settings -> arama kısımına network yazıyoruz -> manuel'i seçiyor
 - Hangi açık üzerinden gitmek istiyorsak onu ve zorluk level'ini seçebiliriz
 ![]()
 
-> ## HTML Injection Reflected (low level)
+> ## HTML Injection Reflected ( low level )
 
 ! Bu yöntemi burpsuite kullanmadan da yapabiliriz.
 
@@ -193,7 +193,7 @@ firefox -> settings -> arama kısımına network yazıyoruz -> manuel'i seçiyor
 ![]()
 ! Eğer çalışıyorsa sitede HTML injection vardır ve JS kodu çalıştırılabiliyordur
 
-> ## HTML Injection Stored (low level)
+> ## HTML Injection Stored ( low level )
 
 ! ```Stored``` o siteye giren herkesi etkiliyor demektir. (Örneğin blog siteleri)
 
@@ -222,4 +222,5 @@ firefox -> settings -> arama kısımına network yazıyoruz -> manuel'i seçiyor
 ```
 - Yazdığımız HTML kodunu blog'a yapıştırıyoruz. Kodu yazdığımız sitenin kendi login ekranının hazır HTML kodlarınıda yapıştırabiliriz
 - Kullanıcılar o kısıma login yaptıklarında giriş bilgilerini ```NATCAT``` üzerinden görebiliriz
-d
+
+> ## Dirbuster
