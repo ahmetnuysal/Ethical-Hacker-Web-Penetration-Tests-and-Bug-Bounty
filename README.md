@@ -224,3 +224,28 @@ firefox -> settings -> arama kısımına network yazıyoruz -> manuel'i seçiyor
 - Kullanıcılar o kısıma login yaptıklarında giriş bilgilerini ```NATCAT``` üzerinden görebiliriz
 
 > ## Dirbuster
+
+- Kali'mizde ```dirbuster```'ı açıyoruz
+- ```Target URL```'yi giriyoruz
+- ```Autoswitch```'i yazıyoruz
+- ```Number of threads```'i seçiyoruz. Eğer hedef sitede ```firewall``` varsa ```Number of threads```'i 10 yapıyoruz, yoksa 200 yapabiliriz
+- ```file with list of dir``` seçiyoruz. İçinde bir sürü popüler dosya ismi bulundural .txt dosyasını seçiyoruz
+- ```Kali -> usr -> share -> wordlist -> dirbuster -> directory-list-2-.3-medium.txt``` 
+- Worldlist içinde farklı konularda .txt dosyaları bulunur, saldırı türüne göre dosya seçilir. fasttrack.txt -> şifreler namelist.txt -> usernameler
+- ```Start``` diyoruz
+- ```Result``` kısmına tıklarsak sonuçları (subdomainleri) görebiliriz
+! HTTP 80 portunu kullanır
+- ```Responsu 200``` olanlar gerçekten bulunur, diğerleri hata verebilir
+
+> ## iFrame Injection
+
+- Siteye sağ tıklayıp ```view page source``` açıyoruz
+- ```CTRL+F``` yapıp ```iframe``` arıyoruz
+![]()
+- ```<iframe frameborder="0" src="robots.txt" height="250" width="250"></iframe>``` kodunda bulunan ```robots.txt```'i değiştirirsek ekranda o subdomain'i görürüz
+![]()
+![]()
+- ```burpsuite```i açıp ```intercept is on``` yapıyoruz ve ```forward```'a basıyoruz 
+- ```Get/bWAPP/iframe...``` kısmını değiştirebiliriz
+![]()
+- Bu kısımdaki iframe kodunu kapatıp  sonuna ```</iframe><h1>hellohtml</h1>``` ekliyoruz (...ParamHeight=250"></iframe></h1>) ve ```forward```diyoruz
