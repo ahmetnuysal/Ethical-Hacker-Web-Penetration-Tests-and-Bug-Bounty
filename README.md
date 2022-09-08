@@ -20,9 +20,8 @@
   - [Burpsuite İçine Sertifika Yükleme](#Burpsuite-İçine-Sertifika-Yükleme)
 - [bWAPP](#bWAPP)
   - [bWAPP Kurulumu](#bWAPP-Kurulumu)
-
-  - [HTML Injection Reflected](#HTML-Injection-Reflected)
-  - [HTML Injection Stored](#HTML-Injection-Stored)
+  - [HTML Injection Reflected (low level)](#HTML-Injection-Reflected-(lowlevel))
+  - [HTML Injection Stored (low level)](#HTML-Injection-Stored-(low-level))
   - [Formlardan Kullanıcı Adı ve Şifre Hackleme](#Formlardan-Kullanıcı-Adı-ve-Şifre-Hackleme)
   - [Dırbuster](#Dırbuster)
   - [iFrame Injection](#iFrame-Injection)
@@ -156,6 +155,11 @@ firefox -> settings -> arama kısımına network yazıyoruz -> manuel'i seçiyor
 - ```Intercept```içine girip ```Intercept is off``` olduğunu kontrol ediyoruz
 > ## Burpsuite İçine Sertifika Yükleme
 
+- Burpsuite içine sertifika yüklemek için ```install burpsuite certificate firefox```'u google'llıyoruz
+- ```Portswigger``` sitesine giriyoruz
+- ```http://burp```'e girip ```CA certificate```'e tıklayıp indiriyoruz
+- ```firefox setting -> certificate aratıyoruz -> view certificate -> import``` diyip indirdiğimiz dosyayı seçiyoruz
+
 # bWAPP
 
 > ## bWAPP Kurulumu
@@ -171,4 +175,20 @@ firefox -> settings -> arama kısımına network yazıyoruz -> manuel'i seçiyor
 - Hangi açık üzerinden gitmek istiyorsak onu ve zorluk level'ini seçebiliriz
 ![]()
 
+> ## HTML Injection Reflected (low level)
 
+! Bu yöntemi burpsuite kullanmadan da yapabiliriz.
+
+! ```Get```-> Gönderirken
+
+! ```Post``` -> Alırken kullanılır
+
+- Burpsuite açıyoruz ve ```Intercept -> ıntercept is on``` yapıyoruz. Artık sitede işlem yapmadan önce yakalayıp bize yollayacak
+- ```Forward```'a basarak işlemi yolluyoruz
+![]()
+- Site'nin name kısmına ```<h1>ahmet</h1>``` yazıyoruz ve deniyoruz
+![]()
+- ```HTML injection cheat sheet github```'ı google'llıyoruz ve yazabileceğimiz diğer HTML kodlarını görüyoruz
+- Name kısmına ```<h1>Hello<script>alert(1)</script>!</h1>```
+![]()
+! Eğer çalışıyorsa sitede HTML injection vardır ve JS kodu çalıştırılabiliyordur
