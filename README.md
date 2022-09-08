@@ -15,9 +15,12 @@
   - [Resim Yerleştirme](#Resim-yerleştirme)
   - [Buton Yerleştirme](#Buton-Yerleştirme)
   - [Footer ve Header](#Footer-ve-Header)
+- [Burpsuite](#Burpsuite)
+  - [BurpSuite Güncelleme](#BurpSuite-Güncelleme)
+  - [Burpsuite İçine Sertifika Yükleme](#Burpsuite-İçine-Sertifika-Yükleme)
 - [bWAPP](#bWAPP)
   - [bWAPP Kurulumu](#bWAPP-Kurulumu)
-  - [Burpsuite](#Burpsuite)
+
   - [HTML Injection Reflected](#HTML-Injection-Reflected)
   - [HTML Injection Stored](#HTML-Injection-Stored)
   - [Formlardan Kullanıcı Adı ve Şifre Hackleme](#Formlardan-Kullanıcı-Adı-ve-Şifre-Hackleme)
@@ -137,3 +140,35 @@ gedit html101.html
 
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/b2017b3d14b9e08687e237570ea5efd5c6bf0948/Pictures/WhatsApp%20Image%202022-09-07%20at%2013.57.35.jpeg)
 - ```<header>...</header>``` Sayfanın en üstüne bilgi eklememizi sağlar
+# Burpsuite 
+
+### Burpsuite'nin ücretsiz versiyonunda projelerimizi kaydedemiyoruz
+
+> ## BurpSuite Güncelleme
+- Burpsuite güncellemesi yaparken ```.sh``` dosyasını indirdikten sonra terminal üzerinden bulunduğu konuma giderek ```bash dosyaadı.sh``` çalıştırıp güncelliyoruz
+- ```proxy -> options``` kısımına girip ```127.0.0.1:8080``` yazıp yazmadığını kontrol ediyoruz yoksa add diyerek ekliyoruz
+- Belirlediğimiz ```proxy``` adresini firefox'a da bildirmemiz gerekiyor, bunun için;
+```
+firefox -> settings -> arama kısımına network yazıyoruz -> manuel'i seçiyoruz
+-> HTTP  proxy 127.0.0.1 ve port 8080 yazıyoruz -> Also use this proxy HTTPS'i seçiyoruz
+```
+- Bu ayarlamayı sadece ```Burpsuite``` kullanırken yapmamız gerekiyor
+- ```Intercept```içine girip ```Intercept is off``` olduğunu kontrol ediyoruz
+> ## Burpsuite İçine Sertifika Yükleme
+
+# bWAPP
+
+> ## bWAPP Kurulumu
+- Bee-box sanal makinesini ayarlamalarını yapıp kuruyoruz. 
+- Bee-box'ı kurduktan sonra açıyoruz, masaüstüne bulunan start'a basıyoruz.
+- Terminali açıp ```setxkbmap tr``` ve ```ifconfig``` çalıştırıyoruz
+- Kalimizi açıyoruz ve ```bee-box IP``` adresimizin websitesine giriş yapıyoruz
+
+| kullanıcı adı | bee |
+| --- | --- |
+| şifre | bug |
+
+- Hangi açık üzerinden gitmek istiyorsak onu ve zorluk level'ini seçebiliriz
+![]()
+
+
