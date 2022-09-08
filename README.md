@@ -222,3 +222,4 @@ firefox -> settings -> arama kısımına network yazıyoruz -> manuel'i seçiyor
 ```
 - Yazdığımız HTML kodunu blog'a yapıştırıyoruz. Kodu yazdığımız sitenin kendi login ekranının hazır HTML kodlarınıda yapıştırabiliriz
 - Kullanıcılar o kısıma login yaptıklarında giriş bilgilerini ```NATCAT``` üzerinden görebiliriz
+d
