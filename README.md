@@ -27,11 +27,12 @@
   - [iFrame Injection](#iFrame-Injection)
 - [PHP Açıkları](#PHP-Açıkları)
   - [PHP Code Injection](#PHP-Code-Injection)	 
-  - [PHP Upload Injection low level](PHP-Upload-Injection-low-level)
+  - [PHP Upload Injection low level](#PHP-Upload-Injection-low-level)
   - [PHP Upload Injection medium level](#PHP-Upload-Injection-medium-level)
 - [Foxy Proxy](#Foxy-Proxy)
 - [Kod Çalıştırma & SSI](#Kod-Çalıştırma-&-SSI)
-  - [Os Command Injection](#Os-Command-Injection)
+  - [Os Command Injection low level](#Os-Command-Injection-low-level)
+  - [Os Command Injection medium level](#Os-Command-Injection-medium-level)
   - [Commix](#Commix)
   - [SSI Injection](#SSI-Injection)
 
@@ -308,3 +309,14 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 - Bazı siteler bazı uzantıları engellemiş olabilir
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/d52601ee23106329f44447e37d9430f5c7d2aaa4/Pictures/WhatsApp%20Image%202022-09-09%20at%2012.52.17.jpeg)
 - O zaman ```.php``` dosyamızın bulunduğu konuma gideriz ```cp myphp.php myphp.php3``` kodu ile dosyayı farklı isimle kopyalarız, Çalışmazsa ```.php4 veya .php5``` deneyebiliriz
+
+# Foxy Proxy
+
+- ```Foxy Proxy``` firefox içinde elimiz ile yaptığımız proxy ayarını tek tıkla yapmamızı sağlar
+- Google'a ```Foxy Proxy``` yazıp firefox'umuza ekliyoruz
+- İçine girip ```options -> add -> gerekli yerleri dolduruyoruz``` 
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/d52601ee23106329f44447e37d9430f5c7d2aaa4/Pictures/WhatsApp%20Image%202022-09-09%20at%2014.32.02.jpeg)
+
+# Kod Çalıştırma & SSI
+
+> ## Os Command Injection low level
