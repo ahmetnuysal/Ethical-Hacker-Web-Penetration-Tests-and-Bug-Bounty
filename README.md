@@ -226,6 +226,7 @@ firefox -> settings -> arama kısımına network yazıyoruz -> manuel'i seçiyor
 
 > ## Dirbuster
 
+- Sitedeki gizli subdomainleri bulmamızı sağlar
 - Kali'mizde ```dirbuster```'ı açıyoruz
 - ```Target URL```'yi giriyoruz
 - ```Autoswitch```'i yazıyoruz
