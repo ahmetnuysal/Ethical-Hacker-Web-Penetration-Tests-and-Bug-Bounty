@@ -237,7 +237,9 @@ firefox -> settings -> arama kısımına network yazıyoruz -> manuel'i seçiyor
 - ```Result``` kısmına tıklarsak sonuçları (subdomainleri) görebiliriz
 ! HTTP 80 portunu kullanır
 - ```Responsu 200``` olanlar gerçekten bulunur, diğerleri hata verebilir
+
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/00654033d4d5aa36177841faae36634fad5a1b35/Pictures/8.jpeg)
+
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/00654033d4d5aa36177841faae36634fad5a1b35/Pictures/9.jpeg)
 > ## iFrame Injection
 
@@ -248,5 +250,6 @@ firefox -> settings -> arama kısımına network yazıyoruz -> manuel'i seçiyor
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/dc88587d94cf5ca88383bc70df73399276884023/Pictures/11.jpeg)
 - ```burpsuite```i açıp ```intercept is on``` yapıyoruz ve ```forward```'a basıyoruz 
 - ```Get/bWAPP/iframe...``` kısmını değiştirebiliriz
+
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/dc88587d94cf5ca88383bc70df73399276884023/Pictures/12.jpeg)
 - Bu kısımdaki iframe kodunu kapatıp  sonuna ```</iframe><h1>hellohtml</h1>``` ekliyoruz (...ParamHeight=250"></iframe></h1>) ve ```forward```diyoruz
