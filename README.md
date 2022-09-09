@@ -20,8 +20,8 @@
   - [Burpsuite İçine Sertifika Yükleme](#Burpsuite-İçine-Sertifika-Yükleme)
 - [bWAPP](#bWAPP)
   - [bWAPP Kurulumu](#bWAPP-Kurulumu)
-  - [HTML Injection Reflected ( low level )](#HTML-Injection-Reflected-(-low-level-))
-  - [HTML Injection Stored ( low level )](#HTML-Injection-Stored-(-low-level-) )
+  - [HTML Injection Reflected low level](#HTML-Injection-Reflected-low-level)
+  - [HTML Injection Stored low level](#HTML-Injection-Stored-low-level)
   - [Formlardan Kullanıcı Adı ve Şifre Hackleme](#Formlardan-Kullanıcı-Adı-ve-Şifre-Hackleme)
   - [Dirbuster](#Dirbuster)
   - [iFrame Injection](#iFrame-Injection)
@@ -184,7 +184,7 @@ firefox -> settings -> arama kısımına network yazıyoruz -> manuel'i seçiyor
 - Hangi açık üzerinden gitmek istiyorsak onu ve zorluk level'ini seçebiliriz
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/00654033d4d5aa36177841faae36634fad5a1b35/Pictures/1.jpeg)
 
-> ## HTML Injection Reflected ( low level )
+> ## HTML Injection Reflected low level
 
 ! Bu yöntemi burpsuite kullanmadan da yapabiliriz.
 
@@ -202,7 +202,7 @@ firefox -> settings -> arama kısımına network yazıyoruz -> manuel'i seçiyor
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/00654033d4d5aa36177841faae36634fad5a1b35/Pictures/4.jpeg)
 ! Eğer çalışıyorsa sitede HTML injection vardır ve JS kodu çalıştırılabiliyordur
 
-> ## HTML Injection Stored ( low level )
+> ## HTML Injection Stored low level 
 
 ! ```Stored``` o siteye giren herkesi etkiliyor demektir. (Örneğin blog siteleri)
 
