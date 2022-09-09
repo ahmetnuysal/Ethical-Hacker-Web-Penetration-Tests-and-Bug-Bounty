@@ -25,6 +25,14 @@
   - [Formlardan Kullanıcı Adı ve Şifre Hackleme](#Formlardan-Kullanıcı-Adı-ve-Şifre-Hackleme)
   - [Dirbuster](#Dirbuster)
   - [iFrame Injection](#iFrame-Injection)
+- [PHP Açıkları](#PHP-Açıkları)
+  -[PHP Code Injection](#PHP-Code-Injection)	 
+  -[PHP Upload Injection](#PHP-Upload-Injection)
+- [Foxy Proxy](#Foxy-Proxy)
+- [Kod Çalıştırma & SSI](#Kod-Çalıştırma-&-SSI)
+  -[Os Command Injection](#Os-Command-Injection)
+  -[Commix](#Commix)
+  -[SSI Injection](#SSI-Injection)
 
 # IP Çeşitleri
 > ## Public IP 
@@ -254,3 +262,11 @@ firefox -> settings -> arama kısımına network yazıyoruz -> manuel'i seçiyor
 
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/dc88587d94cf5ca88383bc70df73399276884023/Pictures/12.jpeg)
 - Bu kısımdaki iframe kodunu kapatıp  sonuna ```</iframe><h1>hellohtml</h1>``` ekliyoruz (...ParamHeight=250"></iframe></h1>) ve ```forward```diyoruz
+
+# PHP Açıkları
+
+> ## PHP Code Injection
+
+- Dosya upload ederek yararlanılan zaafiyetlerdir
+- PHP açıklarında ````burpsuite``` kullanılabileceği gibi kullanılmayadabilir
+- 
