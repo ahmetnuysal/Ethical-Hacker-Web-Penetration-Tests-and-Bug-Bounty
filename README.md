@@ -244,9 +244,9 @@ firefox -> settings -> arama kısımına network yazıyoruz -> manuel'i seçiyor
 - Siteye sağ tıklayıp ```view page source``` açıyoruz
 - ```CTRL+F``` yapıp ```iframe``` arıyoruz
 - ```<iframe frameborder="0" src="robots.txt" height="250" width="250"></iframe>``` kodunda bulunan ```robots.txt```'i değiştirirsek ekranda o subdomain'i görürüz
-![]()
-![]()
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/dc88587d94cf5ca88383bc70df73399276884023/Pictures/10.jpeg)
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/dc88587d94cf5ca88383bc70df73399276884023/Pictures/11.jpeg)
 - ```burpsuite```i açıp ```intercept is on``` yapıyoruz ve ```forward```'a basıyoruz 
 - ```Get/bWAPP/iframe...``` kısmını değiştirebiliriz
-![]()
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/dc88587d94cf5ca88383bc70df73399276884023/Pictures/12.jpeg)
 - Bu kısımdaki iframe kodunu kapatıp  sonuna ```</iframe><h1>hellohtml</h1>``` ekliyoruz (...ParamHeight=250"></iframe></h1>) ve ```forward```diyoruz
