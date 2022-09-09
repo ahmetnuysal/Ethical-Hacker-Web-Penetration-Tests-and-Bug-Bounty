@@ -2,7 +2,7 @@
 - [IP Çeşitleri](#IP-Çeşitleri)
 - [HTML Yazabileceğimiz Yerler](#HTML-Yazabileceğimiz-yerler)
 - [HTML](#HTML)
-  - [Tag'ler](#Tag'ler)
+  - [Tag](#Tag)
   - [Head](#Head)
   - [Body](#Body)
   - [Başlık](#Başlık)
@@ -60,7 +60,7 @@ gedit html101.html
 ---
 # HTML
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/b2017b3d14b9e08687e237570ea5efd5c6bf0948/Pictures/WhatsApp%20Image%202022-09-07%20at%2011.19.59.jpeg)
-> ## Tag'ler
+> ## Tag
 - ```<DOCTYPE html>``` belgenin tipini belirtir. Biz HTML kullanıyoruz demektir
 > ## Head
 - ```<HEAD>``` içine "meta data" dediğimiz genel özellikler yazılır
