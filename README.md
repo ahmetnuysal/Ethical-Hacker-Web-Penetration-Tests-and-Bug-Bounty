@@ -26,13 +26,13 @@
   - [Dirbuster](#Dirbuster)
   - [iFrame Injection](#iFrame-Injection)
 - [PHP Açıkları](#PHP-Açıkları)
-  -[PHP Code Injection](#PHP-Code-Injection)	 
-  -[PHP Upload Injection](#PHP-Upload-Injection)
+	-[PHP Code Injection](#PHP-Code-Injection)	 
+	-[PHP Upload Injection](#PHP-Upload-Injection)
 - [Foxy Proxy](#Foxy-Proxy)
 - [Kod Çalıştırma & SSI](#Kod-Çalıştırma-&-SSI)
-  -[Os Command Injection](#Os-Command-Injection)
-  -[Commix](#Commix)
-  -[SSI Injection](#SSI-Injection)
+	-[Os Command Injection](#Os-Command-Injection)
+	-[Commix](#Commix)
+	-[SSI Injection](#SSI-Injection)
 
 # IP Çeşitleri
 > ## Public IP 
