@@ -27,8 +27,8 @@
   - [iFrame Injection](#iFrame-Injection)
 - [PHP Açıkları](#PHP-Açıkları)
   - [PHP Code Injection](#PHP-Code-Injection)	 
-  - [PHP Upload Injection](PHP-Upload-Injection-(low-level))
-  - [PHP Upload Injection (medium level)](#PHP-Upload-Injection-(medium-level))
+  - [PHP Upload Injection low level](PHP-Upload-Injection-low-level)
+  - [PHP Upload Injection medium level](#PHP-Upload-Injection-medium-level)
 - [Foxy Proxy](#Foxy-Proxy)
 - [Kod Çalıştırma & SSI](#Kod-Çalıştırma-&-SSI)
   - [Os Command Injection](#Os-Command-Injection)
@@ -289,7 +289,7 @@ firefox -> settings -> arama kısımına network yazıyoruz -> manuel'i seçiyor
 - Sunucuda bir python kodu çalıştırabiliyorsak kendimiz bir shell açabiliriz
 - Terminal üzerinden site sunucusundayken ```python -c import pty; pty.spawn("/bin/bash")``` yazıyoruz ve shell açmayı deniyoruz
 
-> ## PHP Upload Injection (low level)
+> ## PHP Upload Injection low level
 
 - Görsel yükleyebildiğimiz sitelerde yararlanılan bir zaafiyettir
 - Site içerisine ```.php``` dosyası yüklemeyi deneriz
@@ -303,7 +303,7 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/d52601ee23106329f44447e37d9430f5c7d2aaa4/Pictures/WhatsApp%20Image%202022-09-09%20at%2012.47.45.jpeg)
 - Artık sunucu içine giriş yaptık, sunucu içinde komutlarla (ls,pwd vb) dolaşabiliriz
 
-> ## PHP Upload Injection (medium level)
+> ## PHP Upload Injection medium level
 
 - Bazı siteler bazı uzantıları engellemiş olabilir
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/d52601ee23106329f44447e37d9430f5c7d2aaa4/Pictures/WhatsApp%20Image%202022-09-09%20at%2012.52.17.jpeg)
