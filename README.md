@@ -36,6 +36,9 @@
   - [Commix](#Commix)
   - [SSI Injection low level](#SSI-Injection-low-level)
   - [SSI Injection medium level](#SSI-Injection-medium-level)
+- [Directory Traversal](#Directory-Traversal)
+  - [Directory Traversal low level](#Directory-Travesal-low-level)
+  - [DotDotPwn](#dotdotpwn)	  
 
 # IP Çeşitleri
 > ## Public IP 
@@ -414,3 +417,42 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/d52601ee23106329f44447e37d9430f5c7d2aaa4/Pictures/WhatsApp%20Image%202022-09-09%20at%2016.48.23.jpeg)
 
 - Bunu kolay yoldan yapmak için ```commix``` kullanılabilir, ancak bazı durumlarda manuel olarak tek tek denememiz gerekir
+
+# Directory Traversal
+
+- Erişim sağlayamayacağımız yerlere erişim sağlama hatasıdır
+
+> ## Directory Traversal low level
+
+- Url üzerinde .php kullanıldığını görüyoruz
+- Yoksa ```Burpsuite intercept is on```diyerek görebiliriz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/ff2c37a1995ef7490ea089a51a69693142473235/Pictures/WhatsApp%20Image%202022-09-10%20at%2013.31.02.jpeg)
+
+- Linux sunucularında çoğunlukla ```apache``` kullanılır ve websitesi kodları ```/var/www/html``` içerisinde bulunur
+- URL sonunda bulunan ```message.txt```'nin nerde olduğunu bulursak ```cd ..``` ve ```cd``` komutlarıyla dolaşıp başka dosyalara erişim sağlayabiliriz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/ff2c37a1995ef7490ea089a51a69693142473235/Pictures/WhatsApp%20Image%202022-09-10%20at%2013.38.43.jpeg)
+
+- Link sonuna ```../``` ekleyerek geri gitmeyi deniyoruz. Kaç tane geri gideceğimizi bilmiyoruz ve ```../``` sonuna ```/etc/passwd``` ekliyoruz
+- Ya da ```?page=/etc/passwd``` şeklinde yazabiliriz çünkü ```../``` sitede filtrelenmiş ve çalışmıyor olabilir
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/ff2c37a1995ef7490ea089a51a69693142473235/Pictures/WhatsApp%20Image%202022-09-10%20at%2013.47.54.jpeg)
+
+> ## DotDotPwn
+
+- DotDotPwn bizim manuel olarak denediğimiz seçenekleri bizim yerimize dener ve hangi seçenekleri deneyebileceğimizide gösterir
+- ```apt-get install dotdotpwn``` ile yüklüyoruz
+- ```dotdotpwn``` çalıştırabileceğimiz kodları gösterir
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/ff2c37a1995ef7490ea089a51a69693142473235/Pictures/WhatsApp%20Image%202022-09-10%20at%2014.06.55.jpeg)
+
+  - ```-m```: Ne ile çalışacağımızı söyleriz (hhtp vb)
+  - ```-h```: Taradığımız websitesi linki
+  - ```-O```: Sunucunun işletim sistemini anlamaya çalışır (genelde linux kullanılır)
+  - ```-d```: Kaç tane ".../" deneyeceğimizi söyleriz 
+  - ```-S```: Site https ise belirtmemizi sağlar
+
+- ```dotdotpwn -m http -m 192.168.123.123/bWAPP/directory_traversal_1.php?page=message.txt``` testi başlatır ve Reports klasörü içine kayıt eder
+- Açık olan kısımlar ```VULNERABLE!``` olarak çıkar
+
