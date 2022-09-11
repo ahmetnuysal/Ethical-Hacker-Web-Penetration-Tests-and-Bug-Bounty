@@ -485,7 +485,7 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/main/Pictures/WhatsApp%20Image%202022-09-11%20at%2014.23.13.jpeg)
 
-> ## XSS Reflected Ajax/Json
+> ## XSS Reflected Ajax Json
 
 - Burpsuite açıyoruz
 - ```intercept is on``` diyoruz
