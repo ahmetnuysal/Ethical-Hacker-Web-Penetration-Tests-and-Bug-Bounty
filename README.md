@@ -39,6 +39,12 @@
 - [Directory Traversal](#Directory-Traversal)
   - [Directory Traversal low level](#Directory-Travesal-low-level)
   - [DotDotPwn](#dotdotpwn)	  
+- [XSS Açıkları](#XSS-Açıkları)
+  - [XSS Reflected Get](#XSS-Reflected-Get)
+  - [XSS Reflected medium](#XSS-Reflected-medium)
+  - [XSS Reflected Ajax/Json](#XSS-Reflected-Ajax/Json)
+  - [XSS Stored](#XSS-Stored)
+
 
 # IP Çeşitleri
 > ## Public IP 
@@ -456,3 +462,32 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 - ```dotdotpwn -m http -m 192.168.123.123/bWAPP/directory_traversal_1.php?page=message.txt``` testi başlatır ve Reports klasörü içine kayıt eder
 - Açık olan kısımlar ```VULNERABLE!``` olarak çıkar
 
+# XSS Açıkları
+
+> ## XSS Reflected Get
+
+- ```HTML``` açığına benziyor fakat XSS'de sitde ```JS kodu``` çalıştırmayı deniyoruz
+- Bu açığı ```BEEF``` ile birleştirerek hedef browser'ları hackeleyebiliriz
+- Genellikle ```<script>alert("hacked")</script>``` kodunu deneriz
+- Bazen kodda bulunan bazı şeyler filtrelenmiş olabilir ```<script>``` gibi. O zaman kodu farklı şekilde yazmayı deneriz, Örneğin; ```<ScRipT>alert("hacked")</ScRipT>``` şeklinde yazabiliriz
+- Bulana kadar başka kodları deneriz
+- Google'a ```XSS-Payloads``` yazarak denenilebilecek diğer kodları görebiliriz
+
+> ## XSS Reflected medium
+
+- ```<ScRiPt>alert(1)</sCriPt>``` deneriz
+- ```</script><script>alert(1)</script>``` deneriz 
+
+> ## XSS Reflected Ajax/Json
+
+- Burpsuite açıyoruz
+- ```intercept is on``` diyoruz
+- Linkte herhangi bir bilgi görünmüyor ama ```burpsuite``` kullanarak yakalabiliriz. ```GET``` isteği yolluyor ve ```title=movies...``` şeklinde yolluyor
+- ```script``` kodlarının çalışmadığı durumlarda ```<img src=a oneerror?alert(hacked)``` deneyebiliriz. Bu kod a kaynağından fotoğraf yükler ve yükleme esnasında bir hata olursa ```oneerror```'u bastırır. Bu kod içine javascript kodu koyabiliriz
+- Site linkini başkasına yollarken siteden tamamına erişemediğimiz için yine ```burpsuite intercept is on``` içinde görebilriz ve o kısımı yollayabiliriz
+
+> XSS Stored
+
+- Blog benzeri birşeyler kaydedebileceğimiz sitelerde çalışır
+- O sayfaya giren herkes o saldırıya uğrar
+- Yine ```<script>alert("hacked")</script>``` vb kodları deneriz
