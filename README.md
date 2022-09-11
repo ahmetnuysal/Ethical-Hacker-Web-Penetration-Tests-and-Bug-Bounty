@@ -42,7 +42,7 @@
 - [XSS Açıkları](#XSS-Açıkları)
   - [XSS Reflected Get](#XSS-Reflected-Get)
   - [XSS Reflected medium](#XSS-Reflected-medium)
-  - [XSS Reflected Ajax/Json](#XSS-Reflected-Ajax/Json)
+  - [XSS Reflected Ajax Json](#XSS-Reflected-Ajax-Json)
   - [XSS Stored](#XSS-Stored)
 
 
@@ -469,6 +469,11 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 - ```HTML``` açığına benziyor fakat XSS'de sitde ```JS kodu``` çalıştırmayı deniyoruz
 - Bu açığı ```BEEF``` ile birleştirerek hedef browser'ları hackeleyebiliriz
 - Genellikle ```<script>alert("hacked")</script>``` kodunu deneriz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/63363176489464eabac5425aa7a2920f627c16fd/Pictures/WhatsApp%20Image%202022-09-11%20at%2014.20.35.jpeg)
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/main/Pictures/WhatsApp%20Image%202022-09-11%20at%2014.21.39.jpeg)
+
 - Bazen kodda bulunan bazı şeyler filtrelenmiş olabilir ```<script>``` gibi. O zaman kodu farklı şekilde yazmayı deneriz, Örneğin; ```<ScRipT>alert("hacked")</ScRipT>``` şeklinde yazabiliriz
 - Bulana kadar başka kodları deneriz
 - Google'a ```XSS-Payloads``` yazarak denenilebilecek diğer kodları görebiliriz
@@ -478,6 +483,8 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 - ```<ScRiPt>alert(1)</sCriPt>``` deneriz
 - ```</script><script>alert(1)</script>``` deneriz 
 
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/main/Pictures/WhatsApp%20Image%202022-09-11%20at%2014.23.13.jpeg)
+
 > ## XSS Reflected Ajax/Json
 
 - Burpsuite açıyoruz
@@ -486,8 +493,12 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 - ```script``` kodlarının çalışmadığı durumlarda ```<img src=a oneerror?alert(hacked)``` deneyebiliriz. Bu kod a kaynağından fotoğraf yükler ve yükleme esnasında bir hata olursa ```oneerror```'u bastırır. Bu kod içine javascript kodu koyabiliriz
 - Site linkini başkasına yollarken siteden tamamına erişemediğimiz için yine ```burpsuite intercept is on``` içinde görebilriz ve o kısımı yollayabiliriz
 
-> XSS Stored
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/main/Pictures/WhatsApp%20Image%202022-09-11%20at%2014.38.17.jpeg)
+
+> ## XSS Stored
 
 - Blog benzeri birşeyler kaydedebileceğimiz sitelerde çalışır
 - O sayfaya giren herkes o saldırıya uğrar
 - Yine ```<script>alert("hacked")</script>``` vb kodları deneriz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/main/Pictures/WhatsApp%20Image%202022-09-11%20at%2014.45.49.jpeg)
