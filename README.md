@@ -30,7 +30,7 @@
   - [PHP Upload Injection low level](#PHP-Upload-Injection-low-level)
   - [PHP Upload Injection medium level](#PHP-Upload-Injection-medium-level)
 - [Foxy Proxy](#Foxy-Proxy)
-- [Kod Çalıştırma & SSI](#Kod-Çalıştırma-&-SSI)
+- [Kod Çalıştırma SSI](#Kod-Çalıştırma-SSI)
   - [Os Command Injection low level](#Os-Command-Injection-low-level)
   - [Os Command Injection medium level](#Os-Command-Injection-medium-level)
   - [Commix](#Commix)
@@ -366,7 +366,7 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/d52601ee23106329f44447e37d9430f5c7d2aaa4/Pictures/WhatsApp%20Image%202022-09-09%20at%2014.32.02.jpeg)
 
-# Kod Çalıştırma & SSI
+# Kod Çalıştırma SSI
 
 > ## Os Command Injection low level
 
