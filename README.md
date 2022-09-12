@@ -567,16 +567,42 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/f116de0108c07c72664554d1f3241aca05d50e76/Pictures/WhatsApp%20Image%202022-09-12%20at%2015.15.51.jpeg)
 
+> ## Insecure DOR Reset Secret
+
 - Parametre olarak atanmayan değerlerde HTML kodundaki ```login``` kısmını değiştirerek başka kullanıcıların secret bilgilerini değiştirebiliriz
 
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/f116de0108c07c72664554d1f3241aca05d50e76/Pictures/WhatsApp%20Image%202022-09-12%20at%2015.18.05.jpeg)
 
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/f116de0108c07c72664554d1f3241aca05d50e76/Pictures/WhatsApp%20Image%202022-09-12%20at%2015.19.51.jpeg)
 
-> ## Insecure DOR Reset Secret
-
 > ## Insecure DOR Order Ticket
 
+- Alışveriş sitesi vb sitelerde görülür
+- ```Burpsuite intercept is on``` yapıyoruz
+- Bilet sayısını giriyoruz ve ```Burpsuite``` üzerinden yakalıyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/f116de0108c07c72664554d1f3241aca05d50e76/Pictures/WhatsApp%20Image%202022-09-12%20at%2015.24.31.jpeg)
+
+- ```ticket_quantity``` ve ```ticker_price``` parametrelerini değiştirebiliriz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/f116de0108c07c72664554d1f3241aca05d50e76/Pictures/WhatsApp%20Image%202022-09-12%20at%2015.26.43.jpeg)
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/f116de0108c07c72664554d1f3241aca05d50e76/Pictures/WhatsApp%20Image%202022-09-12%20at%2015.27.03.jpeg)
 # Portswigger
 
+- [Portswigger.com](https://portswigger.net/) içinde deneme yapabileceğimiz lablar bulunan site
+
 > ## Başkasının Chat Geçmişini Okuma
+
+- [Portswigger.com](https://portswigger.net/web-security/access-control/lab-insecure-direct-object-references) sitesine giriyoruz 
+- ```Live chat``` kısmına giriyoruz
+- ```View transcript``` diyerek mesaj geçmişini PC'mize indirebiliriz. Bu sitede "2.txt" den başlıyor
+- ```Burpsuite intercept is on``` diyoruz
+- Yakaladığımız bağlantı bilgileri içerisinde ```2.txt``` içeren birşeyler arıyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/f116de0108c07c72664554d1f3241aca05d50e76/Pictures/WhatsApp%20Image%202022-09-12%20at%2015.48.36.jpeg)
+
+- Onu değiştirerek ```forward```'lıyoruz. Bu sayede başka kullanıcıların konuşma geçmişini elde edebiliriz
+- Bu site için ```1.txt``` yaparak daha eski konuşma bilgilerine erişebiliriz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/f116de0108c07c72664554d1f3241aca05d50e76/Pictures/WhatsApp%20Image%202022-09-12%20at%2015.49.13.jpeg)
