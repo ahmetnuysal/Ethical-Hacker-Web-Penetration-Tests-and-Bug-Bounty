@@ -44,6 +44,17 @@
   - [XSS Reflected medium](#XSS-Reflected-medium)
   - [XSS Reflected Ajax Json](#XSS-Reflected-Ajax-Json)
   - [XSS Stored](#XSS-Stored)
+- [Broken Access Control](#Broken-Access-Control)
+  - [Broken Auth Insecure Login Form](#Broken-Auth-Insecure-Login-Form)
+  - [Broken Auth Logout Management](#Broken-Auth-Logout-Management)
+  - [Broken Auth Administrative Portals low level](#Broken-Auth-Administrative-Portals-low-level)
+  - [Broken Auth Administrative Portals Cookie](#Broken-Auth-Administrative-Portals-Cookie)
+- [IDOR Insecure Direct Object References](#IDOR-Insecure-Direct-Object-References)
+  - [Insecure DOR Change Secret](#Insecure-DOR-Change-Secret)
+  - [Insecure DOR Reset Secret](#Insecure-DOR-Reset-Secret)
+  - [Insecure DOR Order Ticket](#Insecure-DOR-Reset-Secret)
+- [Portswigger](#Portswigger)
+  - [Başkasının Chat Geçmişini Okuma](#Başkasının-Chat-Geçmişini-Okuma)
 
 
 # IP Çeşitleri
@@ -502,3 +513,70 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 - Yine ```<script>alert("hacked")</script>``` vb kodları deneriz
 
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/main/Pictures/WhatsApp%20Image%202022-09-11%20at%2014.45.49.jpeg)
+
+# Broken Access Control
+
+- Erişimlerin yanlış uygulanması açığıdır
+
+> ## Broken Auth Insecure Login Form
+
+- Sağ tık yapıp ```view source``` diyerek HTML kodlarına bakıyoruz
+- ```Source code``` içine kullanıcı adı ve şifre gizlemişler
+- CTF'ler ve mülekatlar dışında çok fazla karşımıza çıkmaz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/f116de0108c07c72664554d1f3241aca05d50e76/Pictures/WhatsApp%20Image%202022-09-12%20at%2014.47.26.jpeg)
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/f116de0108c07c72664554d1f3241aca05d50e76/Pictures/WhatsApp%20Image%202022-09-12%20at%2014.48.25.jpeg)
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/main/Pictures/WhatsApp%20Image%202022-09-12%20at%2014.49.29.jpeg)
+
+> ## Broken Auth Logout Management
+
+- Çıkış yaptıktan sonra geri tuşuna basıp geri session içine giriyorsa açık vardır
+ 
+> ## Broken Auth Administrative Portals low level
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/f116de0108c07c72664554d1f3241aca05d50e76/Pictures/WhatsApp%20Image%202022-09-12%20at%2014.55.27.jpeg)
+
+- Bu sayfa kilitli diyor
+- URL içinde ```.php?admin=0``` kısmını ```.php?admin=1``` yaparsak sorun çözülecektir
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/f116de0108c07c72664554d1f3241aca05d50e76/Pictures/WhatsApp%20Image%202022-09-12%20at%2014.55.14.jpeg)
+
+- URL içinde yoksada ```Burpsuite intercept is on``` yaparak ulaşabiliriz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/main/Pictures/WhatsApp%20Image%202022-09-12%20at%2014.58.11.jpeg)
+
+> ## Broken Auth Administrative Portals Cookie
+
+```Burpsuite intercept is on``` yaparak yakalayarak ```cookie``` kısmından ```admin=0```'i ```admin=1``` yaparak açabiliriz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/f116de0108c07c72664554d1f3241aca05d50e76/Pictures/WhatsApp%20Image%202022-09-12%20at%2015.04.56.jpeg)
+
+
+# IDOR Insecure Direct Object References
+
+- Kullanıcıdan bir girdi aldığımız sitelerde geçerli bir açıktır (Şifre, Şifre hatırlatma metni vb.)
+
+> ## Insecure DOR Change Secret
+
+- ```Burpsuite intercept is on``` yapıyoruz 
+- Sitemize dönüp sayfayı yeniliyoruz
+- ```Request Body Parameters``` içinde 3 değişken bulunur
+- Bu parametreleri değiştirerek başka kullanıcıların secret bilgilerini değiştirebiliriz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/f116de0108c07c72664554d1f3241aca05d50e76/Pictures/WhatsApp%20Image%202022-09-12%20at%2015.15.51.jpeg)
+
+- Parametre olarak atanmayan değerlerde HTML kodundaki ```login``` kısmını değiştirerek başka kullanıcıların secret bilgilerini değiştirebiliriz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/f116de0108c07c72664554d1f3241aca05d50e76/Pictures/WhatsApp%20Image%202022-09-12%20at%2015.18.05.jpeg)
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/f116de0108c07c72664554d1f3241aca05d50e76/Pictures/WhatsApp%20Image%202022-09-12%20at%2015.19.51.jpeg)
+
+> ## Insecure DOR Reset Secret
+
+> ## Insecure DOR Order Ticket
+
+# Portswigger
+
+> ## Başkasının Chat Geçmişini Okuma
