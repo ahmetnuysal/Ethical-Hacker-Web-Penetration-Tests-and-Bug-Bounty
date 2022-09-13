@@ -692,6 +692,7 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 
 - Bu linki başkasına yolladığımız zaman şifresinin değiştiğini anlayabilir bunun için web sayfası oluşturuyoruz
 - ```<img style="display::none", src="http://192.168.126.132/dvwa/vulnerabilities/csrf/?password_new=password&password_conf=password&Change=Change", alt="">``` kodunu site kodları içine yerleştiriyoruz
+- Hazır sitelerin HTML kodlarının içine ekleyebiliriz
 ```
 <!DOCTYPE html>
 <html>
@@ -708,8 +709,23 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 - ```display::none``` dersek açılan sayfada görünmez
 - Artık içinde bu kodu bulunduran siteye tıklayan kişilerin şifresi linkte belirlenen şifreyle değiştirilir
 
-
 # Brute Force 
+
+- Bir kullanıcının şifresini deneyerek bulma yöntemidir
+- ```Burpsuite intercept is on``` diyoruz
+- Detaylara bakıyoruz GET isteği yolluyor
+- Burpsuite'e sağ tıklayarak ```sent to intruder``` diyoruz
+- ```Position``` içinden parametreleri beliyoruz
+  - ```Clear``` diyerek temizliyoruz ve neyi test ediceksek onu seçiyoruz ve ```add```diyoruz
+  - Saldırı tipini belirliyoruz (```Sniper``` tek bir parametreyi test ederken kullanılır)
+- ```Payloads``` içinden denenicek kelimeleri ayarlıyoruz
+  - ```Payload set:1``` diyoruz çünkü 1 şeyi seçtik ve onu deniyeceğiz ( 2 tane olması için sniper'ı değiştirmemiz gerekiyor)
+  - ```Payload type: normal list``` seçiyoruz
+  - ```Payload options: load``` diyoruz ve wordlistimizi seçiyoruz ```/usr/share/wordlist``` içinde hazır wordlistler bulunur
+    - ```rockyou.txt``` içinde binlerce şifre bulunur
+    - ```fasttrack.txt``` içinde en çok kullanılan 200-250 şifer bulunur
+
+
 > ## Şifre Bulma
 > ## Kullanıcı Adı ve Şifre Bulma
 
