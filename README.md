@@ -712,11 +712,17 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 # Brute Force 
 
 - Bir kullanıcının şifresini deneyerek bulma yöntemidir
+
+> ## Şifre Bulma
+
 - ```Burpsuite intercept is on``` diyoruz
 - Detaylara bakıyoruz GET isteği yolluyor
 - Burpsuite'e sağ tıklayarak ```sent to intruder``` diyoruz
 - ```Position``` içinden parametreleri beliyoruz
   - ```Clear``` diyerek temizliyoruz ve neyi test ediceksek onu seçiyoruz ve ```add```diyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/64bdf99b83e686a60fa8be19c2c761151c9e01aa/Pictures/WhatsApp%20Image%202022-09-13%20at%2012.53.14.jpeg)
+
   - Saldırı tipini belirliyoruz (```Sniper``` tek bir parametreyi test ederken kullanılır)
 - ```Payloads``` içinden denenicek kelimeleri ayarlıyoruz
   - ```Payload set:1``` diyoruz çünkü 1 şeyi seçtik ve onu deniyeceğiz ( 2 tane olması için sniper'ı değiştirmemiz gerekiyor)
@@ -724,10 +730,30 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
   - ```Payload options: load``` diyoruz ve wordlistimizi seçiyoruz ```/usr/share/wordlist``` içinde hazır wordlistler bulunur
     - ```rockyou.txt``` içinde binlerce şifre bulunur
     - ```fasttrack.txt``` içinde en çok kullanılan 200-250 şifer bulunur
+  - ```Add``` diyerek ekstra şifre ekleyebiliriz
+- ```Attack``` diyoruz ve saldırıyı başlatıyoruz
+- Hangi şifrenin doğru olduğunu direkt söylemiyor
+- ```Status```'a bakıyoruz
+  - ```200```: Bir cevap aldım
+  - ```404```: Bulunamadı
+  - ```500```: Server cevap vermedi 
+- ```Length```' bakıyoruz. Length'i büyük olana tıklıyoruz ve ```response```'unu inceliyoruz. ```welcome to the password protected area admin``` bu sitede şifre doğru demektir
 
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/64bdf99b83e686a60fa8be19c2c761151c9e01aa/Pictures/WhatsApp%20Image%202022-09-13%20at%2013.03.13.jpeg)
 
-> ## Şifre Bulma
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/64bdf99b83e686a60fa8be19c2c761151c9e01aa/Pictures/WhatsApp%20Image%202022-09-13%20at%2013.09.56.jpeg)
+
 > ## Kullanıcı Adı ve Şifre Bulma
 
+- Kullanıcı adınıda bilmiyorsak 
+- ```Burpsuite intercept is on``` diyoruz giriş yapıp yakalıyoruz
+- Sağ tık yaparak ```send to intruder``` diyoruz
+- ```Kullanıcı adını ve şifreyi``` seçiyoruz
+- Saldırı tipini ```Cluster Bomb``` seçiyoruz
+- ```Payload set 1``` içine kullanıcı adı wordlistini ya da kendi istediğimiz kullanıcı adlarını giriyoruz
+- ```Payload set 2``` içine şifre wordlist'lerini ekliyoruz
+- ```Attack``` diyoruz ve deneyemeye başlıyor 
 
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/64bdf99b83e686a60fa8be19c2c761151c9e01aa/Pictures/WhatsApp%20Image%202022-09-13%20at%2013.52.39.jpeg)
 
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/64bdf99b83e686a60fa8be19c2c761151c9e01aa/Pictures/WhatsApp%20Image%202022-09-13%20at%2013.52.27.jpeg)
