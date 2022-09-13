@@ -720,10 +720,10 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 - Burpsuite'e sağ tıklayarak ```sent to intruder``` diyoruz
 - ```Position``` içinden parametreleri beliyoruz
   - ```Clear``` diyerek temizliyoruz ve neyi test ediceksek onu seçiyoruz ve ```add```diyoruz
+  - Saldırı tipini belirliyoruz (```Sniper``` tek bir parametreyi test ederken kullanılır)
 
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/64bdf99b83e686a60fa8be19c2c761151c9e01aa/Pictures/WhatsApp%20Image%202022-09-13%20at%2012.53.14.jpeg)
-
-  - Saldırı tipini belirliyoruz (```Sniper``` tek bir parametreyi test ederken kullanılır)
+  
 - ```Payloads``` içinden denenicek kelimeleri ayarlıyoruz
   - ```Payload set:1``` diyoruz çünkü 1 şeyi seçtik ve onu deniyeceğiz ( 2 tane olması için sniper'ı değiştirmemiz gerekiyor)
   - ```Payload type: normal list``` seçiyoruz
