@@ -645,7 +645,7 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 - Yapılan isteklerin başka kullanıcılar için manipüle edilmesidir
 - Genellikle şifre değiştirirken karşımıza çıkar
 
-> ## Cross Site Request Forgery CSRF Mutillidae
+> ## CSRF Mutillidae
 
 - ```Burpsuite intercept is on``` yapıyoruz 
 - Bloga yazı yazıp yolluyoruz ve burpsuite'den yakalıyoruz
@@ -659,7 +659,7 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/64bdf99b83e686a60fa8be19c2c761151c9e01aa/Pictures/WhatsApp%20Image%202022-09-13%20at%2011.08.29.jpeg)
 
-> ## Cross Site Request Forgery CSRF DVWA
+> ## CSRF DVWA
 
 - ```Burpsuite intercept is on``` yapıyoruz
 - Şifremizi yazıp burpsuite üzerinden yakalıyoruz ve parametrelere bakıyoruz
