@@ -64,7 +64,8 @@
 - [Brute Force](#Brute-Force) 
   - [Şifre Bulma](#Şifre-Bulma)
   - [Kullanıcı Adı ve Şifre Bulma](#Kullanıcı-Adı-ve-Şifre-Bulma)
-
+- [SQL](#SQL)	
+  - [SQL Komutları](#SQL-Komutları)
 
 # IP Çeşitleri
 > ## Public IP 
@@ -757,3 +758,71 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/64bdf99b83e686a60fa8be19c2c761151c9e01aa/Pictures/WhatsApp%20Image%202022-09-13%20at%2013.52.39.jpeg)
 
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/64bdf99b83e686a60fa8be19c2c761151c9e01aa/Pictures/WhatsApp%20Image%202022-09-13%20at%2013.52.27.jpeg)
+
+# SQL 
+
+- Genel olarak bir websitesi veya bir sunucu içindeki veritabanında kullanılır
+- Birçok yerde kullanılır (web development, mobil oyun dev.) ama genellikle sunucudan veri çekmek için kullanılır
+- En çok karşılaşılan ve en tehlikeli açık türüdür
+- [sqliteonline](https://sqliteonline.com/) sitesinden online sql komutları test edilebilir
+- SQL yapısı excel'e benzer
+
+> ## SQL Komutları
+
+- "*" her şey anlamına gelir
+- ```SELECT * FROM demo;```: Demo tablosu içerisindeki tüm kayıtları çağırır 
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/1ebcb78df309bd44041194829dcff4253345ef67/Pictures/WhatsApp%20Image%202022-09-14%20at%2016.57.39.jpeg)
+
+- ```CREATE TABLE IF NOT EXIST test (id INTEGER PRIMARY KEY, name VARCHAR, age INTEGER);``` Eğer "test" isminde tablo yoksa "test" isminde tablo oluşturur (Primary Key id'nin otomatik 1'er 1'er artmasını sağlar)
+- ```INSERT INTO test (name,age) VALUES ('Ahmet',25);```: Tablo içerisine name'i "Ahmet" age'i 25 olan bir veri yerleştirir
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/1ebcb78df309bd44041194829dcff4253345ef67/Pictures/WhatsApp%20Image%202022-09-14%20at%2017.28.24.jpeg)
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/1ebcb78df309bd44041194829dcff4253345ef67/Pictures/WhatsApp%20Image%202022-09-14%20at%2017.29.57.jpeg)
+
+- ```SELECT * FROM test WHERE id=1;```: id'si 1 olan kullanıcıyı gösterir
+- ```SELECT * FROM test WHERE name='Tarkan';```: İsimi tarkan olan kullanıcıyı gösterir
+- ```SELECT * FROM test WHERE name LIKE 'P%';```: Test tablosunun name sütununda "P" ile başlayanları gösterir
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/1ebcb78df309bd44041194829dcff4253345ef67/Pictures/WhatsApp%20Image%202022-09-14%20at%2017.33.35.jpeg)
+
+- ```SELECT * FROM test WHERE name LIKE '%N';```: Test tablosunun name sütununda "N" ile b,tenleri gösterir
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/1ebcb78df309bd44041194829dcff4253345ef67/Pictures/WhatsApp%20Image%202022-09-14%20at%2017.33.49.jpeg)
+
+- ```UPDATE test SET age=38 WHERE name='Tarkan';```: İsimi tarkan olanların yaşını 38 olarak günceller
+- ```UPDATE test SET age=22 WHERE id=1;```: id'si 1 olanın yaşını 22 olarak günceller
+- ```DELETE FROM test WHERE id=2;```: id'si olanın verilerini siler
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/1ebcb78df309bd44041194829dcff4253345ef67/Pictures/WhatsApp%20Image%202022-09-14%20at%2017.39.37.jpeg)
+
+- ```SELECT FROM test UNION SELECT * FROM demo;```: 2 tabloyu birleştirerek gösterir
+- Test tablosunun sütun isimlerine göre listelenir
+- 2 tablodaki sütun sayısının aynı olması gerekir
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/1ebcb78df309bd44041194829dcff4253345ef67/Pictures/WhatsApp%20Image%202022-09-14%20at%2018.14.18.jpeg)
+
+![](![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/1ebcb78df309bd44041194829dcff4253345ef67/Pictures/WhatsApp%20Image%202022-09-14%20at%2018.30.14.jpeg))
+
+- Sunucuda kaç tane sütun olduğunu bilmediğimiz durumlarda "*" kaldırıyoruz ve onun yerine 1,2,3,4... koyuyoruz
+- ```SELECT * FROM test2 UNION SELECT 1,2,3,4 FROM test``` şeklinde tek tek deniyoruz ve kaç tane sütun olduğunu buluyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/1ebcb78df309bd44041194829dcff4253345ef67/Pictures/WhatsApp%20Image%202022-09-14%20at%2020.09.37.jpeg)
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/1ebcb78df309bd44041194829dcff4253345ef67/Pictures/WhatsApp%20Image%202022-09-14%20at%2020.11.33.jpeg)
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/1ebcb78df309bd44041194829dcff4253345ef67/Pictures/WhatsApp%20Image%202022-09-14%20at%2020.09.52.jpeg)
+
+- ```SELECT * FROM test2 UNION SELECT id,2,3,name FROM test;``` şeklinde tahmin yapabiliriz. 
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/1ebcb78df309bd44041194829dcff4253345ef67/Pictures/WhatsApp%20Image%202022-09-14%20at%2020.16.02.jpeg)
+
+- ```SELECT * FROM test2 UNION SELECT id,2,3,name FROM test;``` şeklinde yazabiliriz sadece name içindeki veriler 3. sütunda listelenir
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/1ebcb78df309bd44041194829dcff4253345ef67/Pictures/WhatsApp%20Image%202022-09-14%20at%2020.16.17.jpeg)
+
+- "Name" yerine e-mail vs yazıp test yapabiliriz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/1ebcb78df309bd44041194829dcff4253345ef67/Pictures/WhatsApp%20Image%202022-09-14%20at%2020.16.41.jpeg)
+
