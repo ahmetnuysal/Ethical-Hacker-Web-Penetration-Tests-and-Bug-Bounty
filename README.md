@@ -65,8 +65,17 @@
   - [Şifre Bulma](#Şifre-Bulma)
   - [Kullanıcı Adı ve Şifre Bulma](#Kullanıcı-Adı-ve-Şifre-Bulma)
 - [SQL](#SQL)	
-  - [SQL Komutları](#SQL-Komutları)
-
+- [SQL Komutları](#SQL-Komutları)
+  - [Tablo Listeleme](#Tablo-Listeleme)
+  - [Tablo Oluşturma](#Tablo-Oluşturma)
+  - [Tabloya Veri Ekleme](#Tabloya-Veri-Ekleme)
+  - [Tablo Filtreleme](#Tablo-Filtreleme)
+  - [Tablo Güncelleme](#Tablo-Güncelleme)
+  - [Tablodan Veri Silme](#Tablodan-Veri-Silme)
+  - [2 Tabloyu Birlikte Listeleme](#2-Tabloyu-Birlikte-Listeleme)
+  - [Tablodaki Sütun Sayısını Bulma](#Tablodaki-Sütun-Sayısını-Bulma)
+  - [Tablodaki Verileri Çekme](#Tablodaki-Verileri-Çekme) 
+  
 # IP Çeşitleri
 > ## Public IP 
 - Kamuya açık IP
@@ -767,19 +776,27 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 - [sqliteonline](https://sqliteonline.com/) sitesinden online sql komutları test edilebilir
 - SQL yapısı excel'e benzer
 
-> ## SQL Komutları
+# SQL Komutları
 
+> ## Tablo Listeleme
 - "*" her şey anlamına gelir
 - ```SELECT * FROM demo;```: Demo tablosu içerisindeki tüm kayıtları çağırır 
 
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/1ebcb78df309bd44041194829dcff4253345ef67/Pictures/WhatsApp%20Image%202022-09-14%20at%2016.57.39.jpeg)
 
+> ## Tablo Oluşturma
+
 - ```CREATE TABLE IF NOT EXIST test (id INTEGER PRIMARY KEY, name VARCHAR, age INTEGER);``` Eğer "test" isminde tablo yoksa "test" isminde tablo oluşturur (Primary Key id'nin otomatik 1'er 1'er artmasını sağlar)
+
+> ## Tabloya Veri Ekleme
+
 - ```INSERT INTO test (name,age) VALUES ('Ahmet',25);```: Tablo içerisine name'i "Ahmet" age'i 25 olan bir veri yerleştirir
 
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/1ebcb78df309bd44041194829dcff4253345ef67/Pictures/WhatsApp%20Image%202022-09-14%20at%2017.28.24.jpeg)
 
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/1ebcb78df309bd44041194829dcff4253345ef67/Pictures/WhatsApp%20Image%202022-09-14%20at%2017.29.57.jpeg)
+
+> ## Tablo Filtreleme
 
 - ```SELECT * FROM test WHERE id=1;```: id'si 1 olan kullanıcıyı gösterir
 - ```SELECT * FROM test WHERE name='Tarkan';```: İsimi tarkan olan kullanıcıyı gösterir
@@ -791,11 +808,18 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/1ebcb78df309bd44041194829dcff4253345ef67/Pictures/WhatsApp%20Image%202022-09-14%20at%2017.33.49.jpeg)
 
+> ## Tablo Güncelleme
+
 - ```UPDATE test SET age=38 WHERE name='Tarkan';```: İsimi tarkan olanların yaşını 38 olarak günceller
 - ```UPDATE test SET age=22 WHERE id=1;```: id'si 1 olanın yaşını 22 olarak günceller
+
+> ## Tablodan Veri Silme
+
 - ```DELETE FROM test WHERE id=2;```: id'si olanın verilerini siler
 
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/1ebcb78df309bd44041194829dcff4253345ef67/Pictures/WhatsApp%20Image%202022-09-14%20at%2017.39.37.jpeg)
+
+> ## 2 Tabloyu Birlikte Listeleme
 
 - ```SELECT FROM test UNION SELECT * FROM demo;```: 2 tabloyu birleştirerek gösterir
 - Test tablosunun sütun isimlerine göre listelenir
@@ -805,6 +829,8 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 
 ![](![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/1ebcb78df309bd44041194829dcff4253345ef67/Pictures/WhatsApp%20Image%202022-09-14%20at%2018.30.14.jpeg))
 
+> ## Tablodaki Sütun Sayısını Bulma
+
 - Sunucuda kaç tane sütun olduğunu bilmediğimiz durumlarda "*" kaldırıyoruz ve onun yerine 1,2,3,4... koyuyoruz
 - ```SELECT * FROM test2 UNION SELECT 1,2,3,4 FROM test``` şeklinde tek tek deniyoruz ve kaç tane sütun olduğunu buluyoruz
 
@@ -813,6 +839,8 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/1ebcb78df309bd44041194829dcff4253345ef67/Pictures/WhatsApp%20Image%202022-09-14%20at%2020.11.33.jpeg)
 
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/1ebcb78df309bd44041194829dcff4253345ef67/Pictures/WhatsApp%20Image%202022-09-14%20at%2020.09.52.jpeg)
+
+> ## Tablodaki Verileri Çekme 
 
 - ```SELECT * FROM test2 UNION SELECT id,2,3,name FROM test;``` şeklinde tahmin yapabiliriz. 
 
