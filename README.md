@@ -773,7 +773,7 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 - Genel olarak bir websitesi veya bir sunucu içindeki veritabanında kullanılır
 - Birçok yerde kullanılır (web development, mobil oyun dev.) ama genellikle sunucudan veri çekmek için kullanılır
 - En çok karşılaşılan ve en tehlikeli açık türüdür
-- [sqliteonline](https://sqliteonline.com/) sitesinden online sql komutları test edilebilir
+- [Sqliteonline](https://sqliteonline.com/) sitesinden online sql komutları test edilebilir
 - SQL yapısı excel'e benzer
 
 # SQL Komutları
