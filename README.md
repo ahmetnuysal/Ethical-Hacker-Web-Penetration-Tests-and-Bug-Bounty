@@ -76,7 +76,18 @@
   - [Tablodaki Sütun Sayısını Bulma](#Tablodaki-Sütun-Sayısını-Bulma)
   - [Tablodaki Verileri Çekme](#Tablodaki-Verileri-Çekme) 
 - [SQL Injection](#SQL-Injection)
-- 
+- [SQL Post Methodu](#SQL-Post-Methodu)
+  - [SQL Açığı Bulmak](#SQL-Açığı-Bulmak)
+  - [SQL Şifre Girmeden Login Olma](#SQL-Şifre-Girmeden-Login-Olma)
+  - [Daha Güvenli Sitelerde SQL Açığı](#Daha-Güvenli-Sitelerde-SQL-Açığı)
+- [SQL Get Methodu](#SQL-Get-Methodu)
+  - [SQL Union Select](#SQL-Union-Select)
+  - [SQL Sütun Sayısı Öğrenme](#SQL-Sütun-Sayısı-Öğrenme)
+  - [SQL Database Öğrenme](#SQL-Database-Öğrenme)
+  - [SQL Tablo İsimlerini Öğrenme](#SQL-Tablo-İsimlerini-Öğrenme)
+  - [SQL Sütun İsimlerini Öğrenme](#SQL-Sütun-İsimlerini-Öğrenme)
+  - [SQL Sütun İçindeki Bilgileri Öğrenme](#SQL-Sütun-İçindeki-Bilgileri-Öğrenme) 
+
 # IP Çeşitleri
 > ## Public IP 
 - Kamuya açık IP
@@ -858,3 +869,37 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/1ebcb78df309bd44041194829dcff4253345ef67/Pictures/WhatsApp%20Image%202022-09-14%20at%2020.16.41.jpeg)
 
+# SQL Injection
+
+> ## SQL Post Methodu
+
+- Kullanıcı adı: Jamess ve Şifre yerine "'" koyuyoruz ve deniyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/a19f3a13fcf32da875e5621565e3147414b02156/Pictures/WhatsApp%20Image%202022-09-15%20at%2017.47.44.jpeg)
+
+- ```Diagnotic Information``` kısmında bulunan kodu not alıyoruz
+- ```SELECT * FROM account WHERE username='jamess' AND password='''``` olduğunu görüyoruz 
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/a19f3a13fcf32da875e5621565e3147414b02156/Pictures/WhatsApp%20Image%202022-09-15%20at%2017.49.07.jpeg)
+
+- ```SELECT * FROM account WHERE username='jamess' AND password='123456' AND 1=1#``` deniyoruz, eğer sisteme giriş yapabilirsek SQL enjeksiyonu yapabiliriz demektir
+ 
+  - | Kullanıcı Adı | jamess |
+    | --- | --- |
+    | Password | 123456' AND 1=1# |
+  - ```#``` Sonrasında yazılan kodu çalıştırmaz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/a19f3a13fcf32da875e5621565e3147414b02156/Pictures/WhatsApp%20Image%202022-09-15%20at%2018.07.20.jpeg)
+
+> ## SQL Şifre Girmeden Login Olma
+
+
+
+> ## Daha Güvenli Sitelerde SQL Açığı
+#SQL Get Methodu
+> ## SQL Union Select
+> ## SQL Sütun Sayısı Öğrenme
+> ## SQL Database Öğrenme
+> ## SQL Tablo İsimlerini Öğrenme
+> ## SQL Sütun İsimlerini Öğrenme
+> ## SQL Sütun İçindeki Bilgileri Öğrenme
