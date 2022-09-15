@@ -77,7 +77,6 @@
   - [Tablodaki Verileri Çekme](#Tablodaki-Verileri-Çekme) 
 - [SQL Injection](#SQL-Injection)
 - [SQL Post Methodu](#SQL-Post-Methodu)
-  - [SQL Açığı Bulmak](#SQL-Açığı-Bulmak)
   - [SQL Şifre Girmeden Login Olma](#SQL-Şifre-Girmeden-Login-Olma)
   - [Daha Güvenli Sitelerde SQL Açığı](#Daha-Güvenli-Sitelerde-SQL-Açığı)
 - [SQL Get Methodu](#SQL-Get-Methodu)
