@@ -75,7 +75,8 @@
   - [2 Tabloyu Birlikte Listeleme](#2-Tabloyu-Birlikte-Listeleme)
   - [Tablodaki Sütun Sayısını Bulma](#Tablodaki-Sütun-Sayısını-Bulma)
   - [Tablodaki Verileri Çekme](#Tablodaki-Verileri-Çekme) 
-  
+- [SQL Injection](#SQL-Injection)
+- 
 # IP Çeşitleri
 > ## Public IP 
 - Kamuya açık IP
