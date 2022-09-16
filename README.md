@@ -177,13 +177,13 @@ gedit html101.html
     <input> type="password" name="password" placeholder="password">
 </form>
 ```
+- ```placeholder``` o kısım boşken içinde yazacağı şey
 - ```type``` tipinin en olacağı ```password``` yazarsak yazdığımız şey gizlenmiş olarak gösterilir ```text``` yazarsak normal gösterilir
 
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/20286080ce72c1be333fbda0a9a832d548d58380/Pictures/WhatsApp%20Image%202022-09-12%20at%2020.38.24%20(3).jpeg)
 
-- ```placeholder``` o kısım boşken içinde yazacağı şey
-
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/b2017b3d14b9e08687e237570ea5efd5c6bf0948/Pictures/WhatsApp%20Image%202022-09-07%20at%2013.34.25.jpeg)
+
 > ## Form
 ```
 <form>
