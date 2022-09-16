@@ -80,12 +80,12 @@
     - [SQL Şifre Girmeden Login Olma](#SQL-Şifre-Girmeden-Login-Olma)
     - [Daha Güvenli Sitelerde SQL Açığı](#Daha-Güvenli-Sitelerde-SQL-Açığı)
   - [SQL Get Methodu](#SQL-Get-Methodu)
-  - [SQL Union Select](#SQL-Union-Select)
-    - [SQL Union Select Sütun Sayısı Öğrenme](#SQL-Unio-Select-Sütun-Sayısı-Öğrenme)
-    - [SQL Union Select Database Öğrenme](#SQL-Union-Select-Database-Öğrenme)
-    - [SQL Union Select Tablo İsimlerini Öğrenme](#SQL-Union-Select-Tablo-İsimlerini-Öğrenme)
-    - [SQL Union Select Sütun İsimlerini Öğrenme](#SQL-Union-Select-Sütun-İsimlerini-Öğrenme)
-    - [SQL Union Select Sütun İçindeki Bilgileri Öğrenme](#SQL-Union-Select-Sütun-İçindeki-Bilgileri-Öğrenme) 
+    - [SQL Union Select](#SQL-Union-Select)
+      - [SQL Union Select Sütun Sayısı Öğrenme](#SQL-Unio-Select-Sütun-Sayısı-Öğrenme)
+      - [SQL Union Select Database Öğrenme](#SQL-Union-Select-Database-Öğrenme)
+      - [SQL Union Select Tablo İsimlerini Öğrenme](#SQL-Union-Select-Tablo-İsimlerini-Öğrenme)
+      - [SQL Union Select Sütun İsimlerini Öğrenme](#SQL-Union-Select-Sütun-İsimlerini-Öğrenme)
+      - [SQL Union Select Sütun İçindeki Bilgileri Öğrenme](#SQL-Union-Select-Sütun-İçindeki-Bilgileri-Öğrenme) 
 
 # IP Çeşitleri
 > ## Public IP 
