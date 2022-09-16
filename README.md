@@ -170,11 +170,11 @@ gedit html101.html
 <form> 
 <div>
     <label>Kullanıcı Adı</label>
-    <input> type="text" name="username" placeholder="username">
+    <input type="text" name="username" placeholder="username">
 </div>
 <div>
     <label>Şifre</label>
-    <input> type="password" name="password" placeholder="password">
+    <input type="password" name="password" placeholder="password">
 </form>
 ```
 - ```placeholder``` o kısım boşken içinde yazacağı şey
