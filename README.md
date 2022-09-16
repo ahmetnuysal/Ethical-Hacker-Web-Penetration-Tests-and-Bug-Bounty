@@ -922,7 +922,7 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/a19f3a13fcf32da875e5621565e3147414b02156/Pictures/WhatsApp%20Image%202022-09-15%20at%2018.28.28.jpeg)
 
-#SQL Get Methodu
+# SQL Get Methodu
 
 - URL üzerinden değişiklik yaptığımız yöntemdir ancak yine giriş ekranıda kullanılabilir
 - Yollanılan parametreler URL üzerinden bize gösterilir
@@ -948,7 +948,7 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
   | --- | --- |
   | Password | 123dasdas' ORDER BY 1# |
 
-> ## SQL 
+> ## SQL Union Select
 > ## SQL Union Select Sütun Sayısı Öğrenme
 > ## SQL Union Select Database Öğrenme
 > ## SQL Union Select Tablo İsimlerini Öğrenme
