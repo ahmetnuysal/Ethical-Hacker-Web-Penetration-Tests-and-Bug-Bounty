@@ -1280,24 +1280,191 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 - Şifre ve mail'i görünce sağ tıklayıp ```send to repeater``` diyoruz
 - ```Repeater```'a yollayıp sonuçları daha hızlı görebiliyoruz
 
-- | Kullanıcı Adı | ahmet@gmail.com' AND 1=1# |
-  | --- | --- |
-  | Password | 1 |
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/51191900139fadefaf7aaa5a294782f22f30c57c/Pictures/WhatsApp%20Image%202022-09-18%20at%2013.24.35.jpeg)
 
-- Deniyoruz. Burpsuite'den yakalayarak hata mesajını not alıyoruz ve farklı kodlarda denemeye devam ediyoruz
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/51191900139fadefaf7aaa5a294782f22f30c57c/Pictures/WhatsApp%20Image%202022-09-18%20at%2013.25.41.jpeg)
+
+- Deniyoruz. Burpsuite'den yakalayarak hata mesajını not alıyoruz ve farklı kodlarda denemeye devam ediyoruz 
+- ```SELECT * FROM Users WHERE email = 'ahmet@gmail.com' AND 1=1#' AND password = 'c4ca4238a0b923820dcc509a6f75849b' AND deletedAt IS NULL```
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/51191900139fadefaf7aaa5a294782f22f30c57c/Pictures/WhatsApp%20Image%202022-09-18%20at%2013.26.52.jpeg)
+
+- Simgeleri değiştirerek deniyoruz (;,+,%27,%20 vs)
+
+
 
 > ## Admin Olarak Giriş
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/51191900139fadefaf7aaa5a294782f22f30c57c/Pictures/WhatsApp%20Image%202022-09-18%20at%2013.29.36.jpeg)
+
+- Yazarak giriş yaparsak siteye admin hesabuyka giriş yapmış oluruz çünkü ya verilen mail adresiyle giriş yap ya da 1=1 ise girip yap diyoruz. 1=1 olduğu için ilk kullanıcı kim ise o olarak giriş yaparız ve genelde ilk kullanıcı admin olur
+- Giriş yaptıktan sonra o hesaptaki kayıtlı kart bilgilerine, adres bilgilerine vb bilgilere erişebiliriz 
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/51191900139fadefaf7aaa5a294782f22f30c57c/Pictures/WhatsApp%20Image%202022-09-18%20at%2013.31.49.jpeg)
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/51191900139fadefaf7aaa5a294782f22f30c57c/Pictures/WhatsApp%20Image%202022-09-18%20at%2013.37.08.jpeg)
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/51191900139fadefaf7aaa5a294782f22f30c57c/Pictures/WhatsApp%20Image%202022-09-18%20at%2013.37.26.jpeg)
+
 > ## Kullanıcı Şifresi Öğrenme
-      - [Cookie Bilgilerini Kırma
-      - [Brute Force
-    - [Admin Panelini Bulmak](#Admin-Panelini-Bulmak)
-    - [XEE Açıkları](#XEE-Açıkları)
-  - [Level 3](#Level-3)
-    - [Admin Yetkileriyle Kullanıcı Oluşturma](#Admin-Yetkileriyle-Kullanıcı-Oluşturma)
-    - [Captcha ByPass](#Captcha-ByPass)
-    - [Başkasının Sepetine Ürün Eklemek](#Başkasının-Sepetine-Ürün-Eklemek)
-    - [Başka Kullanıcı Adına Bildirim Yapmak](#Başka-Kullanıcı-Adına-Bildirim-Yapmak)
-      - [Burpsuite](#Burpsuite)
-      - [HTML Kaynak Kodu](#HTML-Kaynak-Kodu)
-    - [Başka Kullanıcı Adına Yorum Yapmak](#Başka-Kullanıcı-Adına-Yorum-Yapmak)
-    - [Eksi Sipariş Vermek](#Eksi-Sipariş-Vermek)
+
+- Kullanıcı adı veya mail'ini bildiğimiz kullanıcıların şifresini öğrenmek için birkaç yöntem kullanabiliriz 
+
+## Cookie Bilgilerini Kırma
+
+- SQL enjeksiyonu yaparak hesaba giriş yapıyoruz
+- Siteye sağ tıklayıp ```inspect``` diyoruz
+- ```Storage``` kısmından ```cookie```'leri inceliyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/51191900139fadefaf7aaa5a294782f22f30c57c/Pictures/WhatsApp%20Image%202022-09-18%20at%2013.47.01.jpeg)
+
+- ```Token``` diye bir kısım var burdaki değeri inceliyoruz
+- Token şifrelenmiş durumda bunu kırmayı deneyeceğiz
+- Google'a ```token decode``` yazıp arıyoruz. Birkaç farklı siteye bakabiliriz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/51191900139fadefaf7aaa5a294782f22f30c57c/Pictures/WhatsApp%20Image%202022-09-18%20at%2013.51.12.jpeg)
+
+- E-mail, role ve password gibi bilgilere ulaştık ancak ```password```'da ayrı olarak şifrelenmiş durumda
+- Şimdi password'un ne kullanılarak şifrelendiğini bulmamız gerekiyor bunun için
+- Terminalden ```hash-identifier``` çalıştırıyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/51191900139fadefaf7aaa5a294782f22f30c57c/Pictures/WhatsApp%20Image%202022-09-18%20at%2013.54.53.jpeg)
+
+- Şifremizi yapıştırıyoruz ve çalıştırıyoruz
+- ```Hash-identifier``` bize yazılan şeyin ne kullanılarak şifrelendiğini söyler
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/51191900139fadefaf7aaa5a294782f22f30c57c/Pictures/WhatsApp%20Image%202022-09-18%20at%2013.55.10.jpeg)
+
+- Google'a ```md5 decryption``` yazıp aratıyoruz 
+- Çıkan sitelerden birine girip şifreyi yapıştırıyoruz ve şifreyi kırıyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/51191900139fadefaf7aaa5a294782f22f30c57c/Pictures/WhatsApp%20Image%202022-09-18%20at%2013.56.40.jpeg)
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/51191900139fadefaf7aaa5a294782f22f30c57c/Pictures/WhatsApp%20Image%202022-09-18%20at%2013.57.07.jpeg)
+
+## Brute Force
+
+- Kullanıcı adını veya mailini bildiğimiz hesabın şifresini brute force yöntemi ile elde edebiliriz
+- ```Burpsuite intercept is on``` yapıyoruz
+- Mail adresini girip rastgele bir şifre gidiyoruz ve yakalıyoruz
+- Şifre ve mail görünene kadar forwardlıyoruz 
+- Şifre ve mail adresi görününce sağ tıklayıp ```Send to Intruder``` diyoruz
+- ```Attack type```'ı ```sniper``` yapıyoruz
+- "Clear" yapıp şifreyi seçerek "add" diyoruz
+- ```Payload``` kısmından wordlist'i seçiyoruz ve ```Attack``` diyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/51191900139fadefaf7aaa5a294782f22f30c57c/Pictures/WhatsApp%20Image%202022-09-18%20at%2014.05.33.jpeg)
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/51191900139fadefaf7aaa5a294782f22f30c57c/Pictures/WhatsApp%20Image%202022-09-18%20at%2014.16.06.jpeg)
+
+> ## Admin Panelini Bulmak](#Admin-Panelini-Bulmak)
+
+- Admin panel'ini bulmayı deneyeceğiz 
+- Sağ tıklayıp ```inspect``` diyoruz
+- ```Debugger``` kısmında ```CTRL+F``` ile ```admin``` aratıyoruz
+- ```Path:administration```'ı  buluyoruz
+- URL sonuna ```/administration``` ekleyerek admin paneline gidebiliriz
+- Admin panelinden diğer kullanıcıların bilgilerini ve siteye gelen feedback'leri görebiliriz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/51191900139fadefaf7aaa5a294782f22f30c57c/Pictures/WhatsApp%20Image%202022-09-18%20at%2014.18.20.jpeg)
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/51191900139fadefaf7aaa5a294782f22f30c57c/Pictures/WhatsApp%20Image%202022-09-18%20at%2014.20.02.jpeg)
+
+> ## XEE Açıkları](#XEE-Açıkları)
+
+- Site içine ```.xml``` dosyası yükleyebilme açığıdır
+- XSS'de yaptıklarımızdan daha fazlasını yapabiliriz
+- ```XML``` en çok android uygulama yazarken kullanılır
+- "Complaint" kısmında hem mesaj hem dosya yükleyebileceğimiz yer var 
+- Hangi tür dosyaları yükleyebileceğimize bakıyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/51191900139fadefaf7aaa5a294782f22f30c57c/Pictures/WhatsApp%20Image%202022-09-18%20at%2014.36.47.jpeg)
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/51191900139fadefaf7aaa5a294782f22f30c57c/Pictures/WhatsApp%20Image%202022-09-18%20at%2014.36.37.jpeg)
+
+- Sadece ```.zip``` ve ```.pdf``` dosyalarına izin veriyor
+- Şimdi bunları değiştirmeyi deniyoruz
+- Sağ tıklayıp ```inspect``` yapıp JS kodlarına gidiyoruz
+- CTRL+F yapıp "zip", "pdf", "file" gibi şeyleri arıyoruz
+- ```.xml``` dosyası yollayabildiğimizi görüyoruz ve eğer ```.xml``` yollayabiliyorsak ```XXE``` açığına bakabiliriz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/51191900139fadefaf7aaa5a294782f22f30c57c/Pictures/WhatsApp%20Image%202022-09-18%20at%2014.42.51.jpeg)
+
+- ```.xml``` dosyasını server'a yollarsak orda da işlem yapabiliriz
+- Google'dan ```XXE Payload GitHub``` arıyoruz 
+- Sitelerden birine girerek kodları deneyebiliriz
+``` 
+<?xml version="1.0"?>
+<!DOCTYPE data 
+[
+<!ELEMENT data (#ANY)>
+<!ENTITY file SYSTEM "file:///etc/passwd">
+]>
+<data>&file;</data>
+```
+- Bu kodu leafpad vb uygulama kullanarak ```.xml``` dosyası oluşturup onun içine yazıyoruz
+- Ve submit ediyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/51191900139fadefaf7aaa5a294782f22f30c57c/Pictures/WhatsApp%20Image%202022-09-18%20at%2014.56.49.jpeg)
+
+- Admin paneline girip kodun gidip gitmediğini kontrol edebiliriz
+
+# Level 3
+
+> ## Admin Yetkileriyle Kullanıcı Oluşturma
+
+- Admin yetkilerine sahip bir kullanıcı oluşturmayı deniyoruz 
+- Login bilgilerimizi dolduruyoruz
+- ```Burpsuite intercept is on``` yapıyoruz
+- Login yapıp burpsuite'den yakalıyoruz
+- Girdiğimiz parametreleri görene kadar forward'lıyoruz
+- ```Send to Repeater``` diyoruz
+- ```Repeater```'a giriyoruz ve send diyoruz
+- ```Response``` kısmında ```role``` parametresi var ve ```customer``` yazıyor
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/51191900139fadefaf7aaa5a294782f22f30c57c/Pictures/WhatsApp%20Image%202022-09-18%20at%2015.58.45.jpeg)
+
+- Yani yeni kullanıcı oluştururken role default olarak customer için ayarlanmış yetkilere sahip olur
+- Bunu ```admin``` yapmayı deneyebiliriz bunu için
+- ```Request``` kısmına ```"role":"admin"``` ekliyoruz ve send diyoruz
+- Ve yeni oluşturduğumuz kullanıcı ```admin``` yetkilerine sahip oluyor
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/51191900139fadefaf7aaa5a294782f22f30c57c/Pictures/WhatsApp%20Image%202022-09-18%20at%2016.00.18.jpeg)
+
+> ## Captcha ByPass
+
+- Kullanıcı feedback'lerini 10'dan fazla kez 10 saniyede submit etmeyi deniyoruz
+- Sağ tıklayıp ```inspect``` diyoruz. ```Network``` içinde ```/rest/captha/``` içinde feedback kısmında sorulan matematik işlemleri vardır
+- Her işlemin kendi id'si vardır, o id'ye göre hazır işlemler ve cevapları gelir
+- ```Burpsuite intercept is on``` yapıyoruz
+- Parametrelerimizi görene kadar forward'lıyoruz
+- Parametrelerimizi görünce sağ tıklayıp ```send to repeater``` diyoruz
+- Sürekli "send"liyoruz, bu sayede kısa sürede bir çok feedback yollamış oluyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/51191900139fadefaf7aaa5a294782f22f30c57c/Pictures/WhatsApp%20Image%202022-09-18%20at%2016.27.17.jpeg)
+
+> ## Başkasının Sepetine Ürün Eklemek
+
+- Başkasının sepetine ürün değiştirmeyi yani yollanan ```request```'i değiştirmeyi deniyoruz
+- ```Burpsuite intercept is on``` diyoruz ve sepetimize bişey ekliyoruz
+- Sepetdeki ürün parametrelerini görene kadar forward'lıyoruz
+- Parametrelerimizi görünce ```send to repeater``` diyoruz
+- ```Request``` kısmına ```Basket Id:"2"``` ekliyoruz ve "send"'liyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/51191900139fadefaf7aaa5a294782f22f30c57c/Pictures/WhatsApp%20Image%202022-09-18%20at%2016.40.47.jpeg)
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/51191900139fadefaf7aaa5a294782f22f30c57c/Pictures/WhatsApp%20Image%202022-09-18%20at%2016.46.21.jpeg)
+
+- Bu şekilde id'si 2 olan kullanıcının sepetine ürün ekliyoruz 2 yerine başka sayı girerek başka kullanıcıların sepetine de ekleyebiliriz
+
+> ## Başka Kullanıcı Adına Bildirim Yapmak
+
+### Burpsuite
+
+
+
+
+
+### HTML Kaynak Kodu
+> ## Başka Kullanıcı Adına Yorum Yapmak
+> ## Eksi Sipariş Vermek
