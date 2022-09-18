@@ -94,7 +94,35 @@
   - [Veri Yazma](#Veri-Yazma)
   - [PHP Dosyasını Veri Olarak Eklemek](#PHP-Dosyasını-Veri-Olarak-Eklemek)
 -[SQL Map](#SQL-Map)
-
+- [Heroku](#Heroku)
+- [Juice Shop](#Juice-Shop)
+  - [Level 1](#Level-1)
+    - [ScoreBoard Bulma](#ScoreBoard-Bulma)
+    - [Nikto](#Nikto)
+    - [DOM XSS](#DOM-XSS)
+    - [Kullanıcı Oluşturma](#Kullanıcı-Oluşturma)
+    - [Redirect Outdated Whitelist](#Redirect-Outdated-Whitelist)
+    - [Sıfır Yıldızlı Geri Bildirim](#Sıfır-Yıldızlı-Geri-Bildirim)
+      - [Burpsuite](#Burpsuite)
+      - [HTML](#HTML)
+  - [Level 2](#Level-2)
+    - [Başkasının Sepetini Görüntüleme](#Başkasının-Sepetini-Görüntüleme)
+    - [SQL Injection](#SQL-Injection)
+    - [Admin Olarak Giriş](#Admin-Olarak-Giriş)
+    - [Kullanıcı Şifresi Öğrenme](#Kullanıcı-Şifresi-Öğrenme)
+      - [Cookie Bilgilerini Kırma](#Cookie-Bilgileri-Kırma)
+      - [Brute Force](#Brute-Force)
+    - [Admin Panelini Bulmak](#Admin-Panelini-Bulmak)
+    - [XEE Açıkları](#XEE-Açıkları)
+  - [Level 3](#Level-3)
+    - [Admin Yetkileriyle Kullanıcı Oluşturma](#Admin-Yetkileriyle-Kullanıcı-Oluşturma)
+    - [Captcha ByPass](#Captcha-ByPass)
+    - [Başkasının Sepetine Ürün Eklemek](#Başkasının-Sepetine-Ürün-Eklemek)
+    - [Başka Kullanıcı Adına Bildirim Yapmak](#Başka-Kullanıcı-Adına-Bildirim-Yapmak)
+      - [Burpsuite](#Burpsuite)
+      - [HTML Kaynak Kodu](#HTML-Kaynak-Kodu)
+    - [Başka Kullanıcı Adına Yorum Yapmak](#Başka-Kullanıcı-Adına-Yorum-Yapmak)
+    - [Eksi Sipariş Vermek](#Eksi-Sipariş-Vermek)
 # IP Çeşitleri
 > ## Public IP 
 - Kamuya açık IP
@@ -1131,3 +1159,54 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/a07c42c309f95917cee20dfd39aee5ae5bf41705/Pictures/WhatsApp%20Image%202022-09-16%20at%2016.15.09.jpeg)
 
 
+# Heroku
+
+- ```owaspjuiceshop``` sitesine üye oluyoruz
+- [owaspjuiceshop](https://github.com/atilsamancioglu/juice-shop) gidip ```Deploy to Heroku```
+
+# Juice Shop 
+> # Level 1
+> ## ScoreBoard Bulma
+
+- Site içerisinde bir yerlede ```scoreboard``` sayfası gizlenmiş ve bunu bulmaya çalışıyoruz
+- Bunu bulurken ```dirb``` gibi frameworklerde kullanılabilir ancak biz JS kodlarını kullanarak bulmayı deneyeceğiz
+- Sağ tıklayıp ```inspect``` diyoruz
+- ```Debugger``` kısmında sitenin JS kodları bulunur
+- O kodlar içerisinden ```CTRL+F``` diyerek ```scoreboard```'u aratıyoruz
+- ```Path:score-board```'u bulduk artık URL sonuna ```/score-board``` yazarak o sayfaya gidebiliriz
+- ```! path'ler gizli subdomainlerdir```
+> ## Nikto
+
+- Nikto bir zaafiyet arama framework'üdür
+- Nikto kullanarak bazı açıkları bulabilir, site IP'sine, Portuna vb bilgilere ulaşabiliriz
+- ```nikto -h htts://...``` ile taramayı başlatırız
+
+
+
+
+
+
+> ## DOM XSS
+> ## Kullanıcı Oluşturma
+> ## Redirect Outdated Whitelist
+    - [Sıfır Yıldızlı Geri Bildirim
+      - [Burpsuite
+      - [HTML
+  - [Level 2
+    - [Başkasının Sepetini Görüntüleme
+    - [SQL Injection
+    - [Admin Olarak Giriş
+    - [Kullanıcı Şifresi Öğrenme
+      - [Cookie Bilgilerini Kırma
+      - [Brute Force
+    - [Admin Panelini Bulmak](#Admin-Panelini-Bulmak)
+    - [XEE Açıkları](#XEE-Açıkları)
+  - [Level 3](#Level-3)
+    - [Admin Yetkileriyle Kullanıcı Oluşturma](#Admin-Yetkileriyle-Kullanıcı-Oluşturma)
+    - [Captcha ByPass](#Captcha-ByPass)
+    - [Başkasının Sepetine Ürün Eklemek](#Başkasının-Sepetine-Ürün-Eklemek)
+    - [Başka Kullanıcı Adına Bildirim Yapmak](#Başka-Kullanıcı-Adına-Bildirim-Yapmak)
+      - [Burpsuite](#Burpsuite)
+      - [HTML Kaynak Kodu](#HTML-Kaynak-Kodu)
+    - [Başka Kullanıcı Adına Yorum Yapmak](#Başka-Kullanıcı-Adına-Yorum-Yapmak)
+    - [Eksi Sipariş Vermek](#Eksi-Sipariş-Vermek)
