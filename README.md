@@ -118,7 +118,7 @@
     - [Admin Yetkileriyle Kullanıcı Oluşturma](#Admin-Yetkileriyle-Kullanıcı-Oluşturma)
     - [Captcha ByPass](#Captcha-ByPass)
     - [Başkasının Sepetine Ürün Eklemek](#Başkasının-Sepetine-Ürün-Eklemek)
-    - [Başka Kullanıcı Adına Bildirim Yapmak](#Başka-Kullanıcı-Adına-Bildirim-Yapmak)
+    - [Başka Kullanıcı Adına Feedback Vermek](#Başka-Kullanıcı-Adına-Feedback-Vermek)
       - [Burpsuite](#Burpsuite)
       - [HTML Kaynak Kodu](#HTML-Kaynak-Kodu)
     - [Başka Kullanıcı Adına Yorum Yapmak](#Başka-Kullanıcı-Adına-Yorum-Yapmak)
@@ -1310,7 +1310,7 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 
 - Kullanıcı adı veya mail'ini bildiğimiz kullanıcıların şifresini öğrenmek için birkaç yöntem kullanabiliriz 
 
-## Cookie Bilgilerini Kırma
+### 1. Cookie Bilgilerini Kırma
 
 - SQL enjeksiyonu yaparak hesaba giriş yapıyoruz
 - Siteye sağ tıklayıp ```inspect``` diyoruz
@@ -1342,7 +1342,7 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/51191900139fadefaf7aaa5a294782f22f30c57c/Pictures/WhatsApp%20Image%202022-09-18%20at%2013.57.07.jpeg)
 
-## Brute Force
+### 2. Brute Force
 
 - Kullanıcı adını veya mailini bildiğimiz hesabın şifresini brute force yöntemi ile elde edebiliriz
 - ```Burpsuite intercept is on``` yapıyoruz
@@ -1457,14 +1457,57 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 
 - Bu şekilde id'si 2 olan kullanıcının sepetine ürün ekliyoruz 2 yerine başka sayı girerek başka kullanıcıların sepetine de ekleyebiliriz
 
-> ## Başka Kullanıcı Adına Bildirim Yapmak
+> ## Başka Kullanıcı Adına Feedback Vermek
 
 ### Burpsuite
 
+- Başka kullanıcı olarak feedback verirken kullanılabilecek yöntemlerden birisi ```Burpsuite``` kullanmaktır
+- Gerekli yerleri dolduruyoruz ```Burpsuite intercept is on``` diyoruz ve submit ediyoruz
+- Bilgilerimizi görene kadar forward'lıyoruz
+- ```UsedId``` değiştiriyoruz ve forwardlıyoruz
 
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/51191900139fadefaf7aaa5a294782f22f30c57c/Pictures/WhatsApp%20Image%202022-09-18%20at%2016.52.31.jpeg)
 
-
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/51191900139fadefaf7aaa5a294782f22f30c57c/Pictures/WhatsApp%20Image%202022-09-18%20at%2016.52.42.jpeg)
 
 ### HTML Kaynak Kodu
+
+- HTML kodlarını değiştirerek de başka kullanıcı olarak feedback verebiliriz
+- Sağ tıklayıp ```inspect``` diyoruz
+- HTML kodlarında değiştiremediğimiz mail kısmını buluyoruz
+- ```Input Id``` kodu içerisinde ```hidden``` yani gizlenmiş bişeyler var
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/51191900139fadefaf7aaa5a294782f22f30c57c/Pictures/WhatsApp%20Image%202022-09-18%20at%2016.59.11.jpeg)
+
+- Bu kısımı siliyoruz
+- Artık feedback kısmında Id'miz göründü, burayı değiştirererk başkası adına yorum yapabiliriz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/51191900139fadefaf7aaa5a294782f22f30c57c/Pictures/WhatsApp%20Image%202022-09-18%20at%2017.01.57.jpeg)
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/51191900139fadefaf7aaa5a294782f22f30c57c/Pictures/WhatsApp%20Image%202022-09-18%20at%2017.02.10.jpeg)
+
 > ## Başka Kullanıcı Adına Yorum Yapmak
+
+- ```Burpsuite intercept is on``` yapıyoruz ve ürün hakkında yorum yapıyoruz
+- ```Burpsuite```'de parametrelerimizi görene kadar forwardlıyoruz
+- Kullanıcı parametrelerini görünce ```author``` kısmının değiştirerek başkası adına yorum yapabiliriz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/51191900139fadefaf7aaa5a294782f22f30c57c/Pictures/WhatsApp%20Image%202022-09-18%20at%2017.03.46.jpeg)
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/51191900139fadefaf7aaa5a294782f22f30c57c/Pictures/WhatsApp%20Image%202022-09-18%20at%2017.03.19.jpeg)
+
 > ## Eksi Sipariş Vermek
+
+- Sitedeki bir üründen "-" tane sipariş vermeyi deniyoruz 
+- ```Burpsuite intercept is on``` diyoruz
+- Sepete ürün ekliyoruz ve yakalıyoruz
+- Sepetimizle ilgili parametreleri görene kadar forwardlıyoruz
+- Parametreler içinde ```quantity```'i değiştiriyoruz (-200 yapıyoruz) ve forwardlıyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/51191900139fadefaf7aaa5a294782f22f30c57c/Pictures/WhatsApp%20Image%202022-09-18%20at%2017.16.15.jpeg)
+
+- Artık sepetimizde "-200" tane ürün bulunmakta
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/51191900139fadefaf7aaa5a294782f22f30c57c/Pictures/WhatsApp%20Image%202022-09-18%20at%2017.16.32.jpeg)
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/51191900139fadefaf7aaa5a294782f22f30c57c/Pictures/WhatsApp%20Image%202022-09-18%20at%2017.15.47.jpeg)
