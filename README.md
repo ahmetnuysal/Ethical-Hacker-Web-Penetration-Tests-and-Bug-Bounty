@@ -1173,7 +1173,13 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 - Sağ tıklayıp ```inspect``` diyoruz
 - ```Debugger``` kısmında sitenin JS kodları bulunur
 - O kodlar içerisinden ```CTRL+F``` diyerek ```scoreboard```'u aratıyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/6c0922cf702c90d5e189b89c783343abc8cec776/Pictures/WhatsApp%20Image%202022-09-17%20at%2016.10.29.jpeg)
+
 - ```Path:score-board```'u bulduk artık URL sonuna ```/score-board``` yazarak o sayfaya gidebiliriz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/6c0922cf702c90d5e189b89c783343abc8cec776/Pictures/WhatsApp%20Image%202022-09-17%20at%2016.10.58.jpeg)
+
 - ```! path'ler gizli subdomainlerdir```
 > ## Nikto
 
@@ -1181,13 +1187,25 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 - Nikto kullanarak bazı açıkları bulabilir, site IP'sine, Portuna vb bilgilere ulaşabiliriz
 - ```nikto -h htts://...``` ile taramayı başlatırız
 
-
-
-
-
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/6c0922cf702c90d5e189b89c783343abc8cec776/Pictures/WhatsApp%20Image%202022-09-17%20at%2016.37.08.jpeg)
 
 > ## DOM XSS
+
+- Siteye birşeyler yazabileceğimiz yerlere (search, login, feedback vs.) JS kodu yazıp deniyoruz
+- Search kısmına ```<iframe src="javascript:alert('XSS')">``` yazmayı deniyoruz ve bize alert veriyor
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/6c0922cf702c90d5e189b89c783343abc8cec776/Pictures/WhatsApp%20Image%202022-09-17%20at%2016.42.26.jpeg)
+
+- ```DOM (Document Object Model) HTML kdlarının bir şemasının çıkarılmasıdır. HTML DOM'da yapılan değişiklik demek sunucuya gitmeden siteden yapılan değişiklikler demektir. Sitede XSS filtresi varsa ancak DOM açığıda varsa yinede JS kodu çalışır çünkü kod sunucuya gitmez, sunucuda çalışmaz```
+- Artık açık bulunan link başkasına atılarak ve kod içeriği değiştirilerek başka kullanıcılar hacklenebilir
+
 > ## Kullanıcı Oluşturma
+
+
+
+
+
+
 > ## Redirect Outdated Whitelist
     - [Sıfır Yıldızlı Geri Bildirim
       - [Burpsuite
