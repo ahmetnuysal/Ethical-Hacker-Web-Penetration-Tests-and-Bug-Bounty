@@ -1181,6 +1181,9 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/6c0922cf702c90d5e189b89c783343abc8cec776/Pictures/WhatsApp%20Image%202022-09-17%20at%2016.10.58.jpeg)
 
 - ```! path'ler gizli subdomainlerdir```
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/6c0922cf702c90d5e189b89c783343abc8cec776/Pictures/WhatsApp%20Image%202022-09-17%20at%2017.39.57.jpeg)
+
 > ## Nikto
 
 - Nikto bir zaafiyet arama framework'üdür
@@ -1201,20 +1204,90 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 
 > ## Kullanıcı Oluşturma
 
+- ```DRY Principle```: Don't Repeat Yourself demektir. Yani yazılan kodların aynı şekilde kendini tekrar ederek yazılmamasıdır
+- Login yerine giriyoruz
+- Şifreleri farklı girince hata veriyor ancak ilk şifreleri aynı girip daha sonra ilk şifreyi değiştirirsek hata vermiyor
 
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/6c0922cf702c90d5e189b89c783343abc8cec776/Pictures/WhatsApp%20Image%202022-09-17%20at%2016.57.30.jpeg)
 
-
-
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/6c0922cf702c90d5e189b89c783343abc8cec776/Pictures/WhatsApp%20Image%202022-09-17%20at%2016.58.59.jpeg)
 
 > ## Redirect Outdated Whitelist
-    - [Sıfır Yıldızlı Geri Bildirim
-      - [Burpsuite
-      - [HTML
-  - [Level 2
-    - [Başkasının Sepetini Görüntüleme
-    - [SQL Injection
-    - [Admin Olarak Giriş
-    - [Kullanıcı Şifresi Öğrenme
+
+- Site içeiriden farklı bir adrese gidebilir miyiz diye deniyoruz
+- Sağ tıklayıp ```inspect``` diyoruz
+- Debugger kısmındaki JS kodlarında ```redirect``` aratıyoruz
+- Ve bir URL adresi buluyoruz, link sonuna bu URL adresini ekleyerek farklı bir yere gidiyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/6c0922cf702c90d5e189b89c783343abc8cec776/Pictures/WhatsApp%20Image%202022-09-17%20at%2017.20.10.jpeg)
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/6c0922cf702c90d5e189b89c783343abc8cec776/Pictures/WhatsApp%20Image%202022-09-17%20at%2017.20.49.jpeg)
+
+> ## Sıfır Yıldızlı Geri Bildirim
+
+- 0 yıldızlı geri bildirim yapmayı deniyoruz bunun için 2 yöntem kullanabiliriz
+
+### 1. Burpsuite
+
+- Feedback kısmını dolduruyoruz
+- ```Burpsuite```'i açıp ```Intercept is on``` yapıyoruz 
+- Girdiğimiz parametreleri görene kadar ```forward```lıyoruz
+- ```Rating```'i "0" yapıyoruz ve forwardlamaya devam ediyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/6c0922cf702c90d5e189b89c783343abc8cec776/Pictures/WhatsApp%20Image%202022-09-17%20at%2017.26.19.jpeg)
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/6c0922cf702c90d5e189b89c783343abc8cec776/Pictures/WhatsApp%20Image%202022-09-17%20at%2017.26.56.jpeg)
+
+
+### 2. HTML
+
+- Sağ tıklayıp ```inspect``` diyoruz
+- Form'u dolduruyoruz ama yıldız seçmiyoruz
+- ```Inspector``` kısmından buton'u arıyoruz
+- ```Disabled="true"``` yerine ```enabled="true"``` yazıyoruz ve submit butonu yıldız seçmeden de submit edilebilir hale geliyor
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/6c0922cf702c90d5e189b89c783343abc8cec776/Pictures/WhatsApp%20Image%202022-09-17%20at%2017.32.40.jpeg)
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/6c0922cf702c90d5e189b89c783343abc8cec776/Pictures/WhatsApp%20Image%202022-09-17%20at%2017.34.24.jpeg)
+
+> # Level 2
+> ## Başkasının Sepetini Görüntüleme
+
+- Sepetimize bişeyler ekleyip sepetimize gidiyoruz
+- Sağ tık yapıp ```inspect``` diyoruz
+- ```Storage``` kısmına girip ```session storage```'e tıklıyoruz
+- ```bid``` değerini değiştiriyoruz ve sayfayı yeniliyoruz 
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/6c0922cf702c90d5e189b89c783343abc8cec776/Pictures/WhatsApp%20Image%202022-09-17%20at%2017.55.39.jpeg)
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/6c0922cf702c90d5e189b89c783343abc8cec776/Pictures/WhatsApp%20Image%202022-09-17%20at%2017.55.59.jpeg)
+
+- Artık ```bid```'sini girdiğimiz kullanıcının sepetini görüntülüyoruz
+- İster o kullanıcının ```itemTotal```'ini değiştirerek toplam sepet tutarını değiştirebiliriz
+
+> ## SQL Injection
+
+- SQL enjeksiyonunda site içerisinde SQL kodlarını çalıştırmayı deniyoruz
+- Login ksımına giriyoruz
+
+- | Kullanıcı Adı | ahmet@gmail.com |
+  | --- | --- |
+  | Password | 123456' AND 1=1# |
+
+- Deniyoruz ve hata alıyoruz
+- ```Burpsuite``` açıyoruz, ```intercept is on``` diyoruz ve tekrar giriş yapmayı deniyoruz
+- Şifre ve mail görünene kadar kadar ```forward```'lıyoruz
+- Şifre ve mail'i görünce sağ tıklayıp ```send to repeater``` diyoruz
+- ```Repeater```'a yollayıp sonuçları daha hızlı görebiliyoruz
+
+- | Kullanıcı Adı | ahmet@gmail.com' AND 1=1# |
+  | --- | --- |
+  | Password | 1 |
+
+- Deniyoruz. Burpsuite'den yakalayarak hata mesajını not alıyoruz ve farklı kodlarda denemeye devam ediyoruz
+
+> ## Admin Olarak Giriş
+> ## Kullanıcı Şifresi Öğrenme
       - [Cookie Bilgilerini Kırma
       - [Brute Force
     - [Admin Panelini Bulmak](#Admin-Panelini-Bulmak)
