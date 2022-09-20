@@ -123,6 +123,12 @@
       - [HTML Kaynak Kodu](#HTML-Kaynak-Kodu)
     - [Başka Kullanıcı Adına Yorum Yapmak](#Başka-Kullanıcı-Adına-Yorum-Yapmak)
     - [Eksi Sipariş Vermek](#Eksi-Sipariş-Vermek)
+- [OWASP Top 10 2021](#OWASP-Top-10-2021)
+- [SSRF](#SSRF)
+  - [SSRF Admin Paneline Ulaşma](#SSRF-Admin-Paneline-Ulaşma)
+  - [SSRF Backend Saldırısı](#SSRF-Backend-Saldırısı)
+  - [SSRF Blacklist](#SSRF-Blacklist)
+  - [SSRF Whitelist](#SSRF-Whitelist)
 # IP Çeşitleri
 > ## Public IP 
 - Kamuya açık IP
@@ -1511,3 +1517,78 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/51191900139fadefaf7aaa5a294782f22f30c57c/Pictures/WhatsApp%20Image%202022-09-18%20at%2017.16.32.jpeg)
 
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/51191900139fadefaf7aaa5a294782f22f30c57c/Pictures/WhatsApp%20Image%202022-09-18%20at%2017.15.47.jpeg)
+
+# OWASP Top 10 2021
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/3fa5e4d85b99bda63369d1e84b35c155b6832a41/Pictures/WhatsApp%20Image%202022-09-20%20at%2000.10.49.jpeg)
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/83d057bb80879f0f5481798236c983be6fee0b6f/Pictures/WhatsApp%20Image%202022-09-20%20at%2022.11.53.jpeg)
+
+# SSRF
+
+- Server tarafında gönderilen isteklerin değiştirilmesidir
+- Bulunması zor bir açıktır
+- Admin işleri yapabilir, admin paneline ulaşabilir, kullanıcı oluşturup silebilir vb işlemler yapabiliriz
+- Eğer linux sunucusunda ayarlamalar düzgün yapılmazsa başka PC'lerde bu sunucuya erişim sağlayıp işlemler yapabiliriz
+
+> ## SSRF Admin Paneline Ulaşma
+
+- Siteye giriyoruz 
+- ```Burpsuite intercept is on``` yapıyoruz
+- Stock check yapıp yakalıyoruz
+- ```Send to repeater``` diyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/83d057bb80879f0f5481798236c983be6fee0b6f/Pictures/WhatsApp%20Image%202022-09-20%20at%2000.39.31.jpeg)
+
+- ```stockApi=hhtp://localhost/admin``` olarak değiştiriyoruz ve send diyoruz
+- ```Proxy``` kısmındaki "stockApi"'yide değiştiriyoruz ve forward'lıyoruz
+- Ve admin paneline ulaşıyoruz 
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/83d057bb80879f0f5481798236c983be6fee0b6f/Pictures/WhatsApp%20Image%202022-09-20%20at%2000.41.37.jpeg)
+
+- "Carlos" kişisini silmek için
+- ```Burpsuite intercept is on``` diyoruz, delete diyip yakalıyoruz
+- ```stockApi=http://localhost/admin/delete?username=carlos``` diyoruz ve forward'lıyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/83d057bb80879f0f5481798236c983be6fee0b6f/Pictures/WhatsApp%20Image%202022-09-20%20at%2000.47.56.jpeg)
+
+- Carlos kullanısını sildik
+
+> ## SSRF Backend Saldırısı
+
+- Sitede SSRF açığı varsa sitenin admin paneline ulaşabiliriz
+- Hangi IP adresinden admin paneline ulaşabileceğimizi bilmiyoruz ve ```brute force``` yaparak o IP adresini bulmayı deniyoruz
+- Siteyi açıyoruz
+- ```Burpsuite intercept is on``` yapıyoruz
+- Stock check yapıp yakalıyoruz
+- Yakaladıktan sonra sağ tıklayıp ```send to intruder``` diyoruz
+- "Clear" diyerek bütün parametreleri temizliyoruz
+- ```stockApi=http://192.168.0.1:8080/admin``` yazıp "1"'i seçiyoruz ve "add" diyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/83d057bb80879f0f5481798236c983be6fee0b6f/Pictures/WhatsApp%20Image%202022-09-20%20at%2018.48.30.jpeg)
+
+- ```Payloads``` kısmına giriyoruz, ```payloads```'ı ```number``` seçiyoruz
+- ```Form:1 To:255 Step:1 (kaçar kaçar arttığı)``` olarak ayarlıyoruz ve ```Attack``` diyoruz 
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/83d057bb80879f0f5481798236c983be6fee0b6f/Pictures/WhatsApp%20Image%202022-09-20%20at%2018.48.45.jpeg)
+
+- ```192.168.0.1/admin'den 192.168.0.255/admin```'e kadar tek tek deniyor
+- ```Status```larına bakıyoruz, "200" olan bizim aradığımız URL'dir
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/83d057bb80879f0f5481798236c983be6fee0b6f/Pictures/WhatsApp%20Image%202022-09-20%20at%2019.33.53.jpeg)
+
+- Siteye giriyoruz
+- ```Burpsuite intercept is on``` diyip yakalıyoruz
+- ```stockApi=hhtp://192.168.0.157:8080/admin``` yazarak admin paneline ulaşabiliriz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/83d057bb80879f0f5481798236c983be6fee0b6f/Pictures/WhatsApp%20Image%202022-09-20%20at%2019.34.04.jpeg)
+
+- ```stockApi=http://192.168.0.157:8080/admin/delete?username=carlos``` diyerek carlos kullanıcısını silebiliriz
+
+
+
+
+
+> ## SSRF Blacklist
+> ## SSRF Whitelist
+
