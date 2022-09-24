@@ -129,6 +129,14 @@
   - [SSRF Backend Saldırısı](#SSRF-Backend-Saldırısı)
   - [SSRF Blacklist](#SSRF-Blacklist)
   - [SSRF Whitelist](#SSRF-Whitelist)
+- [API Güvenliği](#API-Güvenliği)
+- [Digital Ocean Sunucu Oluşturma](#Digital-Ocean-Sunucu-Oluşturma)
+  - [Sunucuya API Kurulumu](#Sunucuya-API-Kurulumu)
+- [Postman](#Postman)
+- [vAPI CTF](#vAPI-CTF)
+  - [API1 Broken Object Authorization](#API1-Broken-Object-Authorization)
+  - [API2 Broken Authentication](#API2-Broken-Authentication)
+  - [API4 İki Faktörlü Doğrulama](#API4-İki-Faktörlü-Doğrulama)
 # IP Çeşitleri
 > ## Public IP 
 - Kamuya açık IP
@@ -1633,3 +1641,179 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 - ```stockApi=http://localhost:80#@stock.weliktetoshop.net/admin``` deniyoruz 
 - "#"'i 2 kere URL encode yapıp deniyoruz
 - ```stockApi=http://localhost:80%25%32%33@stock.weliktetoshop.net/admin``` deniyoruz ve admin paneline ulaşıyoruz
+
+# API Güvenliği
+
+- API (application programming interface) uygumala programlama arayüzü
+
+# Digital Ocean Sunucu Oluşturma
+
+- Ücretli olarak [digital ocean](https://www.digitalocean.com/) sitesinden sunucu kurabiliriz
+- Kayıt olup panele giriş yapıyoruz
+- ```New project``` diyeterk yeni proje oluşturuyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/25a515f231561477d9b77d1dfd7b0a8b8e7ef977/Pictures/WhatsApp%20Image%202022-09-23%20at%2011.50.23.jpeg)
+
+- İsim vs girip tamamlıyoruz
+- ```Create a Droplet``` diyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/25a515f231561477d9b77d1dfd7b0a8b8e7ef977/Pictures/WhatsApp%20Image%202022-09-23%20at%2011.51.44.jpeg)
+
+- Kali linux için ```ubuntu```'yu seçiyoruz
+- ```CPU options```'u seçiyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/25a515f231561477d9b77d1dfd7b0a8b8e7ef977/Pictures/WhatsApp%20Image%202022-09-23%20at%2011.52.39.jpeg)
+
+- Sunucunun nerede olacağını seçiyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/25a515f231561477d9b77d1dfd7b0a8b8e7ef977/Pictures/WhatsApp%20Image%202022-09-23%20at%2011.53.30.jpeg)
+
+- Sunucuya ne ile bağlanıcağımızı seçiyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/25a515f231561477d9b77d1dfd7b0a8b8e7ef977/Pictures/WhatsApp%20Image%202022-09-23%20at%2011.53.59.jpeg)
+
+- Ve ```create droplet``` diyoruz
+- Oluşturduğumuz server'ın IP adresini görüyoruz
+- Linux'den terminalimizi açıyoruz
+- ```ssh root@{IP adresimiz}``` ile giriş yapıyoruz
+- Giriş şeklimizi parola seçitysek parolamızı giriyoruz ve sunucumuza giriş yapıyoruz
+- ! Sunucuyu kapatmak için digital ocean içinde ```droplets```'a girip "..."'a tıklayıp ```destroy``` dememiz yeterli oluyor
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/25a515f231561477d9b77d1dfd7b0a8b8e7ef977/Pictures/WhatsApp%20Image%202022-09-23%20at%2013.02.44.jpeg)
+
+> ## Sunucuya API Kurulumu
+
+- [vAPI](https://github.com/atilsama- [ncioglu/vapi) linki kopyalıyoruz
+- Terminalden sunucuya giriş yaptıktan sonra  ```cd/var/www/html``` diyoruz ve dosya yok hatası alıyoruz yani sunucuda ```apache2``` yok
+- Sunucu içinden ```/var``` klasörüne giriyoruz
+- ```apt install apache2``` diyip yüklüyoruz
+- Eğer hata alırsak ```apt update --fix-missing``` çalıştırıyoruz ve hem apt'i güncelleyip hem de hata varsa onu düzeltiyoruz
+- Yükledikten sonra ```cd/var/www/html``` içine giriyoruz
+- ```git clone https://github.com/atilsamancioglu/vapi.git``` diyerek yüklüyoruz
+- Terminalde sunucu içindeyken ```docker-compose up -d``` çalıştırıyoruz
+- Sunucuda ```Docker-Compose``` yoksa ```apt install docket-compose``` diyoruz
+- "80" portunu başka birisi kullanıdğı için docker çalıştıramayabiliriz
+- ```lsof -i :80``` çalıştırarak 80 portunu kimin kullandığını görürüz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/25a515f231561477d9b77d1dfd7b0a8b8e7ef977/Pictures/WhatsApp%20Image%202022-09-23%20at%2012.58.29.jpeg)
+
+- ```kill {PID numarası}``` yazarak onu kapatıyoruz
+- ```docker-compose up -d``` çalıştırıyoruz
+- ```ifconfig``` çalıştırıyoruz ve ```eth0 -> inet IP``` kça ise o IP adresine herhangi bir PC'den giriş yaparak gidebiliriz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/25a515f231561477d9b77d1dfd7b0a8b8e7ef977/Pictures/WhatsApp%20Image%202022-09-23%20at%2013.00.27.jpeg)
+
+- Site URL'sinin sonuna ```IP/vapi``` yazarak sitenin vapi kısmına gidebiliriz
+- vAPI içerisinde challange'lar bulunur, bunları çözmek için ```postman``` ve ```burpsuite``` kullanılır
+
+# Postman
+
+- API ile çalışırken istek attığımız ve cevapları gördüğümüz uygulamadır
+- Burpsuite ile farkı Postman'de istekleri atıp, parametre ve headerları düzgünce girip yanıtları almamızdır
+- [Postman](https://www.postman.com/) adresine gidiyoruz
+- Postman'i hem online olarak hem de bilgisayarımıza kurarak kullanabiliriz
+- Linux sanal makinemize değil kendi kişisel bilgisayarımızada kurabiliriz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/25a515f231561477d9b77d1dfd7b0a8b8e7ef977/Pictures/WhatsApp%20Image%202022-09-23%20at%2013.39.36.jpeg)
+
+- Postman'i kurduktan sonra ```collectionsa``` kısmından ```import``` diyerek ```.json``` dosyasını import edebiliriz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/25a515f231561477d9b77d1dfd7b0a8b8e7ef977/Pictures/WhatsApp%20Image%202022-09-23%20at%2013.43.42.jpeg)
+
+- ```Collections``` içine girip daha hızlı post ve get isteği yollayabiliriz
+- ```Enviroments``` içindeki ```host``` kısmına sitemizin IP adresini yazıyoruz ve bu sayede collections içindeki tüm isteklere tek tek yazmamız gerekmiyecektir
+- ```Post: Kullanıcı Oluşturulacak```
+- ```Get: Kullanıcı Bilgileri Sorgulanacak```
+- ```Put: Kullanıcı Bilgileri Güncellenicek```
+- ```Header``` çok genel bilgileri yer alır, değiştirmeye gerek yoktur
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/25a515f231561477d9b77d1dfd7b0a8b8e7ef977/Pictures/WhatsApp%20Image%202022-09-24%20at%2015.47.07.jpeg)
+
+- ```Body```'de bazı parametreler yer alır
+- ```Send``` diyerek isteği yapabiliriz ve geri dönüşü görebiliriz
+- Bazu websiteleri bazı API'lerin dökümantasyonlarını detaylı olarak verebilir
+- Dökümantasyondaki bilgileri ```Postman```'e yazıp istek atabilir ve açık var mı bakabiliriz
+
+# vAPI CTF
+
+> ## API1 Broken Object Authorization
+
+- Post içine girip ```Body``` kısmını doldurup yolluyoruz ve yeni bir kullanıcı oluşturuyoruz, bize bir ID tanımlıyor
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/25a515f231561477d9b77d1dfd7b0a8b8e7ef977/Pictures/WhatsApp%20Image%202022-09-24%20at%2015.47.44.jpeg)
+
+![](![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/25a515f231561477d9b77d1dfd7b0a8b8e7ef977/Pictures/WhatsApp%20Image%202022-09-24%20at%2015.57.58.jpeg))
+
+- Get User içine giriyoruz ```header``` içindeki ```Authorization Token``` eğer yeni bir token olmasaydı açık var demektir
+- Aynı ```Authorization Token```'ı kullanarak eğer diğer ID bilgilerine ulaşabiliriz. Bu bir açıktır. Authorization Token ile ID'nin aynı olması ve birbirine eşlenmesi gerekir
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/25a515f231561477d9b77d1dfd7b0a8b8e7ef977/Pictures/WhatsApp%20Image%202022-09-24%20at%2016.04.05.jpeg)
+
+> ## API2 Broken Authentication
+
+- Post ve Get isteklerine bakıyoruz
+- ```Authorization Token```'ı almak için e-mail ve şifre giriyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/25a515f231561477d9b77d1dfd7b0a8b8e7ef977/Pictures/WhatsApp%20Image%202022-09-24%20at%2016.07.26.jpeg)
+
+- Post bilgilerini girip send'liyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/25a515f231561477d9b77d1dfd7b0a8b8e7ef977/Pictures/WhatsApp%20Image%202022-09-24%20at%2016.09.28.jpeg)
+
+- Şifrenin veya kullanıcı adının yanlış olduğunu görüyoruz
+- Bu örnekte bir websitesi hacklenmiş, veriler ele geçirilmiş, bütün kullanıcılar bilgilerini değiştirmiş ancak bazı kullanıcılar değiştirmedi ```brute force``` yaparak bu kullanıcıyı bulmayı deneyeceğiz
+- ```Postman``` settings'e giriyoruz ve ```proxy``` içine "127.0.0.1" ve post'u "8080" portunu seçiyoruz
+- ```Burpsuite intercept is on``` yapıyoruz
+- Postman'den isteği yollayıp burpsuite'den yakalıyoruz
+- ```Send to ıntruder``` diyoruz
+- ```Attack type```'ı ```pitchfork``` seçiyoruz
+- ```Payloads```'a girip 1'e mail adreslerini ve 2'ye eski şifreleri yazıyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/25a515f231561477d9b77d1dfd7b0a8b8e7ef977/Pictures/WhatsApp%20Image%202022-09-24%20at%2016.16.40.jpeg)
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/25a515f231561477d9b77d1dfd7b0a8b8e7ef977/Pictures/WhatsApp%20Image%202022-09-24%20at%2016.16.49.jpeg)
+
+- ```Start Attack``` diyoruz ve saldırı başlıyor
+- ```Status``` "200" olan hesap bizim aradığımız hesaptır
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/25a515f231561477d9b77d1dfd7b0a8b8e7ef977/Pictures/WhatsApp%20Image%202022-09-24%20at%2016.18.43.jpeg)
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/25a515f231561477d9b77d1dfd7b0a8b8e7ef977/Pictures/WhatsApp%20Image%202022-09-24%20at%2016.19.08.jpeg)
+
+- ```Response``` kısmından ```token```'ı görebiliriz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/25a515f231561477d9b77d1dfd7b0a8b8e7ef977/Pictures/WhatsApp%20Image%202022-09-24%20at%2016.19.47.jpeg)
+
+- ```Get``` kısmına giriyoruz Aut. Token otomatik olarak değişmişse send diyoruz ve diğer bilgileri görebiliriz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/25a515f231561477d9b77d1dfd7b0a8b8e7ef977/Pictures/WhatsApp%20Image%202022-09-24%20at%2016.23.00.jpeg)
+
+- Burdaki açık üst üste istek atmak engellenmemiştir ve Brute force saldırısı yapılabiliyor
+
+> ## API4 İki Faktörlü Doğrulama
+
+- Kullanıcı adı ve şifreyi girsek bile mail, sms ile gelen kodu girmemiz gerekiyor
+- Telefon numaramızı giriyoruz ve send diyoruz
+- O numaraya OTP (4 haneli kod) yolladık
+- ```Verify OPT``` içine giriyoruz ```OTP``` bilgilerini girip deniyoruz ancak bunu tek tek deneyerek bulmamız çok zordur
+- ```Burpsuite``` açıyoruz
+- Proxy'i açıyoruz
+- ```Burpsuite intercept is on``` diyip tekrar OTP'yi yolluyoruz ve yakalıyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/25a515f231561477d9b77d1dfd7b0a8b8e7ef977/Pictures/WhatsApp%20Image%202022-09-24%20at%2016.45.54.jpeg)
+
+- Sağ tıklayıp ```send to intruder``` diyoruz
+- Payloads'ı ```number``` yapıyoruz
+- ```Payloads options```'ı "from" 1001, "to" 9999, "send" 1 diyoruz
+- ```Start attack``` diyoruz ```status```'u "200" görene kadar bekliyoruz
+- Ve telefona gelen 4 haneli kodu buluyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/25a515f231561477d9b77d1dfd7b0a8b8e7ef977/Pictures/WhatsApp%20Image%202022-09-24%20at%2016.39.56.jpeg)
+
+- Postman'e dönüyoruz
+- OTP yerine bulduğumuz kodu yazıyoruz ve ```token```'ı görebiliyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/25a515f231561477d9b77d1dfd7b0a8b8e7ef977/Pictures/WhatsApp%20Image%202022-09-24%20at%2016.41.07.jpeg)
+
+- ```Get Details``` kısmına girip "send" diyerek bilgileri görebiliriz
+- Bu açığı engellemek, brute force yapılmaması için ```Rate Limit``` olması gerekiyor
