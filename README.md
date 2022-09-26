@@ -1915,27 +1915,125 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 - ```Burpsuite intercept is on``` diyoruz, send'liyoruz ve yakalıyoruz
 - ```Send to intruder``` diyoruz
 - Username ve password'u seçiyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/ac1847813ecf381fc398fd3263a4afdf5f854b0f/Pictures/WhatsApp%20Image%202022-09-25%20at%2016.11.18.jpeg)
+
 - ```Attack type```'ı ```battering ram``` seçiyoruz 
 - İnternetten ```burpsuite intruder sql injection fuzzer txt github``` araıp deneyebileceğimiz sql komutlarını görebiliriz
 - ```github./1N3/IntruderPayloads/blob/master/FuzzLists/quick-fuzz.txt``` içerisindekileri seçip kopyalıyoruz (70. satırdan itibaren)
 - ```Payload set 1``` içine atıyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/ac1847813ecf381fc398fd3263a4afdf5f854b0f/Pictures/WhatsApp%20Image%202022-09-25%20at%2016.14.51.jpeg)
+
 - ```URL encode``` kaldırıyoruz
 - ```Start Attack``` diyoruz
 - ```Status```'u "200" olanlara bakıyoruz
 - "200" olanlarda yanıt yoksa ya da "200" olan yoksa ```Length```'i fazla olanlara bakıyoruz ve hangi kodlar giriş yapabileceğimizi görüyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/ac1847813ecf381fc398fd3263a4afdf5f854b0f/Pictures/WhatsApp%20Image%202022-09-25%20at%2016.17.18.jpeg)
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/ac1847813ecf381fc398fd3263a4afdf5f854b0f/Pictures/WhatsApp%20Image%202022-09-25%20at%2016.39.15.jpeg)
+
+
 - ! Bu yöntemler diğer açıkları bulabiliriz (XSS vb)
 - Bulduğumuz kullanıcı adı ve şifreyi Post içine girip sendliyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/ac1847813ecf381fc398fd3263a4afdf5f854b0f/Pictures/WhatsApp%20Image%202022-09-25%20at%2016.19.21.jpeg)
+
 - Get içine girip send diyerek ```admin``` keyine erişebiliriz
 
-
-
-
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/ac1847813ecf381fc398fd3263a4afdf5f854b0f/Pictures/WhatsApp%20Image%202022-09-25%20at%2016.19.43.jpeg)
 
 > ## API9 Versiyon Farklılığı
+
+- API'nin daha önceki veya beta sürümünde olan açıkdan faydalanarak yeni sürümde şifre öğrenebiliriz veya saldırı yapabiliriz
+- ```Burpsuite intercept is on``` yapıyoruz
+- Kullanıcı adı ve şifre girip send'liyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/ac1847813ecf381fc398fd3263a4afdf5f854b0f/Pictures/WhatsApp%20Image%202022-09-25%20at%2016.45.24.jpeg)
+
+- ```Send to intruder``` diyoruz
+- Kullanıcı adı ve şifre kısmını seçiyoruz
+- SQL açığı için oluşturduğumuz wordlist'i ekliyoruz
+- URL encode kaldırıp ```attack``` diyoruz
+- Ancak ```rate limit```'e takılıyouz yani en fazla 5 deneme hakkımız var ve brute force yapamıyoruz
+- Post kısmındaki V2'yi V1 yapıyoruz ve yine brute force deniyoruz
+- Eski versiyondaki rate limit yok istediğimiz gibi deneyebiliriz
+- V1'i kullanarak brute force saldırısı yaptık ancak bilgilere ulaşamadık
+- ```Payloads type```'ı number seçiyoruz
+- Sadece "pin"'i seçiyoruz
+- ```Attack type```'ı ```sniper``` yapıyoruz
+- Pin 4 haneli olduğu için "1001"'den "9999"'a kadar 1'er 1'er artıcak şekilde yapıp atağı başlatıp şifreyi bulabiliriz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/ac1847813ecf381fc398fd3263a4afdf5f854b0f/Pictures/WhatsApp%20Image%202022-09-25%20at%2016.45.41.jpeg)
+
+- Kullanıcı adını doğru girmemiz gerekiyor
+
 # Bilgi Toplama
+
+- Bir websitesine pentesting ya da bug bounty yaparken ilk olarak bilgi toplamamız gerekir
+
 > ## Whoislookup
-> ### Icanlookup
-> ### Who is.domaintools
+
+- Google'dan ```whoislookup``` aratarak çıkan sitelere göz atıyoruz
+
+> ### [Icanlookup](https://lookup.icann.org/en)
+
+- Websitemizin adını giriyoruz
+- Name serverlarını, domain olarak ne kullandığımızı, domain'i nereden aldığımızı görebiliriz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/b1c5e367598dbb5c252dc98cc15c38364a0c553a/Pictures/WhatsApp%20Image%202022-09-26%20at%2011.03.43.jpeg)
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/b1c5e367598dbb5c252dc98cc15c38364a0c553a/Pictures/WhatsApp%20Image%202022-09-26%20at%2011.04.44.jpeg)
+
+> ### [Whois.domaintools](https://whois.domaintools.com/)
+
+- Sitenin ismini giriyoruz
+- ```IP adresimizi, IP'nin nerde durduğunu, kaç kere IP'nin değiştirildiğini, Domain'in nereden alındığını``` (bu şekilde site sahibine ulaşabiliriz). Örneğin site sahibi domain'i godady'den almışsa site sahibine godaddy'den gelmiş gibi mail atabiliriz, bir sayfa yapıp site bilgilerini alabiliriz ve daha sonra godaddy'nin sitesine yönlendirebiliriz) öğrenebiliriz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/b1c5e367598dbb5c252dc98cc15c38364a0c553a/Pictures/WhatsApp%20Image%202022-09-26%20at%2011.05.41.jpeg)
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/b1c5e367598dbb5c252dc98cc15c38364a0c553a/Pictures/WhatsApp%20Image%202022-09-26%20at%2011.07.38.jpeg)
+
 > ## DNS Look Up
-> ### Robtex.com
+> ### [Robtex.com](https://www.robtex.com/)
+
+- Site'nin ismini giriyoruz
+- ```Name server``` ve ```IP adresini``` görebiliriz
+- Aynı sunucu içinde çalışan başka websitelerini görebiliriz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/b1c5e367598dbb5c252dc98cc15c38364a0c553a/Pictures/WhatsApp%20Image%202022-09-26%20at%2011.10.47.jpeg)
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/b1c5e367598dbb5c252dc98cc15c38364a0c553a/Pictures/WhatsApp%20Image%202022-09-26%20at%2011.11.32.jpeg)
+
+- Sunucu çok güvenli değilse aynı serverdaki diğer websitelerinin bilgilerini öğrenebilir, web sitelerini hackleyebiliriz
+- Robtex içerisinden sitenin IP adresini aratarak detayları görebiliriz
+- Aynı IP adresini kullanan web sitelerini görebiliriz ve o sitelerde bir açık varsa bizim web sitemizde hacklenebilir
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/b1c5e367598dbb5c252dc98cc15c38364a0c553a/Pictures/WhatsApp%20Image%202022-09-26%20at%2011.15.48.jpeg)
+
+- Sitenin IP adresini öğrenmek için en doğru yöntem terminalden ping atmaktır
+
 > ## Sitereport Netcraft.com
+
+- [sitereport.netcraft.com](https://sitereport.netcraft.com/) giriyoruz
+- Web sitemizi aratıyoruz
+- Risk değeri, IP adresi, server bilgileri vs görebiliriz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/b1c5e367598dbb5c252dc98cc15c38364a0c553a/Pictures/WhatsApp%20Image%202022-09-26%20at%2011.21.33.jpeg)
+
+- Başına uzantısını girip ararsak daha detaylı bilgileri görebiliriz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/b1c5e367598dbb5c252dc98cc15c38364a0c553a/Pictures/WhatsApp%20Image%202022-09-26%20at%2011.29.04.jpeg)
+
+- ```Sender Polixy Framework``` kısmında kimler siteye mail atabilir görebiliriz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/b1c5e367598dbb5c252dc98cc15c38364a0c553a/Pictures/WhatsApp%20Image%202022-09-26%20at%2011.30.20.jpeg)
+
+- ```Site tech.``` kısmında hangi dillerin kullanıldığını görebiliriz ve o dilde enjeksyion denenebilir (.php kullanılıyorsa weevely ile php kodu yapıp enjeksiyon deneyebiliriz)
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/b1c5e367598dbb5c252dc98cc15c38364a0c553a/Pictures/WhatsApp%20Image%202022-09-26%20at%2011.31.03.jpeg)
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/b1c5e367598dbb5c252dc98cc15c38364a0c553a/Pictures/WhatsApp%20Image%202022-09-26%20at%2011.32.44.jpeg)
+
+- Worldpress kullanıp-kullanılmadığını görebiliriz
