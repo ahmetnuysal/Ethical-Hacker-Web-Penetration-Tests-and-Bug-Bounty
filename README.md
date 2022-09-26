@@ -1875,12 +1875,14 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/ac1847813ecf381fc398fd3263a4afdf5f854b0f/Pictures/WhatsApp%20Image%202022-09-25%20at%2014.59.24.jpeg)
 
 - Post içinden yeni bir kullanıcı daha oluştururken 
-- ```{
+- ```
+    {
       "name":"ahmet",
       "username":"ahmetu",
       "password":"ahmet123",
       "credit":"500"
-      }```
+      }
+      ```
 - ```credit:500``` ekliyoruz ve send diyoruz
 - Get kısmına geldiğimizde ```credit```'imizin 500 olduğunu görürürz
 
