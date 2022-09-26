@@ -1882,7 +1882,7 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
       "password":"ahmet123",
       "credit":"500"
       }
-      ```
+    
 - ```credit:500``` ekliyoruz ve send diyoruz
 - Get kısmına geldiğimizde ```credit```'imizin 500 olduğunu görürürz
 
