@@ -1799,9 +1799,6 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 - ```Burpsuite``` açıyoruz
 - Proxy'i açıyoruz
 - ```Burpsuite intercept is on``` diyip tekrar OTP'yi yolluyoruz ve yakalıyoruz
-
-![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/25a515f231561477d9b77d1dfd7b0a8b8e7ef977/Pictures/WhatsApp%20Image%202022-09-24%20at%2016.45.54.jpeg)
-
 - Sağ tıklayıp ```send to intruder``` diyoruz
 - Payloads'ı ```number``` yapıyoruz
 - ```Payloads options```'ı "from" 1001, "to" 9999, "send" 1 diyoruz
@@ -1814,6 +1811,8 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 - OTP yerine bulduğumuz kodu yazıyoruz ve ```token```'ı görebiliyoruz
 
 ![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/25a515f231561477d9b77d1dfd7b0a8b8e7ef977/Pictures/WhatsApp%20Image%202022-09-24%20at%2016.41.07.jpeg)
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/25a515f231561477d9b77d1dfd7b0a8b8e7ef977/Pictures/WhatsApp%20Image%202022-09-24%20at%2016.45.54.jpeg)
 
 - ```Get Details``` kısmına girip "send" diyerek bilgileri görebiliriz
 - Bu açığı engellemek, brute force yapılmaması için ```Rate Limit``` olması gerekiyor
