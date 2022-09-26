@@ -137,6 +137,18 @@
   - [API1 Broken Object Authorization](#API1-Broken-Object-Authorization)
   - [API2 Broken Authentication](#API2-Broken-Authentication)
   - [API4 İki Faktörlü Doğrulama](#API4-İki-Faktörlü-Doğrulama)
+  - [API5 Broken Function Level Authorization](#API5-Broken-Function-Level-Authorization)
+  - [API6 Mass Assignment](#API6 Mass Assignment)
+  - [API7 Cors](#API7-Cors)
+  - [API8 SQLi Injection](#API8-SQLi-Injection)
+  - [API9 Versiyon Farklılığı](#API8-Versiyon-Farklılığı)
+- [Bilgi Toplama](#Bilgi-Toplama)
+  - [Whoislookup](#Whoislookup)
+    - [Icanlookup](#Icanlookup)
+    - [Who is.domaintools](#Who-is.domaintools)
+  - [DNS Look Up](#DNS-Look-Up)
+    - [Robtex.com](#Robtex.com)
+  - [Sitereport Netcraft.com](#Sitereport-Netcraft.com)
 # IP Çeşitleri
 > ## Public IP 
 - Kamuya açık IP
@@ -1816,3 +1828,114 @@ weevely <fotoğrafın yüklendiği konum><password> -> .php dosyasını kullanar
 
 - ```Get Details``` kısmına girip "send" diyerek bilgileri görebiliriz
 - Bu açığı engellemek, brute force yapılmaması için ```Rate Limit``` olması gerekiyor
+
+> ## API5 Broken Function Level Authorization
+
+- Yeni kullanıcı oluşturabiliyoruz ve detayları almaya çalışacağız
+- Post kısmından bilgierimizi giriyoruz ve bize ID veriyor (ID:2)
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/ac1847813ecf381fc398fd3263a4afdf5f854b0f/Pictures/WhatsApp%20Image%202022-09-25%20at%2014.45.22.jpeg)
+
+- Get kısmından bilgilerimizi send'liyoruz ve bize ```auth. token``` veriyor
+- Biz ID:1'e gitmeye çalışacağız
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/ac1847813ecf381fc398fd3263a4afdf5f854b0f/Pictures/WhatsApp%20Image%202022-09-25%20at%2014.47.00.jpeg)
+
+- ID'yi 1 yapıp send'liyoruz ancak hata alıyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/ac1847813ecf381fc398fd3263a4afdf5f854b0f/Pictures/WhatsApp%20Image%202022-09-25%20at%2014.47.04.jpeg)
+
+- ```Burpsuite intercept is on``` yapıyoruz, bilgilerimizi send'liyoruz ve yakalıyoruz
+- Yakaladıktan sonra sağ tıklayıp ```send to repeater``` diyip deniyoruz
+- ```Users``` deniyoruz ve bulduk admin'in detaylarını elde edebiliriz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/ac1847813ecf381fc398fd3263a4afdf5f854b0f/Pictures/WhatsApp%20Image%202022-09-25%20at%2014.49.21.jpeg)
+
+- Burdaki hata ID:1'in ```auth. token```'ı ile başka ID'ye istek atabiliyor olmamızdır
+- Deneyerek bulamasaydık ```brute force``` yapabilirdik
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/ac1847813ecf381fc398fd3263a4afdf5f854b0f/Pictures/WhatsApp%20Image%202022-09-25%20at%2014.51.18.jpeg)
+
+- Wordlistileri ekleyerek saldırı başlatabiliriz ve bu şekilde bulabiliriz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/ac1847813ecf381fc398fd3263a4afdf5f854b0f/Pictures/WhatsApp%20Image%202022-09-25%20at%2014.52.01.jpeg)
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/ac1847813ecf381fc398fd3263a4afdf5f854b0f/Pictures/WhatsApp%20Image%202022-09-25%20at%2014.52.23.jpeg)
+
+> ## API6 Mass Assignment
+
+- Post kısmından yine yeni bir kullanıcı oluşturacağız 
+- Bilgilerimizi doldurup send'liyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/ac1847813ecf381fc398fd3263a4afdf5f854b0f/Pictures/WhatsApp%20Image%202022-09-25%20at%2014.54.56.jpeg)
+
+- Cevap geliyor ve bize User ID:2 veriyor
+- Normalde yeni kullanıcının ```0``` kredisi olmalı biz yeni kullanıcı oluşturup ```500``` kredi vermeyi deniyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/ac1847813ecf381fc398fd3263a4afdf5f854b0f/Pictures/WhatsApp%20Image%202022-09-25%20at%2014.59.24.jpeg)
+
+- Post içinden yeni bir kullanıcı daha oluştururken 
+- ```{
+      "name":"ahmet",
+      "username":"ahmetu",
+      "password":"ahmet123",
+      "credit":"500"
+      }```
+- ```credit:500``` ekliyoruz ve send diyoruz
+- Get kısmına geldiğimizde ```credit```'imizin 500 olduğunu görürürz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/ac1847813ecf381fc398fd3263a4afdf5f854b0f/Pictures/WhatsApp%20Image%202022-09-25%20at%2014.59.09.jpeg)
+
+- Bu şekilde başka parametreler ekleyebiliriz ("admin":"true" vb)
+- İsteği ```burpsuite```'den yakalayarak yeni parametre ekleyebiliriz
+
+> ## API7 Cors
+
+- ```CORS``` yani "Cross Origin Request" kendi websitemizden değil başka bir bir siteden istek atmasıdır (Başka sitedeki buton ile örneğin facebook'a istek atmaktır).
+- Yeni kullanıcı oluşturuyoruz ve send diyoruz
+- ```GET Get key``` kısmında bizim ```auth. key```'imiz bulunur
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/ac1847813ecf381fc398fd3263a4afdf5f854b0f/Pictures/WhatsApp%20Image%202022-09-25%20at%2015.09.31.jpeg)
+
+- ```Burpsuite intercept is on``` yapıyoruz 
+- Get key send diyoruz ve yakalıyoruz
+- ```Send to repeater``` diyoruz
+- Cookie olduğunu görüyoruz önemli olan başka header'dan da gelse çalışıyor mu ona bakıyoruz
+- ```Cookie```'nin üst satırına ```Origin:https://{websitesi.com}``` yazıp send'liyoruz ve token'ı yinede alabiliyor muyuz diye bakıyoruz
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/ac1847813ecf381fc398fd3263a4afdf5f854b0f/Pictures/WhatsApp%20Image%202022-09-25%20at%2015.12.51.jpeg)
+
+![](https://github.com/ahmetnuysal/Ethical-Hacker-Web-Penetration-Tests-and-Bug-Bounty/blob/ac1847813ecf381fc398fd3263a4afdf5f854b0f/Pictures/WhatsApp%20Image%202022-09-25%20at%2015.17.18.jpeg)
+
+- Eğer başka siteden gitmemize rağmen key'i alıyorsak sitede açık var demektir
+
+> ## API8 SQLi Injection
+
+- SQL injecytion yaparken kullanabileceğimiz bir teknik
+- ```Burpsuite intercept is on``` diyoruz, send'liyoruz ve yakalıyoruz
+- ```Send to intruder``` diyoruz
+- Username ve password'u seçiyoruz
+- ```Attack type```'ı ```battering ram``` seçiyoruz 
+- İnternetten ```burpsuite intruder sql injection fuzzer txt github``` araıp deneyebileceğimiz sql komutlarını görebiliriz
+- ```github./1N3/IntruderPayloads/blob/master/FuzzLists/quick-fuzz.txt``` içerisindekileri seçip kopyalıyoruz (70. satırdan itibaren)
+- ```Payload set 1``` içine atıyoruz
+- ```URL encode``` kaldırıyoruz
+- ```Start Attack``` diyoruz
+- ```Status```'u "200" olanlara bakıyoruz
+- "200" olanlarda yanıt yoksa ya da "200" olan yoksa ```Length```'i fazla olanlara bakıyoruz ve hangi kodlar giriş yapabileceğimizi görüyoruz
+- ! Bu yöntemler diğer açıkları bulabiliriz (XSS vb)
+- Bulduğumuz kullanıcı adı ve şifreyi Post içine girip sendliyoruz
+- Get içine girip send diyerek ```admin``` keyine erişebiliriz
+
+
+
+
+
+> ## API9 Versiyon Farklılığı
+# Bilgi Toplama
+> ## Whoislookup
+> ### Icanlookup
+> ### Who is.domaintools
+> ## DNS Look Up
+> ### Robtex.com
+> ## Sitereport Netcraft.com
