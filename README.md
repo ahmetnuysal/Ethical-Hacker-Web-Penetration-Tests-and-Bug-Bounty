@@ -138,7 +138,7 @@
   - [API2 Broken Authentication](#API2-Broken-Authentication)
   - [API4 İki Faktörlü Doğrulama](#API4-İki-Faktörlü-Doğrulama)
   - [API5 Broken Function Level Authorization](#API5-Broken-Function-Level-Authorization)
-  - [API6 Mass Assignment](#API6 Mass Assignment)
+  - [API6 Mass Assignment](#API6-Mass-Assignment)
   - [API7 Cors](#API7-Cors)
   - [API8 SQLi Injection](#API8-SQLi-Injection)
   - [API9 Versiyon Farklılığı](#API8-Versiyon-Farklılığı)
